@@ -1,0 +1,19 @@
+{
+  "name": "TED/dishes/PENNE ALL'ARRABBIATA",
+  "bucket": "smartdish-82118.appspot.com",
+  "contentType": "image/jpeg",
+  "metageneration": 1,
+  "generation": 1639659273462,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [
+    "b2581d92-2491-4e64-b7a3-8ca03767bb71"
+  ],
+  "timeCreated": "2021-12-16T12:54:33.461Z",
+  "updated": "2021-12-16T12:54:33.468Z",
+  "size": 124544,
+  "md5Hash": "uOZaiIj44A1QqW4vjGFPGA==",
+  "crc32c": "1494996907"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "DAN/userImage",
+  "bucket": "smartdish-82118.appspot.com",
+  "contentType": "image/jpeg",
+  "metageneration": 1,
+  "generation": 1639245129944,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [
+    "b7d3c83d-ee7e-41d9-9512-eb9e779977e3"
+  ],
+  "timeCreated": "2021-12-11T17:52:09.943Z",
+  "updated": "2021-12-11T17:52:09.948Z",
+  "size": 23921,
+  "md5Hash": "oVGBXd42e41DytH8zjticA==",
+  "crc32c": "2582251713"
+}

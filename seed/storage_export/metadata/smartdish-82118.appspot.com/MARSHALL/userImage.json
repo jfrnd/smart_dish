@@ -1,0 +1,19 @@
+{
+  "name": "MARSHALL/userImage",
+  "bucket": "smartdish-82118.appspot.com",
+  "contentType": "image/jpeg",
+  "metageneration": 1,
+  "generation": 1639245174851,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [
+    "52006d3c-fcfa-426a-a965-24ed7a0c74b7"
+  ],
+  "timeCreated": "2021-12-11T17:52:54.850Z",
+  "updated": "2021-12-11T17:52:54.855Z",
+  "size": 999113,
+  "md5Hash": "I2liXrBiQ2cFzqiDq14AFQ==",
+  "crc32c": "2439855522"
+}

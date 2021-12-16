@@ -1,0 +1,19 @@
+{
+  "name": "LILLY/userImage",
+  "bucket": "smartdish-82118.appspot.com",
+  "contentType": "image/jpeg",
+  "metageneration": 1,
+  "generation": 1639245185832,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [
+    "ebbce3a5-3c7f-4a29-a1bc-41af8c94dcf9"
+  ],
+  "timeCreated": "2021-12-11T17:53:05.831Z",
+  "updated": "2021-12-11T17:53:05.836Z",
+  "size": 985672,
+  "md5Hash": "KKPCSeeWOubdEGPCFXqHNQ==",
+  "crc32c": "2487432058"
+}

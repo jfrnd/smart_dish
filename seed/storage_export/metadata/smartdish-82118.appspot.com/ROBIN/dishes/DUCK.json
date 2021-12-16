@@ -1,0 +1,19 @@
+{
+  "name": "ROBIN/dishes/DUCK",
+  "bucket": "smartdish-82118.appspot.com",
+  "contentType": "image/jpeg",
+  "metageneration": 1,
+  "generation": 1639659463388,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [
+    "121aa3dd-8ea0-4233-847c-9e302df5db3f"
+  ],
+  "timeCreated": "2021-12-16T12:57:43.387Z",
+  "updated": "2021-12-16T12:57:43.402Z",
+  "size": 169834,
+  "md5Hash": "txh3ZQ5B7o2hk9RDWezlSQ==",
+  "crc32c": "4253072268"
+}

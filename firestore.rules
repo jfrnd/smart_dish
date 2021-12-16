@@ -1,0 +1,65 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    function onlyAffectedFieldsAre(request, keys) {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(keys)
+    }
+
+    match /users/{userId}/{anyUserFile=**} {
+      allow update: if isAuthenticated() && request.auth.uid == userId && onlyAffectedFieldsAre(request,["imageUrl"]);
+      allow read: if isAuthenticated();
+    }
+
+    match /friendships/{friendshipId}/{anyUserFile=**} {
+      function isParticipating() {
+        return request.auth.uid in resource.data.users
+      }
+
+      allow read: if isAuthenticated() && isParticipating();
+      allow delete: if isAuthenticated() && isParticipating();
+    }
+
+    match /dishes/{dishId} {
+      function isCreator() {
+        return resource.data.createdBy == request.auth.uid;
+      }
+
+      function usersAreFriends() { 
+        return exists(path("/databases/"+database+"/documents/friendships/"+resource.data.createdBy+"__"+request.auth.uid)) 
+          || exists(path("/databases/"+database+"/documents/friendships/"+request.auth.uid+"__"+resource.data.createdBy))
+      }
+
+
+      allow read: if isAuthenticated() && (isCreator() ||usersAreFriends());
+      allow create: if isAuthenticated();
+      allow update, delete: if isAuthenticated() && isCreator();
+    }
+
+
+    match /friendRequests/{requestId}/{anyFile=**} {
+      function isSender() {
+        return request.auth.uid == resource.data.senderId
+      }
+      function isReceiver() {
+        return request.auth.uid == resource.data.receiverId
+      }
+      function receiverRejects() {
+        return isAuthenticated() && isReceiver() && request.resource.data.accepted == false && onlyAffectedFieldsAre(request,["accepted"]);
+      }
+      function receiverAccepts() {
+        return isAuthenticated() && isReceiver() && request.resource.data.accepted == true && onlyAffectedFieldsAre(request,["accepted"]);
+      }
+      function senderWithdraws() {
+        return isAuthenticated() && isSender() && request.resource.data.accepted == false && onlyAffectedFieldsAre(request,["accepted"]);
+      }
+
+      allow update: if receiverRejects() || receiverAccepts() || senderWithdraws();
+      allow read: if request.auth != null && (isSender() || isReceiver());
+    }
+
+  }
+
+}

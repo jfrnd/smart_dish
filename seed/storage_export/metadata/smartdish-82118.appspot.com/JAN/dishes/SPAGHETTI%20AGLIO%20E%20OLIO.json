@@ -1,0 +1,19 @@
+{
+  "name": "JAN/dishes/SPAGHETTI AGLIO E OLIO",
+  "bucket": "smartdish-82118.appspot.com",
+  "contentType": "image/jpeg",
+  "metageneration": 1,
+  "generation": 1639495119919,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [
+    "e7138430-f64e-4663-a599-740d9788c535"
+  ],
+  "timeCreated": "2021-12-14T15:18:39.918Z",
+  "updated": "2021-12-14T15:18:39.918Z",
+  "size": 37068,
+  "md5Hash": "qqZPSbwqhK1NVhrf/mTFIA==",
+  "crc32c": "4083273014"
+}

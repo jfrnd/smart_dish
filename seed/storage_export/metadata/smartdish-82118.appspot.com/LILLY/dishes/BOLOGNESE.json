@@ -1,0 +1,19 @@
+{
+  "name": "LILLY/dishes/BOLOGNESE",
+  "bucket": "smartdish-82118.appspot.com",
+  "contentType": "image/jpeg",
+  "metageneration": 1,
+  "generation": 1639659438610,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [
+    "41ff43af-1de8-48c2-a67b-3b22102f71f7"
+  ],
+  "timeCreated": "2021-12-16T12:57:18.609Z",
+  "updated": "2021-12-16T12:57:18.613Z",
+  "size": 115151,
+  "md5Hash": "0AEiHRJzCn7NyW2sX31IjQ==",
+  "crc32c": "816163758"
+}

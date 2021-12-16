@@ -1,0 +1,95 @@
+import 'dart:ui';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
+import 'package:smart_dish/presentation/router/router.gr.dart';
+import 'package:smart_dish/utils/app_bloc_observer.dart';
+import 'package:smart_dish/web_test_page.dart';
+import 'application/navigation_cubit/navigation_cubit.dart';
+import 'application/watcher/dish_watcher_cubit.dart';
+import 'application/watcher/friend_request_watcher_cubit.dart';
+import 'application/watcher/friend_watcher_cubit.dart';
+import 'application/watcher/signed_in_user_watcher_cubit.dart';
+import 'auth/auth_watcher_cubit.dart';
+import 'auth/i_auth_repo.dart';
+import 'di/injection.dart';
+import 'package:device_preview/device_preview.dart';
+
+const environment = Environment.prod;
+const devicePreview = false;
+const webHotReloadTest = false;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await configureInjection(environment);
+  if (environment == Environment.dev) {
+    //if there is data with invalid data schema in cache
+    await getIt<FirebaseFirestore>().clearPersistence();
+    // await getIt<IAuthRepo>().signOut();
+  }
+  BlocOverrides.runZoned(
+    () => runApp(
+      devicePreview
+          ? DevicePreview(
+              enabled: !kReleaseMode && !kIsWeb,
+              builder: (context) => AppWidget(),
+            )
+          : AppWidget(),
+    ),
+    blocObserver: AppBlocObserver(),
+  );
+}
+
+class AppWidget extends StatelessWidget {
+  final _appRouter = AppRouter();
+
+  AppWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final themeData = ThemeData(
+      primaryColor: Colors.lightGreen,
+      appBarTheme: const AppBarTheme(backgroundColor: Colors.lightGreen),
+      inputDecorationTheme: const InputDecorationTheme(
+        border: OutlineInputBorder(),
+      ),
+    );
+
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => getIt<AuthWatcherCubit>()),
+        BlocProvider(create: (_) => getIt<FriendWatcherCubit>()),
+        BlocProvider(create: (_) => getIt<FriendRequestWatcherCubit>()),
+        BlocProvider(create: (_) => getIt<SignedInUserWatcherCubit>()),
+        BlocProvider(create: (_) => getIt<DishWatcherCubit>()),
+        BlocProvider(create: (_) => getIt<NavigationCubit>()),
+      ],
+      child: webHotReloadTest && kIsWeb
+          ? WebTest(themeData)
+          : MaterialApp.router(
+              builder: DevicePreview.appBuilder,
+              useInheritedMediaQuery: true,
+              locale: DevicePreview.locale(context),
+              routerDelegate: _appRouter.delegate(),
+              routeInformationParser: _appRouter.defaultRouteParser(),
+              title: 'SmartDish',
+              debugShowCheckedModeBanner: false,
+              theme: themeData,
+              scrollBehavior: MyCustomScrollBehavior(),
+            ),
+    );
+  }
+}
+
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+      };
+}

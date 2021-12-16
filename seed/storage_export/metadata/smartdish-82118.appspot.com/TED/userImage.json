@@ -1,0 +1,19 @@
+{
+  "name": "TED/userImage",
+  "bucket": "smartdish-82118.appspot.com",
+  "contentType": "image/jpeg",
+  "metageneration": 1,
+  "generation": 1639245164663,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [
+    "35a4c8b3-d118-438d-98f5-edd53e645c4e"
+  ],
+  "timeCreated": "2021-12-11T17:52:44.662Z",
+  "updated": "2021-12-11T17:52:44.670Z",
+  "size": 809148,
+  "md5Hash": "0uZ2pkdhW9WZikFU6PnQoQ==",
+  "crc32c": "2635109854"
+}

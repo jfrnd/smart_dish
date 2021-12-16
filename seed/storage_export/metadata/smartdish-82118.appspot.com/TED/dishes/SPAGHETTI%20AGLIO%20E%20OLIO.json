@@ -1,0 +1,19 @@
+{
+  "name": "TED/dishes/SPAGHETTI AGLIO E OLIO",
+  "bucket": "smartdish-82118.appspot.com",
+  "contentType": "image/jpeg",
+  "metageneration": 1,
+  "generation": 1639659305721,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [
+    "224cb505-00cb-49ac-a71b-60342c49b2d2"
+  ],
+  "timeCreated": "2021-12-16T12:55:05.720Z",
+  "updated": "2021-12-16T12:55:05.723Z",
+  "size": 90987,
+  "md5Hash": "Ra/XEHGKqU9dtUwr7fKiNQ==",
+  "crc32c": "3048635061"
+}

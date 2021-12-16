@@ -1,0 +1,19 @@
+{
+  "name": "MARSHALL/dishes/CHILI CON CARNE",
+  "bucket": "smartdish-82118.appspot.com",
+  "contentType": "image/jpeg",
+  "metageneration": 1,
+  "generation": 1639659513644,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [
+    "c04207ea-3f0f-4a4f-b480-29d8ed487963"
+  ],
+  "timeCreated": "2021-12-16T12:58:33.643Z",
+  "updated": "2021-12-16T12:58:33.644Z",
+  "size": 159516,
+  "md5Hash": "52D0A0PxhuZRq6orkQD5wA==",
+  "crc32c": "1103668303"
+}

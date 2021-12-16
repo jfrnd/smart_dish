@@ -1,0 +1,19 @@
+{
+  "name": "BARNEY/userImage",
+  "bucket": "smartdish-82118.appspot.com",
+  "contentType": "image/jpeg",
+  "metageneration": 1,
+  "generation": 1639245154112,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [
+    "2fa4e52a-0e9f-4f7b-993e-ca64861d4c75"
+  ],
+  "timeCreated": "2021-12-11T17:52:34.111Z",
+  "updated": "2021-12-11T17:52:34.112Z",
+  "size": 72389,
+  "md5Hash": "qkcM9Qt4DOZtA4ntOkrV5w==",
+  "crc32c": "3519208671"
+}

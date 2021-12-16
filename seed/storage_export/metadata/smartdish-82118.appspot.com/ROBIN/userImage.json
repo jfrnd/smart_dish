@@ -1,0 +1,19 @@
+{
+  "name": "ROBIN/userImage",
+  "bucket": "smartdish-82118.appspot.com",
+  "contentType": "image/jpeg",
+  "metageneration": 1,
+  "generation": 1639308608840,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [
+    "4c5358c2-050d-4149-8416-eec6801132f1"
+  ],
+  "timeCreated": "2021-12-12T11:30:08.839Z",
+  "updated": "2021-12-12T11:30:08.845Z",
+  "size": 526295,
+  "md5Hash": "KVrZgHwCV6JuydAGswo9jw==",
+  "crc32c": "3660134158"
+}

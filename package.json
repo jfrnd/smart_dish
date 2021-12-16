@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "kill": "npx kill-port 9099 5001 8080 5000 8085 9199 4000",
+    "watch": "cd functions & npm run watch",
+    "emu": "npx kill-port 9099 5001 8080 5000 8085 9199 4000 & firebase emulators:start --import seed",
+    "seed": "cd functions & cd lib & node dbseed.js"
+  },
+  "dependencies": {
+    "@firebase/storage": "^0.9.0",
+    "firebase": "^9.6.1"
+  }
+}
