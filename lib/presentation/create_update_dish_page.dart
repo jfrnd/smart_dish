@@ -40,7 +40,11 @@ class CreateUpdateDishPage extends StatelessWidget {
       child: BlocConsumer<DishEditorCubit, DishEditorState>(
         listener: (context, state) {
           state.failureOrSuccess?.fold(
-            (failure) => failure.showError(context, kIsWeb),
+            (failure) => failure.showError(
+                context,
+                kIsWeb &&
+                    defaultTargetPlatform != TargetPlatform.iOS &&
+                    defaultTargetPlatform != TargetPlatform.android),
             (success) => AutoRouter.of(context).pop(),
           );
         },
@@ -59,11 +63,18 @@ class CreateUpdateDishPage extends StatelessWidget {
               Scaffold(
                 appBar: AppBar(
                   title: const Text("Create Dish"),
-                  automaticallyImplyLeading: kIsWeb ? false : true,
+                  automaticallyImplyLeading: kIsWeb &&
+                          defaultTargetPlatform != TargetPlatform.iOS &&
+                          defaultTargetPlatform != TargetPlatform.android
+                      ? false
+                      : true,
                   actions: [
                     Visibility(
-                      visible:
-                          state.isUpdating && !kIsWeb && hasPermssionToUpdate,
+                      visible: state.isUpdating &&
+                          !kIsWeb &&
+                          defaultTargetPlatform != TargetPlatform.iOS &&
+                          defaultTargetPlatform != TargetPlatform.android &&
+                          hasPermssionToUpdate,
                       child: IconButton(
                         icon: const Icon(Icons.delete),
                         onPressed: () => showDialog(
@@ -73,7 +84,11 @@ class CreateUpdateDishPage extends StatelessWidget {
                       ),
                     ),
                     Visibility(
-                      visible: kIsWeb,
+                      visible: kIsWeb &&
+                          defaultTargetPlatform != TargetPlatform.iOS &&
+                          defaultTargetPlatform != TargetPlatform.android &&
+                          defaultTargetPlatform != TargetPlatform.iOS &&
+                          defaultTargetPlatform != TargetPlatform.android,
                       child: IconButton(
                         icon: const Icon(Icons.cancel),
                         onPressed: () => Navigator.of(context).pop(),
@@ -95,7 +110,10 @@ class CreateUpdateDishPage extends StatelessWidget {
                     child: Column(
                       children: [
                         Visibility(
-                          visible: kIsWeb && state.isLoading,
+                          visible: kIsWeb &&
+                              defaultTargetPlatform != TargetPlatform.iOS &&
+                              defaultTargetPlatform != TargetPlatform.android &&
+                              state.isLoading,
                           child: const LinearProgressIndicator(minHeight: 5),
                         ),
                         Padding(
@@ -137,6 +155,9 @@ class CreateUpdateDishPage extends StatelessWidget {
                           child: Visibility(
                             visible: state.isUpdating &&
                                 kIsWeb &&
+                                defaultTargetPlatform != TargetPlatform.iOS &&
+                                defaultTargetPlatform !=
+                                    TargetPlatform.android &&
                                 hasPermssionToUpdate,
                             child: TextButton.icon(
                               label: const Text(
@@ -159,7 +180,11 @@ class CreateUpdateDishPage extends StatelessWidget {
                   ),
                 ),
               ),
-              LoadingInProgressOverlay(isLoading: state.isLoading && !kIsWeb)
+              LoadingInProgressOverlay(
+                  isLoading: state.isLoading &&
+                      !(kIsWeb &&
+                          defaultTargetPlatform != TargetPlatform.iOS &&
+                          defaultTargetPlatform != TargetPlatform.android))
             ],
           );
         },

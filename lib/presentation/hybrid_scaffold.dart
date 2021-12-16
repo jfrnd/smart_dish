@@ -21,7 +21,9 @@ class HybridScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (kIsWeb) {
+    if (kIsWeb &&
+        defaultTargetPlatform != TargetPlatform.iOS &&
+        defaultTargetPlatform != TargetPlatform.android) {
       return Material(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,

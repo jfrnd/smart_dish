@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:smart_dish/application/watcher/dish_watcher_cubit.dart';
 import 'package:smart_dish/auth/auth_watcher_cubit.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart';
 import 'package:smart_dish/domain/dish/dish.dart';
 import 'package:smart_dish/domain/watcher/watcher_cubit.dart';
 import 'package:smart_dish/presentation/create_update_dish_page.dart';
@@ -52,7 +52,9 @@ class Dishes extends StatelessWidget {
           ),
           loadingSuccessful: (state) {
             final dishes = state.data;
-            return kIsWeb
+            return (kIsWeb &&
+                    defaultTargetPlatform != TargetPlatform.iOS &&
+                    defaultTargetPlatform != TargetPlatform.android)
                 ? WebDishList(dishes: dishes)
                 : MobileDishList(dishes: dishes);
           },

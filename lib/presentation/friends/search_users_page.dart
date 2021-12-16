@@ -29,7 +29,11 @@ class SearchUsersPage extends StatelessWidget {
           body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: SizedBox(
-              width: kIsWeb ? orientationThreshold : null,
+              width: kIsWeb &&
+                      defaultTargetPlatform != TargetPlatform.iOS &&
+                      defaultTargetPlatform != TargetPlatform.android
+                  ? orientationThreshold
+                  : null,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -96,8 +100,13 @@ class ResultList extends StatelessWidget {
                       listener: (context, state) {
                         state.maybeMap(
                             orElse: () => null,
-                            actionFailed: (state) =>
-                                state.failure.showError(context, kIsWeb));
+                            actionFailed: (state) => state.failure.showError(
+                                context,
+                                kIsWeb &&
+                                    defaultTargetPlatform !=
+                                        TargetPlatform.iOS &&
+                                    defaultTargetPlatform !=
+                                        TargetPlatform.android));
                       },
                       builder: (context, state) {
                         return ListTile(

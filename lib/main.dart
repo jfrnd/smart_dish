@@ -28,7 +28,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'presentation/core/notification_manager.dart';
 
-const environment = Environment.dev;
+const environment = Environment.prod;
 const devicePreview = false;
 const webHotReloadTest = false;
 

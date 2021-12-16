@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
@@ -27,16 +27,17 @@ class FriendsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return HybridScaffold(
-      appBar: AppBar(
-        title: const Text("Friends"),
-        automaticallyImplyLeading: kIsWeb ? false : true,
-      ),
+      appBar: AppBar(title: const Text("Friends")),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Align(
           alignment: Alignment.topCenter,
           child: SizedBox(
-            width: kIsWeb ? orientationThreshold : null,
+            width: kIsWeb &&
+                    defaultTargetPlatform != TargetPlatform.iOS &&
+                    defaultTargetPlatform != TargetPlatform.android
+                ? orientationThreshold
+                : null,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_dish/auth/auth_failure.dart';
 
@@ -38,7 +37,7 @@ extension FailureX on Failure {
     }
   }
 
-  void showError(BuildContext context, bool kIsWeb) => kIsWeb
+  void showError(BuildContext context, bool isWeb) => isWeb
       ? showDialog(
           context: context,
           builder: (context) => AlertDialog(

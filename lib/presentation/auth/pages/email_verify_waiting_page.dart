@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart';
 import 'package:smart_dish/auth/auth_watcher_cubit.dart';
 
 class EmailVerifyWaitingPage extends StatefulWidget {
@@ -39,7 +39,9 @@ class _EmailVerifyWaitingPageState extends State<EmailVerifyWaitingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: kIsWeb
+      appBar: (mounted &&
+              defaultTargetPlatform != TargetPlatform.iOS &&
+              defaultTargetPlatform != TargetPlatform.android)
           ? null
           : AppBar(
               title: const Text("Email verification"),
