@@ -77,8 +77,6 @@ class FirebaseAuthRepo implements IAuthRepo {
         handleCodeInApp: false,
       );
 
-      final token = await _messaging.getToken();
-
       await _firebaseAuth
           .createUserWithEmailAndPassword(
             email: email,
@@ -118,8 +116,6 @@ class FirebaseAuthRepo implements IAuthRepo {
         email: email,
         password: password,
       );
-
-      final token = await _messaging.getToken();
 
       if (_firebaseAuth.currentUser != null &&
           !_firebaseAuth.currentUser!.emailVerified) {

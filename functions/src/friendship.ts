@@ -3,6 +3,7 @@ import * as functions from "firebase-functions";
 import { database } from ".";
 import { checkAuthentication } from "./auth";
 import { FRIENDSHIPS } from "./consts";
+import { getUserDocument, User } from "./user_doc";
 
 export interface FriendShip extends admin.firestore.DocumentData {
   createdAt: FirebaseFirestore.Timestamp;
@@ -47,22 +48,24 @@ export async function friendshipDoesNotExist(id1: string, id2: string) {
 }
 
 export async function getFriendsOfUser(id: string) {
-  const query1 = await database
+  const friendships = await database
     .collection(FRIENDSHIPS)
-    .where("user1", "==", id)
-    .get();
-  const query2 = await database
-    .collection(FRIENDSHIPS)
-    .where("user2", "==", id)
-    .get();
-  const friendIds: string[] = [];
-  query1.docs.forEach((doc) =>
-    friendIds.push((doc.data() as FriendShip).user2)
+    .where("users", "array-contains", id)
+    .get()
+    .then((snapshot) => snapshot.docs.map((doc) => doc.data() as FriendShip));
+
+  const friendsIds = friendships.map(
+    (friendship) => friendship.users.filter((userId) => userId != id)[0]
   );
-  query2.docs.forEach((doc) =>
-    friendIds.push((doc.data() as FriendShip).user1)
-  );
-  return friendIds;
+
+  const friends: User[] = [];
+  const jobs: Promise<any>[] = [];
+
+  friendsIds.forEach(async (id) => {
+    const job = getUserDocument(id).then((doc) => friends.push(doc));
+    jobs.push(job);
+  });
+  return Promise.all(jobs).then((_) => friends);
 }
 
 interface DeleteFriendshipPayload {
