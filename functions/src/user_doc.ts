@@ -10,6 +10,7 @@ export interface User extends admin.firestore.DocumentData {
   imageUrl: string;
   updatedAt: FirebaseFirestore.Timestamp;
   userName: string;
+  token: string | undefined;
 }
 
 export async function getUserDocument(id: string) {
@@ -63,7 +64,9 @@ export const updateTimestamp = functions
     const before: User = change.before.data() as User;
     const after: User = change.after.data() as User;
     if (before.updatedAt.isEqual(after.updatedAt)) {
-      console.log(`Updating 'updatedAt' timestamp for User Document of ${uid}...`);
+      console.log(
+        `Updating 'updatedAt' timestamp for User Document of ${uid}...`
+      );
       return await change.after.ref.update({
         updatedAt: change.after.updateTime,
       });

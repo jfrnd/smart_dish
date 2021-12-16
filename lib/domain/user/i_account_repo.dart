@@ -71,10 +71,13 @@ class FirebaseAccountRepo implements IAccountRepo {
       },
     ).onErrorReturnWith(
       (e, stackTrace) {
-        return left(
-          CrudFailure.firebase(
-              (e as FirebaseException).message ?? "Unknown error."),
-        );
+        if (e is FirebaseException) {
+          return left(
+            CrudFailure.firebase(e.message ?? "Unknown error."),
+          );
+        } else {
+          throw e;
+        }
       },
     );
   }

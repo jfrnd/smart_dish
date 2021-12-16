@@ -6,6 +6,7 @@ import 'package:smart_dish/application/watcher/dish_watcher_cubit.dart';
 import 'package:smart_dish/application/watcher/friend_request_watcher_cubit.dart';
 import 'package:smart_dish/application/watcher/friend_watcher_cubit.dart';
 import 'package:smart_dish/application/watcher/signed_in_user_watcher_cubit.dart';
+import 'package:smart_dish/auth/auth_watcher_cubit.dart';
 
 extension ContextX on BuildContext {
   String readSignedInUserId() {
@@ -14,6 +15,7 @@ extension ContextX on BuildContext {
   }
 
   void triggerWatcherCubits() {
+    read<AuthWatcherCubit>().updateToken();
     read<FriendWatcherCubit>().watchAllStarted();
     read<FriendRequestWatcherCubit>().watchAllStarted();
     read<SignedInUserWatcherCubit>().watchAllStarted();

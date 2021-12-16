@@ -1,13 +1,19 @@
 import 'dart:ui';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:async';
+
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:smart_dish/presentation/router/router.gr.dart';
 import 'package:smart_dish/utils/app_bloc_observer.dart';
+import 'package:smart_dish/utils/logger.dart';
 import 'package:smart_dish/web_test_page.dart';
 import 'application/navigation_cubit/navigation_cubit.dart';
 import 'application/watcher/dish_watcher_cubit.dart';
@@ -18,10 +24,20 @@ import 'auth/auth_watcher_cubit.dart';
 import 'auth/i_auth_repo.dart';
 import 'di/injection.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-const environment = Environment.prod;
+import 'presentation/core/notification_manager.dart';
+
+const environment = Environment.dev;
 const devicePreview = false;
 const webHotReloadTest = false;
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  logger.d('Handling a background message ${message.messageId}');
+}
+
+late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,6 +48,20 @@ Future<void> main() async {
     await getIt<FirebaseFirestore>().clearPersistence();
     // await getIt<IAuthRepo>().signOut();
   }
+
+  if (!kIsWeb) {
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+    await FirebaseMessaging.instance
+        .setForegroundNotificationPresentationOptions(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
+
+    logger.d(await FirebaseMessaging.instance.getToken());
+  }
+
   BlocOverrides.runZoned(
     () => runApp(
       devicePreview
@@ -60,6 +90,8 @@ class AppWidget extends StatelessWidget {
       ),
     );
 
+    getIt<NotificationManager>().configureFirebaseMessaging(context, themeData);
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => getIt<AuthWatcherCubit>()),
@@ -71,16 +103,18 @@ class AppWidget extends StatelessWidget {
       ],
       child: webHotReloadTest && kIsWeb
           ? WebTest(themeData)
-          : MaterialApp.router(
-              builder: DevicePreview.appBuilder,
-              useInheritedMediaQuery: true,
-              locale: DevicePreview.locale(context),
-              routerDelegate: _appRouter.delegate(),
-              routeInformationParser: _appRouter.defaultRouteParser(),
-              title: 'SmartDish',
-              debugShowCheckedModeBanner: false,
-              theme: themeData,
-              scrollBehavior: MyCustomScrollBehavior(),
+          : OverlaySupport.global(
+              child: MaterialApp.router(
+                builder: DevicePreview.appBuilder,
+                useInheritedMediaQuery: true,
+                locale: DevicePreview.locale(context),
+                routerDelegate: _appRouter.delegate(),
+                routeInformationParser: _appRouter.defaultRouteParser(),
+                title: 'SmartDish',
+                debugShowCheckedModeBanner: false,
+                theme: themeData,
+                scrollBehavior: MyCustomScrollBehavior(),
+              ),
             ),
     );
   }

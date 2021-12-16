@@ -4,6 +4,7 @@ import { database } from ".";
 import { checkAuthentication } from "./auth";
 import { FRIEND_REQUESTS } from "./consts";
 import { createFriendShip, friendshipDoesNotExist } from "./friendship";
+import { sendPushNotificationToUser } from "./push_notification";
 import { getUserDocument } from "./user_doc";
 
 export interface FriendRequest extends admin.firestore.DocumentData {
@@ -93,11 +94,22 @@ export const send = functions
         accepted: null,
       };
 
-      return database
+      await database
         .collection(FRIEND_REQUESTS)
         .doc(senderId + "__" + receiverId)
         .set(friendRequest);
+
+      if (receiver.token != undefined && receiver.token != "") {
+        return sendPushNotificationToUser(
+          receiver.token,
+          "New friend request",
+          `${sender.userName} has sent you a friend request.`,
+          sender.imageUrl
+        );
+      }
+      return;
     }
+
     return;
   });
 
@@ -113,7 +125,24 @@ export const onConfirmFriendRequest = functions
         console.log(`Creating Friendship ${change.before.id}...`);
         await createFriendShip(after.senderId, after.receiverId);
         console.log(`Deleting FriendRequest ${change.before.id}...`);
-        return change.after.ref.delete();
+        const sender = await getUserDocument(after.senderId);
+        const receiver = await getUserDocument(after.receiverId);
+
+        await change.after.ref.delete();
+
+        console.info("sender");
+        console.info(sender);
+        console.info(receiver);
+
+        if (sender.token != undefined && sender.token != "") {
+          return sendPushNotificationToUser(
+            sender.token,
+            "Friend request accepted",
+            `${receiver.userName} has accepted your friend request.`,
+            receiver.imageUrl
+          );
+        }
+        return;
       }
       if (after.accepted == false) {
         console.log(`FriendRequest ${change.before.id} denied.`);

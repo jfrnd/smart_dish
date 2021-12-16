@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:smart_dish/application/watcher/dish_watcher_cubit.dart';
 import 'package:smart_dish/auth/auth_watcher_cubit.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;

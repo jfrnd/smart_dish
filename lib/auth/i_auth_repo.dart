@@ -1,8 +1,11 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' as fba;
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:injectable/injectable.dart';
+import 'package:smart_dish/domain/user/user.dart';
 import 'package:smart_dish/utils/logger.dart';
 
 import 'auth_failure.dart';
@@ -23,6 +26,9 @@ abstract class IAuthRepo {
   Future<Either<AuthFailure, Unit>> reauthenticateWithCredential({
     required String password,
   });
+
+  Future<Either<AuthFailure, Unit>> updateToken();
+  Future<Either<AuthFailure, Unit>> removeToken();
 
   Future<Either<AuthFailure, Unit>> updatePassword({
     required String newPassword,
@@ -54,9 +60,11 @@ abstract class IAuthRepo {
 @LazySingleton(as: IAuthRepo)
 class FirebaseAuthRepo implements IAuthRepo {
   final fba.FirebaseAuth _firebaseAuth;
+  final FirebaseMessaging _messaging;
+  final FirebaseFirestore _fs;
   Timer? timer;
 
-  FirebaseAuthRepo(this._firebaseAuth);
+  FirebaseAuthRepo(this._firebaseAuth, this._messaging, this._fs);
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
@@ -68,6 +76,8 @@ class FirebaseAuthRepo implements IAuthRepo {
         url: 'https://smartdish-82118.web.app/#/home-page',
         handleCodeInApp: false,
       );
+
+      final token = await _messaging.getToken();
 
       await _firebaseAuth
           .createUserWithEmailAndPassword(
@@ -108,6 +118,8 @@ class FirebaseAuthRepo implements IAuthRepo {
         email: email,
         password: password,
       );
+
+      final token = await _messaging.getToken();
 
       if (_firebaseAuth.currentUser != null &&
           !_firebaseAuth.currentUser!.emailVerified) {
@@ -198,6 +210,7 @@ class FirebaseAuthRepo implements IAuthRepo {
 
   @override
   Future<void> signOut() async {
+    await removeToken();
     _firebaseAuth.signOut();
   }
 
@@ -302,5 +315,46 @@ class FirebaseAuthRepo implements IAuthRepo {
     yield* _firebaseAuth
         .userChanges()
         .map((firebaseUser) => firebaseUser?.email ?? "");
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> updateToken() async {
+    try {
+      if (_firebaseAuth.currentUser == null) {
+        return left(const AuthFailure.notSignedIn());
+      }
+      final userId = await getUserId();
+      final token = await _messaging.getToken();
+
+      await _fs.collection(USERS).doc(userId).set(
+        {"token": token},
+        SetOptions(merge: true),
+      );
+
+      return right(unit);
+    } on fba.FirebaseAuthException catch (e) {
+      logger.e('Unexpected server error with ${e.code}');
+      return left(const AuthFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> removeToken() async {
+    try {
+      if (_firebaseAuth.currentUser == null) {
+        return left(const AuthFailure.notSignedIn());
+      }
+      final userId = await getUserId();
+
+      await _fs.collection(USERS).doc(userId).set(
+        {"token": ""},
+        SetOptions(merge: true),
+      );
+
+      return right(unit);
+    } on fba.FirebaseAuthException catch (e) {
+      logger.e('Unexpected server error with ${e.code}');
+      return left(const AuthFailure.serverError());
+    }
   }
 }

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:injectable/injectable.dart';
 
@@ -21,6 +22,8 @@ abstract class FirebaseInjectableModuleProd {
   @lazySingleton
   FirebaseFunctions get functions =>
       FirebaseFunctions.instanceFor(region: "europe-west3");
+  @lazySingleton
+  FirebaseMessaging get messaging => FirebaseMessaging.instance;
 }
 
 @dev
@@ -31,7 +34,6 @@ abstract class FirebaseInjectableModuleDev {
   FirebaseAuth get firebaseAuth {
     final auth = FirebaseAuth.instance;
     auth.useAuthEmulator("localhost", 9099);
-    // auth.signInWithEmailAndPassword(email: "jan@test.de", password: "lol123");
     return auth;
   }
 

@@ -9,7 +9,8 @@ service cloud.firestore {
     }
 
     match /users/{userId}/{anyUserFile=**} {
-      allow update: if isAuthenticated() && request.auth.uid == userId && onlyAffectedFieldsAre(request,["imageUrl"]);
+      allow update: if isAuthenticated() && request.auth.uid == userId && (onlyAffectedFieldsAre(request,["imageUrl"]) || onlyAffectedFieldsAre(request,["token"]));
+      allow create: if isAuthenticated() && onlyAffectedFieldsAre(request,["token"]);
       allow read: if isAuthenticated();
     }
 

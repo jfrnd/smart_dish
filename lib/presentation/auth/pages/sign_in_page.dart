@@ -122,6 +122,8 @@ class SignInBox extends StatelessWidget {
               const ForgotPasswordButton(),
               const Divider(),
               const CreateNewAccountButton(),
+              const Visibility(
+                  visible: environment == Environment.dev, child: Divider()),
               Visibility(
                 visible: environment == Environment.dev,
                 child: SubmitButton<AuthEditorCubit>(

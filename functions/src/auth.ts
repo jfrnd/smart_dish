@@ -16,12 +16,15 @@ export const onCreateUser = functions
       .then((snapshot) => snapshot.size > 0);
     if (alreadyExists) userName = userName + "-" + uuidv4().substr(0, 9);
 
-    return database.collection(USERS).doc(user.uid).set({
-      userName: userName,
-      createdAt: admin.firestore.Timestamp.now(),
-      updatedAt: admin.firestore.Timestamp.now(),
-      imageUrl: "",
-    });
+    return database.collection(USERS).doc(user.uid).set(
+      {
+        userName: userName,
+        createdAt: admin.firestore.Timestamp.now(),
+        updatedAt: admin.firestore.Timestamp.now(),
+        imageUrl: "",
+      },
+      { merge: false }
+    );
   });
 
 export const onDeleteUser = functions
@@ -32,9 +35,8 @@ export const onDeleteUser = functions
 
     const path = `${user.uid}/userImage`;
 
-    await bucket.file(path).delete();
-
-    return database.collection(USERS).doc(user.uid).delete();
+    await database.collection(USERS).doc(user.uid).delete();
+    return bucket.file(path).delete();
   });
 
 export function checkAuthentication(context: functions.https.CallableContext) {

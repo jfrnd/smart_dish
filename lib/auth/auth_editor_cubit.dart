@@ -265,4 +265,29 @@ class AuthEditorCubit extends EditorCubit {
           ),
         );
   }
+
+  Future<void> testSignUp(String email) async {
+    const password = "lol123";
+
+    emit(
+      state.copyWith(
+        isSubmitting: true,
+        failureOrSuccess: null,
+      ),
+    );
+
+    _authRepo
+        .registerWithEmailAndPassword(
+          email: email,
+          password: password,
+        )
+        .then(
+          (authFailureOrSucess) => emit(
+            state.copyWith(
+              isSubmitting: false,
+              failureOrSuccess: authFailureOrSucess,
+            ),
+          ),
+        );
+  }
 }

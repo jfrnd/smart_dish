@@ -34,5 +34,7 @@ class AuthWatcherCubit extends Cubit<AuthWatcherState> {
     return super.close();
   }
 
+  void updateToken() => _authRepo.updateToken();
+
   void signedOut() => _authRepo.signOut();
 }
