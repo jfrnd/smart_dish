@@ -133,6 +133,18 @@ class ReceivedFriendRequests extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<FriendRequestWatcherCubit,
         WatcherState<List<FriendRequest>>>(
+      buildWhen: (WatcherState<List<FriendRequest>> p,
+          WatcherState<List<FriendRequest>> c) {
+        if (p.runtimeType != c.runtimeType) {
+          return true;
+        }
+        if (p is LoadingSuccessful<List<FriendRequest>> &&
+            c is LoadingSuccessful<List<FriendRequest>> &&
+            p.data.length != c.data.length) {
+          return true;
+        }
+        return false;
+      },
       builder: (context, state) {
         return state.map(
           initial: (_) => const SizedBox(),
@@ -142,11 +154,7 @@ class ReceivedFriendRequests extends StatelessWidget {
             child: Center(child: Text(state.failure.toMessage())),
           ),
           loadingSuccessful: (state) {
-            final requests = state.data
-                // .where((request) => request.isReceivedBySignedInUser!)
-                // .toList()
-                ;
-
+            final requests = state.data;
             return requests.isEmpty
                 ? const Padding(
                     padding: EdgeInsets.all(8.0),
@@ -255,7 +263,6 @@ class ReceivedRequestItem extends StatelessWidget {
                 style: TextStyle(color: Colors.green),
               ),
               requestWithdrawSuccess: (_) {
-                logger.d('123');
                 return const Text(
                   "Request withdrawn.",
                   style: TextStyle(color: Colors.green),

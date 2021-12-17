@@ -125,7 +125,7 @@ async function seedDishes() {
 
 async function seedData() {
   await seedFriends();
-  await seedDishes();
+  // await seedDishes();
 }
 
 seedData();

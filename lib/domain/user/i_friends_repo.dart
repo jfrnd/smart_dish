@@ -9,7 +9,6 @@ import 'package:rxdart/rxdart.dart';
 import 'package:smart_dish/domain/core/crud_failure.dart';
 import 'package:smart_dish/domain/user/user.dart';
 import 'package:smart_dish/domain/watcher/i_watcher_repo.dart';
-import 'package:smart_dish/utils/logger.dart';
 
 const FRIEND_REQUESTS = "friendRequests";
 const FRIENDSHIPS = "friendships";

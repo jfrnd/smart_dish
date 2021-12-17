@@ -30,6 +30,12 @@ class _$CrudFailureTearOff {
   StillLoading stillLoading() {
     return const StillLoading();
   }
+
+  Unknown unknown(String info) {
+    return Unknown(
+      info,
+    );
+  }
 }
 
 /// @nodoc
@@ -42,6 +48,7 @@ mixin _$CrudFailure {
     required TResult Function(String info) firebase,
     required TResult Function() doesNotExist,
     required TResult Function() stillLoading,
+    required TResult Function(String info) unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -49,6 +56,7 @@ mixin _$CrudFailure {
     TResult Function(String info)? firebase,
     TResult Function()? doesNotExist,
     TResult Function()? stillLoading,
+    TResult Function(String info)? unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +64,7 @@ mixin _$CrudFailure {
     TResult Function(String info)? firebase,
     TResult Function()? doesNotExist,
     TResult Function()? stillLoading,
+    TResult Function(String info)? unknown,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -64,6 +73,7 @@ mixin _$CrudFailure {
     required TResult Function(Firebase value) firebase,
     required TResult Function(DoesNotExist value) doesNotExist,
     required TResult Function(StillLoading value) stillLoading,
+    required TResult Function(Unknown value) unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +81,7 @@ mixin _$CrudFailure {
     TResult Function(Firebase value)? firebase,
     TResult Function(DoesNotExist value)? doesNotExist,
     TResult Function(StillLoading value)? stillLoading,
+    TResult Function(Unknown value)? unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -78,6 +89,7 @@ mixin _$CrudFailure {
     TResult Function(Firebase value)? firebase,
     TResult Function(DoesNotExist value)? doesNotExist,
     TResult Function(StillLoading value)? stillLoading,
+    TResult Function(Unknown value)? unknown,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -164,6 +176,7 @@ class _$Firebase implements Firebase {
     required TResult Function(String info) firebase,
     required TResult Function() doesNotExist,
     required TResult Function() stillLoading,
+    required TResult Function(String info) unknown,
   }) {
     return firebase(info);
   }
@@ -174,6 +187,7 @@ class _$Firebase implements Firebase {
     TResult Function(String info)? firebase,
     TResult Function()? doesNotExist,
     TResult Function()? stillLoading,
+    TResult Function(String info)? unknown,
   }) {
     return firebase?.call(info);
   }
@@ -184,6 +198,7 @@ class _$Firebase implements Firebase {
     TResult Function(String info)? firebase,
     TResult Function()? doesNotExist,
     TResult Function()? stillLoading,
+    TResult Function(String info)? unknown,
     required TResult orElse(),
   }) {
     if (firebase != null) {
@@ -198,6 +213,7 @@ class _$Firebase implements Firebase {
     required TResult Function(Firebase value) firebase,
     required TResult Function(DoesNotExist value) doesNotExist,
     required TResult Function(StillLoading value) stillLoading,
+    required TResult Function(Unknown value) unknown,
   }) {
     return firebase(this);
   }
@@ -208,6 +224,7 @@ class _$Firebase implements Firebase {
     TResult Function(Firebase value)? firebase,
     TResult Function(DoesNotExist value)? doesNotExist,
     TResult Function(StillLoading value)? stillLoading,
+    TResult Function(Unknown value)? unknown,
   }) {
     return firebase?.call(this);
   }
@@ -218,6 +235,7 @@ class _$Firebase implements Firebase {
     TResult Function(Firebase value)? firebase,
     TResult Function(DoesNotExist value)? doesNotExist,
     TResult Function(StillLoading value)? stillLoading,
+    TResult Function(Unknown value)? unknown,
     required TResult orElse(),
   }) {
     if (firebase != null) {
@@ -279,6 +297,7 @@ class _$DoesNotExist implements DoesNotExist {
     required TResult Function(String info) firebase,
     required TResult Function() doesNotExist,
     required TResult Function() stillLoading,
+    required TResult Function(String info) unknown,
   }) {
     return doesNotExist();
   }
@@ -289,6 +308,7 @@ class _$DoesNotExist implements DoesNotExist {
     TResult Function(String info)? firebase,
     TResult Function()? doesNotExist,
     TResult Function()? stillLoading,
+    TResult Function(String info)? unknown,
   }) {
     return doesNotExist?.call();
   }
@@ -299,6 +319,7 @@ class _$DoesNotExist implements DoesNotExist {
     TResult Function(String info)? firebase,
     TResult Function()? doesNotExist,
     TResult Function()? stillLoading,
+    TResult Function(String info)? unknown,
     required TResult orElse(),
   }) {
     if (doesNotExist != null) {
@@ -313,6 +334,7 @@ class _$DoesNotExist implements DoesNotExist {
     required TResult Function(Firebase value) firebase,
     required TResult Function(DoesNotExist value) doesNotExist,
     required TResult Function(StillLoading value) stillLoading,
+    required TResult Function(Unknown value) unknown,
   }) {
     return doesNotExist(this);
   }
@@ -323,6 +345,7 @@ class _$DoesNotExist implements DoesNotExist {
     TResult Function(Firebase value)? firebase,
     TResult Function(DoesNotExist value)? doesNotExist,
     TResult Function(StillLoading value)? stillLoading,
+    TResult Function(Unknown value)? unknown,
   }) {
     return doesNotExist?.call(this);
   }
@@ -333,6 +356,7 @@ class _$DoesNotExist implements DoesNotExist {
     TResult Function(Firebase value)? firebase,
     TResult Function(DoesNotExist value)? doesNotExist,
     TResult Function(StillLoading value)? stillLoading,
+    TResult Function(Unknown value)? unknown,
     required TResult orElse(),
   }) {
     if (doesNotExist != null) {
@@ -389,6 +413,7 @@ class _$StillLoading implements StillLoading {
     required TResult Function(String info) firebase,
     required TResult Function() doesNotExist,
     required TResult Function() stillLoading,
+    required TResult Function(String info) unknown,
   }) {
     return stillLoading();
   }
@@ -399,6 +424,7 @@ class _$StillLoading implements StillLoading {
     TResult Function(String info)? firebase,
     TResult Function()? doesNotExist,
     TResult Function()? stillLoading,
+    TResult Function(String info)? unknown,
   }) {
     return stillLoading?.call();
   }
@@ -409,6 +435,7 @@ class _$StillLoading implements StillLoading {
     TResult Function(String info)? firebase,
     TResult Function()? doesNotExist,
     TResult Function()? stillLoading,
+    TResult Function(String info)? unknown,
     required TResult orElse(),
   }) {
     if (stillLoading != null) {
@@ -423,6 +450,7 @@ class _$StillLoading implements StillLoading {
     required TResult Function(Firebase value) firebase,
     required TResult Function(DoesNotExist value) doesNotExist,
     required TResult Function(StillLoading value) stillLoading,
+    required TResult Function(Unknown value) unknown,
   }) {
     return stillLoading(this);
   }
@@ -433,6 +461,7 @@ class _$StillLoading implements StillLoading {
     TResult Function(Firebase value)? firebase,
     TResult Function(DoesNotExist value)? doesNotExist,
     TResult Function(StillLoading value)? stillLoading,
+    TResult Function(Unknown value)? unknown,
   }) {
     return stillLoading?.call(this);
   }
@@ -443,6 +472,7 @@ class _$StillLoading implements StillLoading {
     TResult Function(Firebase value)? firebase,
     TResult Function(DoesNotExist value)? doesNotExist,
     TResult Function(StillLoading value)? stillLoading,
+    TResult Function(Unknown value)? unknown,
     required TResult orElse(),
   }) {
     if (stillLoading != null) {
@@ -454,4 +484,146 @@ class _$StillLoading implements StillLoading {
 
 abstract class StillLoading implements CrudFailure {
   const factory StillLoading() = _$StillLoading;
+}
+
+/// @nodoc
+abstract class $UnknownCopyWith<$Res> {
+  factory $UnknownCopyWith(Unknown value, $Res Function(Unknown) then) =
+      _$UnknownCopyWithImpl<$Res>;
+  $Res call({String info});
+}
+
+/// @nodoc
+class _$UnknownCopyWithImpl<$Res> extends _$CrudFailureCopyWithImpl<$Res>
+    implements $UnknownCopyWith<$Res> {
+  _$UnknownCopyWithImpl(Unknown _value, $Res Function(Unknown) _then)
+      : super(_value, (v) => _then(v as Unknown));
+
+  @override
+  Unknown get _value => super._value as Unknown;
+
+  @override
+  $Res call({
+    Object? info = freezed,
+  }) {
+    return _then(Unknown(
+      info == freezed
+          ? _value.info
+          : info // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Unknown implements Unknown {
+  const _$Unknown(this.info);
+
+  @override
+  final String info;
+
+  @override
+  String toString() {
+    return 'CrudFailure.unknown(info: $info)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Unknown &&
+            const DeepCollectionEquality().equals(other.info, info));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(info));
+
+  @JsonKey(ignore: true)
+  @override
+  $UnknownCopyWith<Unknown> get copyWith =>
+      _$UnknownCopyWithImpl<Unknown>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String info) firebase,
+    required TResult Function() doesNotExist,
+    required TResult Function() stillLoading,
+    required TResult Function(String info) unknown,
+  }) {
+    return unknown(info);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String info)? firebase,
+    TResult Function()? doesNotExist,
+    TResult Function()? stillLoading,
+    TResult Function(String info)? unknown,
+  }) {
+    return unknown?.call(info);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String info)? firebase,
+    TResult Function()? doesNotExist,
+    TResult Function()? stillLoading,
+    TResult Function(String info)? unknown,
+    required TResult orElse(),
+  }) {
+    if (unknown != null) {
+      return unknown(info);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Firebase value) firebase,
+    required TResult Function(DoesNotExist value) doesNotExist,
+    required TResult Function(StillLoading value) stillLoading,
+    required TResult Function(Unknown value) unknown,
+  }) {
+    return unknown(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Firebase value)? firebase,
+    TResult Function(DoesNotExist value)? doesNotExist,
+    TResult Function(StillLoading value)? stillLoading,
+    TResult Function(Unknown value)? unknown,
+  }) {
+    return unknown?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Firebase value)? firebase,
+    TResult Function(DoesNotExist value)? doesNotExist,
+    TResult Function(StillLoading value)? stillLoading,
+    TResult Function(Unknown value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (unknown != null) {
+      return unknown(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Unknown implements CrudFailure {
+  const factory Unknown(String info) = _$Unknown;
+
+  String get info;
+  @JsonKey(ignore: true)
+  $UnknownCopyWith<Unknown> get copyWith => throw _privateConstructorUsedError;
 }

@@ -1,6 +1,5 @@
 import 'dart:typed_data';
 
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
@@ -73,7 +72,7 @@ class FirebaseAccountRepo implements IAccountRepo {
             CrudFailure.firebase(e.message ?? "Unknown error."),
           );
         } else {
-          throw e;
+          return left(CrudFailure.unknown(e.toString()));
         }
       },
     );

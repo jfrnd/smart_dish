@@ -12,6 +12,7 @@ extension FailureX on Failure {
         firebase: (failure) => failure.info,
         doesNotExist: (failure) => "Does not exist.",
         stillLoading: (failure) => "Still loading.",
+        unknown: (failure) => failure.info,
       );
     } else if (this is AuthFailure) {
       return (this as AuthFailure).map(

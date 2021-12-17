@@ -28,7 +28,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'presentation/core/notification_manager.dart';
 
-const environment = Environment.prod;
+const environment = Environment.dev;
 const devicePreview = false;
 const webHotReloadTest = false;
 
@@ -58,8 +58,6 @@ Future<void> main() async {
       badge: true,
       sound: true,
     );
-
-    logger.d(await FirebaseMessaging.instance.getToken());
   }
 
   BlocOverrides.runZoned(
