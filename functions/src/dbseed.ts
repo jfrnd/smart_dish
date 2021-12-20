@@ -1,9 +1,9 @@
 import admin = require("firebase-admin");
 
-import { FRIENDSHIPS, FRIEND_REQUESTS, METADATA, DISHES } from "./consts";
+import { FRIENDSHIPS, FRIEND_REQUESTS } from "./consts";
 import { FriendShip } from "./friendship";
 import { FriendRequest } from "./friend_request";
-import { Dish } from "./dish";
+// import { Dish } from "./dish";
 
 // initialization;
 const projectId = "smartdish-82118";
@@ -82,46 +82,46 @@ async function seedFriends() {
   }
 }
 
-async function seedDish(name: string, imageUrl: string, createdBy: string) {
-  const dish: Dish = {
-    createdBy: createdBy,
-    name: name,
-    imageUrl: imageUrl,
-    createdAt: admin.firestore.Timestamp.now(),
-    updatedAt: admin.firestore.Timestamp.now(),
-  };
+// async function seedDish(name: string, imageUrl: string, createdBy: string) {
+//   const dish: Dish = {
+//     createdBy: createdBy,
+//     name: name,
+//     imageUrl: imageUrl,
+//     createdAt: admin.firestore.Timestamp.now(),
+//     updatedAt: admin.firestore.Timestamp.now(),
+//   };
 
-  return await admin
-    .firestore()
-    .collection(DISHES)
-    .doc(name.toUpperCase())
-    .create(dish);
-}
+//   return await admin
+//     .firestore()
+//     .collection(DISHES)
+//     .doc(name.toUpperCase())
+//     .create(dish);
+// }
 
-async function seedDishes() {
-  try {
-    const batch = database.batch();
+// async function seedDishes() {
+//   try {
+//     const batch = database.batch();
 
-    const expenses = await database.collection(DISHES).get();
-    expenses.forEach(async (doc) => {
-      batch.delete(doc.ref);
-      batch.delete(doc.ref.collection(METADATA).doc(METADATA));
-    });
+//     const expenses = await database.collection(DISHES).get();
+//     expenses.forEach(async (doc) => {
+//       batch.delete(doc.ref);
+//       batch.delete(doc.ref.collection(METADATA).doc(METADATA));
+//     });
 
-    await batch.commit();
+//     await batch.commit();
 
-    await seedDish("Spaghetti aglio e olio", "", "TED");
-    await seedDish("Penne all'Arrabbiata", "", "TED");
-    await seedDish("Greek salad", "", "BARNEY");
-    await seedDish("Bolognese", "", "LILLY");
-    await seedDish("Chili con carne", "", "MARSHALL");
-    await seedDish("Duck", "", "ROBIN");
+//     await seedDish("Spaghetti aglio e olio", "", "TED");
+//     await seedDish("Penne all'Arrabbiata", "", "TED");
+//     await seedDish("Greek salad", "", "BARNEY");
+//     await seedDish("Bolognese", "", "LILLY");
+//     await seedDish("Chili con carne", "", "MARSHALL");
+//     await seedDish("Duck", "", "ROBIN");
 
-    console.log("dishes seed was successful");
-  } catch (error) {
-    console.log(error, "dishes seed failed");
-  }
-}
+//     console.log("dishes seed was successful");
+//   } catch (error) {
+//     console.log(error, "dishes seed failed");
+//   }
+// }
 
 async function seedData() {
   await seedFriends();

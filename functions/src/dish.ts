@@ -42,7 +42,7 @@ export const onCreateDish = functions
           user.token,
           "New dish created",
           `${creator.userName} created a new dish: ${dish.name}.`,
-          creator.imageUrl
+          dish.imageUrl == "" ? creator.imageUrl : dish.imageUrl
         );
         jobs.push(job);
       }

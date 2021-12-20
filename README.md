@@ -11,10 +11,11 @@ Link to the Web-App: https://smartdish-82118.web.app
 - Watch dishes of friends
 - Update email address, password, user name and profile picture
 - Delete account
+- Push notifications on friend requests and creation of dishes
 <h1>Libraries</h1>
 
 - Flutter: bloc, getIt DI, freezed, dartz and much more
-- Firebase: Firestore, Cloud Functions, Storage, Auth, Hosting
+- Firebase: Firestore, Cloud Functions, Storage, Auth, Hosting, Cloud Messaging
 <h1>ToDo</h1>
 
 - Test cases
