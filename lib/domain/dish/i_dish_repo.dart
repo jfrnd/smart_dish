@@ -136,9 +136,8 @@ class FirebaseDishRepo implements IDishRepo {
             final user = users.firstWhere((user) => user.id! == dish.createdBy,
                 orElse: () => User.empty());
             final userExtendedData = UserExtendedData(
+              isSendingFriendRequest: false,
               isFriend: userId != user.id!,
-              hasSentFriendRequest: false,
-              hasReceivedFriendRequest: false,
               isSignedInUser: userId == user.id!,
             );
             return dish.copyWith(

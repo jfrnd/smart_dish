@@ -1,9 +1,10 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:smart_dish/application/watcher/friend_request_watcher_cubit.dart';
+import 'package:smart_dish/application/watcher/friend_request_cubit.dart';
 import 'package:smart_dish/application/watcher/friend_watcher_cubit.dart';
 import 'package:smart_dish/auth/i_auth_repo.dart';
 
@@ -19,7 +20,7 @@ part 'search_user_state.dart';
 @injectable
 class SearchUserCubit extends Cubit<SearchUserState> {
   final IFriendRequestRepo _repo;
-  final FriendRequestWatcherCubit _friendRequestWatcherCubit;
+  final FriendRequestCubit _friendRequestWatcherCubit;
   final FriendWatcherCubit _friendWatcherCubit;
   final IAuthRepo _authRepo;
 
@@ -58,48 +59,68 @@ class SearchUserCubit extends Cubit<SearchUserState> {
           ),
         );
   }
-}
 
-class Pair<T1, T2> {
-  Pair(
-    this.first,
-    this.second,
-  );
+  Future<void> onSendFriendRequestClicked(User user) async {
+    state.maybeMap(
+        orElse: () {},
+        loadingSuccessful: (state) async {
+          if (setUserToLoadingState(state, user.id!)) {
+            await _repo.sendFriendRequest(user).then(
+                  (failureOrSuccess) => failureOrSuccess.fold(
+                    (failure) => setUserSendRequestResult(
+                      state,
+                      user.id!,
+                      left(failure),
+                    ),
+                    (success) => setUserSendRequestResult(
+                      state,
+                      user.id!,
+                      right(unit),
+                    ),
+                  ),
+                );
+          }
+        });
+  }
 
-  final T1 first;
-  final T2 second;
+  void setUserSendRequestResult(LoadingSuccessful state, String userId,
+      Either<CrudFailure, Unit> result) {
+    final userRequestResult = state.users.map(
+      (u) {
+        if (userId == u.id) {
+          return u.copyWith(
+            extendedData: u.extendedData?.copyWith(
+              sendingRequestFailureOrSuccess: result,
+              isSendingFriendRequest: false,
+            ),
+          );
+        } else {
+          return u;
+        }
+      },
+    ).toList();
 
-  @override
-  String toString() => 'Pair[$first, $second]';
-}
+    emit(SearchUserState.loadingSuccessful(userRequestResult));
+  }
 
-extension UsersX on List<User> {
-  List<User> extended(
-    List<FriendRequest> friendRequests,
-    List<User> friends,
-    String userId,
-  ) {
-    return map((user) {
-      final isFriend = friends.any((friend) => friend.id == user.id);
-      final isSignedInUser = userId == user.id;
+  bool setUserToLoadingState(LoadingSuccessful state, String userId) {
+    bool haveSetToLoadingState = false;
+    final loadingInProgress = state.users.map(
+      (user) {
+        if (userId == user.id && !user.isSendingFriendRequest) {
+          haveSetToLoadingState = true;
+          return user.withSendingFriendRequest();
+        } else {
+          return user;
+        }
+      },
+    ).toList();
 
-      final hasReceievedFriendRequest =
-          friendRequests.any((request) => request.receiverId == user.id);
-
-      final hasSentFriendRequest =
-          friendRequests.any((request) => request.senderId == user.id);
-
-      final friendRequest = friendRequests.firstWhereOrNull((request) =>
-          request.senderId == user.id || request.receiverId == user.id);
-
-      final extendedData = UserExtendedData(
-        isFriend: isFriend,
-        hasSentFriendRequest: hasSentFriendRequest && !isSignedInUser,
-        hasReceivedFriendRequest: hasReceievedFriendRequest && !isSignedInUser,
-        friendRequest: friendRequest,
-        isSignedInUser: isSignedInUser,
-      );
-      return user.copyWith(extendedData: extendedData);
-    }).toList();
+    emit(SearchUserState.loadingSuccessful(loadingInProgress));
+    return haveSetToLoadingState;
   }
 }
+
+
+
+

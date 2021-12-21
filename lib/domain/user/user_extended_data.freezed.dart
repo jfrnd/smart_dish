@@ -18,15 +18,15 @@ class _$UserExtendedDataTearOff {
   const _$UserExtendedDataTearOff();
 
   _UserExtendedData call(
-      {required bool isFriend,
-      required bool hasSentFriendRequest,
-      required bool hasReceivedFriendRequest,
+      {required bool isSendingFriendRequest,
+      Either<CrudFailure, Unit>? sendingRequestFailureOrSuccess,
+      required bool isFriend,
       required bool isSignedInUser,
       FriendRequest? friendRequest}) {
     return _UserExtendedData(
+      isSendingFriendRequest: isSendingFriendRequest,
+      sendingRequestFailureOrSuccess: sendingRequestFailureOrSuccess,
       isFriend: isFriend,
-      hasSentFriendRequest: hasSentFriendRequest,
-      hasReceivedFriendRequest: hasReceivedFriendRequest,
       isSignedInUser: isSignedInUser,
       friendRequest: friendRequest,
     );
@@ -38,9 +38,10 @@ const $UserExtendedData = _$UserExtendedDataTearOff();
 
 /// @nodoc
 mixin _$UserExtendedData {
+  bool get isSendingFriendRequest => throw _privateConstructorUsedError;
+  Either<CrudFailure, Unit>? get sendingRequestFailureOrSuccess =>
+      throw _privateConstructorUsedError;
   bool get isFriend => throw _privateConstructorUsedError;
-  bool get hasSentFriendRequest => throw _privateConstructorUsedError;
-  bool get hasReceivedFriendRequest => throw _privateConstructorUsedError;
   bool get isSignedInUser => throw _privateConstructorUsedError;
   FriendRequest? get friendRequest => throw _privateConstructorUsedError;
 
@@ -55,9 +56,9 @@ abstract class $UserExtendedDataCopyWith<$Res> {
           UserExtendedData value, $Res Function(UserExtendedData) then) =
       _$UserExtendedDataCopyWithImpl<$Res>;
   $Res call(
-      {bool isFriend,
-      bool hasSentFriendRequest,
-      bool hasReceivedFriendRequest,
+      {bool isSendingFriendRequest,
+      Either<CrudFailure, Unit>? sendingRequestFailureOrSuccess,
+      bool isFriend,
       bool isSignedInUser,
       FriendRequest? friendRequest});
 
@@ -75,24 +76,24 @@ class _$UserExtendedDataCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? isSendingFriendRequest = freezed,
+    Object? sendingRequestFailureOrSuccess = freezed,
     Object? isFriend = freezed,
-    Object? hasSentFriendRequest = freezed,
-    Object? hasReceivedFriendRequest = freezed,
     Object? isSignedInUser = freezed,
     Object? friendRequest = freezed,
   }) {
     return _then(_value.copyWith(
+      isSendingFriendRequest: isSendingFriendRequest == freezed
+          ? _value.isSendingFriendRequest
+          : isSendingFriendRequest // ignore: cast_nullable_to_non_nullable
+              as bool,
+      sendingRequestFailureOrSuccess: sendingRequestFailureOrSuccess == freezed
+          ? _value.sendingRequestFailureOrSuccess
+          : sendingRequestFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<CrudFailure, Unit>?,
       isFriend: isFriend == freezed
           ? _value.isFriend
           : isFriend // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasSentFriendRequest: hasSentFriendRequest == freezed
-          ? _value.hasSentFriendRequest
-          : hasSentFriendRequest // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasReceivedFriendRequest: hasReceivedFriendRequest == freezed
-          ? _value.hasReceivedFriendRequest
-          : hasReceivedFriendRequest // ignore: cast_nullable_to_non_nullable
               as bool,
       isSignedInUser: isSignedInUser == freezed
           ? _value.isSignedInUser
@@ -125,9 +126,9 @@ abstract class _$UserExtendedDataCopyWith<$Res>
       __$UserExtendedDataCopyWithImpl<$Res>;
   @override
   $Res call(
-      {bool isFriend,
-      bool hasSentFriendRequest,
-      bool hasReceivedFriendRequest,
+      {bool isSendingFriendRequest,
+      Either<CrudFailure, Unit>? sendingRequestFailureOrSuccess,
+      bool isFriend,
       bool isSignedInUser,
       FriendRequest? friendRequest});
 
@@ -148,24 +149,24 @@ class __$UserExtendedDataCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? isSendingFriendRequest = freezed,
+    Object? sendingRequestFailureOrSuccess = freezed,
     Object? isFriend = freezed,
-    Object? hasSentFriendRequest = freezed,
-    Object? hasReceivedFriendRequest = freezed,
     Object? isSignedInUser = freezed,
     Object? friendRequest = freezed,
   }) {
     return _then(_UserExtendedData(
+      isSendingFriendRequest: isSendingFriendRequest == freezed
+          ? _value.isSendingFriendRequest
+          : isSendingFriendRequest // ignore: cast_nullable_to_non_nullable
+              as bool,
+      sendingRequestFailureOrSuccess: sendingRequestFailureOrSuccess == freezed
+          ? _value.sendingRequestFailureOrSuccess
+          : sendingRequestFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<CrudFailure, Unit>?,
       isFriend: isFriend == freezed
           ? _value.isFriend
           : isFriend // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasSentFriendRequest: hasSentFriendRequest == freezed
-          ? _value.hasSentFriendRequest
-          : hasSentFriendRequest // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasReceivedFriendRequest: hasReceivedFriendRequest == freezed
-          ? _value.hasReceivedFriendRequest
-          : hasReceivedFriendRequest // ignore: cast_nullable_to_non_nullable
               as bool,
       isSignedInUser: isSignedInUser == freezed
           ? _value.isSignedInUser
@@ -183,19 +184,19 @@ class __$UserExtendedDataCopyWithImpl<$Res>
 
 class _$_UserExtendedData extends _UserExtendedData {
   const _$_UserExtendedData(
-      {required this.isFriend,
-      required this.hasSentFriendRequest,
-      required this.hasReceivedFriendRequest,
+      {required this.isSendingFriendRequest,
+      this.sendingRequestFailureOrSuccess,
+      required this.isFriend,
       required this.isSignedInUser,
       this.friendRequest})
       : super._();
 
   @override
+  final bool isSendingFriendRequest;
+  @override
+  final Either<CrudFailure, Unit>? sendingRequestFailureOrSuccess;
+  @override
   final bool isFriend;
-  @override
-  final bool hasSentFriendRequest;
-  @override
-  final bool hasReceivedFriendRequest;
   @override
   final bool isSignedInUser;
   @override
@@ -203,7 +204,7 @@ class _$_UserExtendedData extends _UserExtendedData {
 
   @override
   String toString() {
-    return 'UserExtendedData(isFriend: $isFriend, hasSentFriendRequest: $hasSentFriendRequest, hasReceivedFriendRequest: $hasReceivedFriendRequest, isSignedInUser: $isSignedInUser, friendRequest: $friendRequest)';
+    return 'UserExtendedData(isSendingFriendRequest: $isSendingFriendRequest, sendingRequestFailureOrSuccess: $sendingRequestFailureOrSuccess, isFriend: $isFriend, isSignedInUser: $isSignedInUser, friendRequest: $friendRequest)';
   }
 
   @override
@@ -211,11 +212,12 @@ class _$_UserExtendedData extends _UserExtendedData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _UserExtendedData &&
-            const DeepCollectionEquality().equals(other.isFriend, isFriend) &&
             const DeepCollectionEquality()
-                .equals(other.hasSentFriendRequest, hasSentFriendRequest) &&
+                .equals(other.isSendingFriendRequest, isSendingFriendRequest) &&
             const DeepCollectionEquality().equals(
-                other.hasReceivedFriendRequest, hasReceivedFriendRequest) &&
+                other.sendingRequestFailureOrSuccess,
+                sendingRequestFailureOrSuccess) &&
+            const DeepCollectionEquality().equals(other.isFriend, isFriend) &&
             const DeepCollectionEquality()
                 .equals(other.isSignedInUser, isSignedInUser) &&
             const DeepCollectionEquality()
@@ -225,9 +227,9 @@ class _$_UserExtendedData extends _UserExtendedData {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(isSendingFriendRequest),
+      const DeepCollectionEquality().hash(sendingRequestFailureOrSuccess),
       const DeepCollectionEquality().hash(isFriend),
-      const DeepCollectionEquality().hash(hasSentFriendRequest),
-      const DeepCollectionEquality().hash(hasReceivedFriendRequest),
       const DeepCollectionEquality().hash(isSignedInUser),
       const DeepCollectionEquality().hash(friendRequest));
 
@@ -239,19 +241,19 @@ class _$_UserExtendedData extends _UserExtendedData {
 
 abstract class _UserExtendedData extends UserExtendedData {
   const factory _UserExtendedData(
-      {required bool isFriend,
-      required bool hasSentFriendRequest,
-      required bool hasReceivedFriendRequest,
+      {required bool isSendingFriendRequest,
+      Either<CrudFailure, Unit>? sendingRequestFailureOrSuccess,
+      required bool isFriend,
       required bool isSignedInUser,
       FriendRequest? friendRequest}) = _$_UserExtendedData;
   const _UserExtendedData._() : super._();
 
   @override
+  bool get isSendingFriendRequest;
+  @override
+  Either<CrudFailure, Unit>? get sendingRequestFailureOrSuccess;
+  @override
   bool get isFriend;
-  @override
-  bool get hasSentFriendRequest;
-  @override
-  bool get hasReceivedFriendRequest;
   @override
   bool get isSignedInUser;
   @override

@@ -11,6 +11,7 @@ import 'package:smart_dish/domain/core/crud_failure.dart';
 import 'package:smart_dish/domain/friend_request/friend_request.dart';
 import 'package:smart_dish/domain/user/user.dart';
 import 'package:smart_dish/domain/watcher/i_watcher_repo.dart';
+import 'package:smart_dish/utils/logger.dart';
 
 const FRIEND_REQUESTS = "friendRequests";
 const FRIENDSHIPS = "friendships";
@@ -20,7 +21,6 @@ abstract class IFriendRequestRepo implements IWatcherRepo<List<FriendRequest>> {
   Future<Either<CrudFailure, Unit>> sendFriendRequest(User user);
   Future<Either<CrudFailure, Unit>> confirmFriendRequest(String requestId);
   Future<Either<CrudFailure, Unit>> rejectFriendRequest(String requestId);
-  Future<Either<CrudFailure, Unit>> withdrawFriendRequest(String requestId);
   Future<Either<CrudFailure, Unit>> deleteFriend(String userId);
   Stream<Either<CrudFailure, List<FriendRequest>>> watchFriendRequests();
 }
@@ -145,29 +145,33 @@ class FirebaseFriendRequestRepo implements IFriendRequestRepo {
   Future<Either<CrudFailure, Unit>> confirmFriendRequest(
       String requestId) async {
     try {
-      await _firestore
-          .collection(FRIEND_REQUESTS)
-          .doc(requestId)
-          .update({"accepted": true});
-
+      final callable = _functions.httpsCallable("friendRequest-confirm");
+      await callable({"requestId": requestId});
       return right(unit);
     } on FirebaseException catch (e) {
-      return left(CrudFailure.firebase(e.message ?? "Unknown error."));
+      logger.d(e.code);
+      if (e.code == "not-found") {
+        return left(const CrudFailure.doesNotExist());
+      } else {
+        return left(CrudFailure.firebase(e.message ?? "Unknown error."));
+      }
     }
   }
 
   @override
-  Future<Either<CrudFailure, Unit>> withdrawFriendRequest(
+  Future<Either<CrudFailure, Unit>> rejectFriendRequest(
       String requestId) async {
     try {
-      await _firestore
-          .collection(FRIEND_REQUESTS)
-          .doc(requestId)
-          .update({"accepted": false});
-
+      logger.d('123');
+      final callable = _functions.httpsCallable("friendRequest-reject");
+      await callable({"requestId": requestId});
       return right(unit);
     } on FirebaseException catch (e) {
-      return left(CrudFailure.firebase(e.message ?? "Unknown error."));
+      if (e.code == "not-found") {
+        return left(const CrudFailure.doesNotExist());
+      } else {
+        return left(CrudFailure.firebase(e.message ?? "Unknown error."));
+      }
     }
   }
 
@@ -176,20 +180,6 @@ class FirebaseFriendRequestRepo implements IFriendRequestRepo {
     try {
       final callable = _functions.httpsCallable("friendship-deleteFriendShip");
       await callable({"userId": userId});
-      return right(unit);
-    } on FirebaseException catch (e) {
-      return left(CrudFailure.firebase(e.message ?? "Unknown error."));
-    }
-  }
-
-  @override
-  Future<Either<CrudFailure, Unit>> rejectFriendRequest(
-      String requestId) async {
-    try {
-      await _firestore
-          .collection(FRIEND_REQUESTS)
-          .doc(requestId)
-          .update({"accepted": false});
       return right(unit);
     } on FirebaseException catch (e) {
       return left(CrudFailure.firebase(e.message ?? "Unknown error."));

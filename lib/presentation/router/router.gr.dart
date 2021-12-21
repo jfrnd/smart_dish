@@ -9,10 +9,9 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i9;
-import 'package:flutter/foundation.dart' as _i11;
 import 'package:flutter/material.dart' as _i10;
 
-import '../../domain/dish/dish.dart' as _i12;
+import '../../domain/dish/dish.dart' as _i11;
 import '../auth/pages/email_verify_waiting_page.dart' as _i3;
 import '../auth/pages/sign_in_page.dart' as _i2;
 import '../core/splash_page.dart' as _i1;
@@ -115,7 +114,7 @@ class SignInRoute extends _i9.PageRouteInfo<void> {
 /// [_i3.EmailVerifyWaitingPage]
 class EmailVerifyWaitingRoute
     extends _i9.PageRouteInfo<EmailVerifyWaitingRouteArgs> {
-  EmailVerifyWaitingRoute({_i11.Key? key, required String email})
+  EmailVerifyWaitingRoute({_i10.Key? key, required String email})
       : super(EmailVerifyWaitingRoute.name,
             path: '/email-verify-waiting-page',
             args: EmailVerifyWaitingRouteArgs(key: key, email: email));
@@ -126,7 +125,7 @@ class EmailVerifyWaitingRoute
 class EmailVerifyWaitingRouteArgs {
   const EmailVerifyWaitingRouteArgs({this.key, required this.email});
 
-  final _i11.Key? key;
+  final _i10.Key? key;
 
   final String email;
 
@@ -174,7 +173,7 @@ class SearchUsersRoute extends _i9.PageRouteInfo<void> {
 /// [_i8.CreateUpdateDishPage]
 class CreateUpdateDishRoute
     extends _i9.PageRouteInfo<CreateUpdateDishRouteArgs> {
-  CreateUpdateDishRoute({_i11.Key? key, _i12.Dish? dish})
+  CreateUpdateDishRoute({_i10.Key? key, _i11.Dish? dish})
       : super(CreateUpdateDishRoute.name,
             path: '/create-update-dish-page',
             args: CreateUpdateDishRouteArgs(key: key, dish: dish));
@@ -185,9 +184,9 @@ class CreateUpdateDishRoute
 class CreateUpdateDishRouteArgs {
   const CreateUpdateDishRouteArgs({this.key, this.dish});
 
-  final _i11.Key? key;
+  final _i10.Key? key;
 
-  final _i12.Dish? dish;
+  final _i11.Dish? dish;
 
   @override
   String toString() {

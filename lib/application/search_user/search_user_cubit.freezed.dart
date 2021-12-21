@@ -17,22 +17,22 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$SearchUserStateTearOff {
   const _$SearchUserStateTearOff();
 
-  _Initial initial() {
-    return const _Initial();
+  Initial initial() {
+    return const Initial();
   }
 
-  _IsLoading isLoading() {
-    return const _IsLoading();
+  IsLoading isLoading() {
+    return const IsLoading();
   }
 
-  _LoadingFailed loadingFailed(CrudFailure failure) {
-    return _LoadingFailed(
+  LoadingFailed loadingFailed(CrudFailure failure) {
+    return LoadingFailed(
       failure,
     );
   }
 
-  _LoadingSuccessful loadingSuccessful(List<User> users) {
-    return _LoadingSuccessful(
+  LoadingSuccessful loadingSuccessful(List<User> users) {
+    return LoadingSuccessful(
       users,
     );
   }
@@ -70,26 +70,26 @@ mixin _$SearchUserState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_IsLoading value) isLoading,
-    required TResult Function(_LoadingFailed value) loadingFailed,
-    required TResult Function(_LoadingSuccessful value) loadingSuccessful,
+    required TResult Function(Initial value) initial,
+    required TResult Function(IsLoading value) isLoading,
+    required TResult Function(LoadingFailed value) loadingFailed,
+    required TResult Function(LoadingSuccessful value) loadingSuccessful,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_IsLoading value)? isLoading,
-    TResult Function(_LoadingFailed value)? loadingFailed,
-    TResult Function(_LoadingSuccessful value)? loadingSuccessful,
+    TResult Function(Initial value)? initial,
+    TResult Function(IsLoading value)? isLoading,
+    TResult Function(LoadingFailed value)? loadingFailed,
+    TResult Function(LoadingSuccessful value)? loadingSuccessful,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_IsLoading value)? isLoading,
-    TResult Function(_LoadingFailed value)? loadingFailed,
-    TResult Function(_LoadingSuccessful value)? loadingSuccessful,
+    TResult Function(Initial value)? initial,
+    TResult Function(IsLoading value)? isLoading,
+    TResult Function(LoadingFailed value)? loadingFailed,
+    TResult Function(LoadingSuccessful value)? loadingSuccessful,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,25 +113,25 @@ class _$SearchUserStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
+abstract class $InitialCopyWith<$Res> {
+  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
+      _$InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$SearchUserStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
+class _$InitialCopyWithImpl<$Res> extends _$SearchUserStateCopyWithImpl<$Res>
+    implements $InitialCopyWith<$Res> {
+  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
+      : super(_value, (v) => _then(v as Initial));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  Initial get _value => super._value as Initial;
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$Initial implements Initial {
+  const _$Initial();
 
   @override
   String toString() {
@@ -141,7 +141,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
+        (other.runtimeType == runtimeType && other is Initial);
   }
 
   @override
@@ -187,10 +187,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_IsLoading value) isLoading,
-    required TResult Function(_LoadingFailed value) loadingFailed,
-    required TResult Function(_LoadingSuccessful value) loadingSuccessful,
+    required TResult Function(Initial value) initial,
+    required TResult Function(IsLoading value) isLoading,
+    required TResult Function(LoadingFailed value) loadingFailed,
+    required TResult Function(LoadingSuccessful value) loadingSuccessful,
   }) {
     return initial(this);
   }
@@ -198,10 +198,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_IsLoading value)? isLoading,
-    TResult Function(_LoadingFailed value)? loadingFailed,
-    TResult Function(_LoadingSuccessful value)? loadingSuccessful,
+    TResult Function(Initial value)? initial,
+    TResult Function(IsLoading value)? isLoading,
+    TResult Function(LoadingFailed value)? loadingFailed,
+    TResult Function(LoadingSuccessful value)? loadingSuccessful,
   }) {
     return initial?.call(this);
   }
@@ -209,10 +209,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_IsLoading value)? isLoading,
-    TResult Function(_LoadingFailed value)? loadingFailed,
-    TResult Function(_LoadingSuccessful value)? loadingSuccessful,
+    TResult Function(Initial value)? initial,
+    TResult Function(IsLoading value)? isLoading,
+    TResult Function(LoadingFailed value)? loadingFailed,
+    TResult Function(LoadingSuccessful value)? loadingSuccessful,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -222,31 +222,30 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements SearchUserState {
-  const factory _Initial() = _$_Initial;
+abstract class Initial implements SearchUserState {
+  const factory Initial() = _$Initial;
 }
 
 /// @nodoc
-abstract class _$IsLoadingCopyWith<$Res> {
-  factory _$IsLoadingCopyWith(
-          _IsLoading value, $Res Function(_IsLoading) then) =
-      __$IsLoadingCopyWithImpl<$Res>;
+abstract class $IsLoadingCopyWith<$Res> {
+  factory $IsLoadingCopyWith(IsLoading value, $Res Function(IsLoading) then) =
+      _$IsLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$IsLoadingCopyWithImpl<$Res> extends _$SearchUserStateCopyWithImpl<$Res>
-    implements _$IsLoadingCopyWith<$Res> {
-  __$IsLoadingCopyWithImpl(_IsLoading _value, $Res Function(_IsLoading) _then)
-      : super(_value, (v) => _then(v as _IsLoading));
+class _$IsLoadingCopyWithImpl<$Res> extends _$SearchUserStateCopyWithImpl<$Res>
+    implements $IsLoadingCopyWith<$Res> {
+  _$IsLoadingCopyWithImpl(IsLoading _value, $Res Function(IsLoading) _then)
+      : super(_value, (v) => _then(v as IsLoading));
 
   @override
-  _IsLoading get _value => super._value as _IsLoading;
+  IsLoading get _value => super._value as IsLoading;
 }
 
 /// @nodoc
 
-class _$_IsLoading implements _IsLoading {
-  const _$_IsLoading();
+class _$IsLoading implements IsLoading {
+  const _$IsLoading();
 
   @override
   String toString() {
@@ -256,7 +255,7 @@ class _$_IsLoading implements _IsLoading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _IsLoading);
+        (other.runtimeType == runtimeType && other is IsLoading);
   }
 
   @override
@@ -302,10 +301,10 @@ class _$_IsLoading implements _IsLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_IsLoading value) isLoading,
-    required TResult Function(_LoadingFailed value) loadingFailed,
-    required TResult Function(_LoadingSuccessful value) loadingSuccessful,
+    required TResult Function(Initial value) initial,
+    required TResult Function(IsLoading value) isLoading,
+    required TResult Function(LoadingFailed value) loadingFailed,
+    required TResult Function(LoadingSuccessful value) loadingSuccessful,
   }) {
     return isLoading(this);
   }
@@ -313,10 +312,10 @@ class _$_IsLoading implements _IsLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_IsLoading value)? isLoading,
-    TResult Function(_LoadingFailed value)? loadingFailed,
-    TResult Function(_LoadingSuccessful value)? loadingSuccessful,
+    TResult Function(Initial value)? initial,
+    TResult Function(IsLoading value)? isLoading,
+    TResult Function(LoadingFailed value)? loadingFailed,
+    TResult Function(LoadingSuccessful value)? loadingSuccessful,
   }) {
     return isLoading?.call(this);
   }
@@ -324,10 +323,10 @@ class _$_IsLoading implements _IsLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_IsLoading value)? isLoading,
-    TResult Function(_LoadingFailed value)? loadingFailed,
-    TResult Function(_LoadingSuccessful value)? loadingSuccessful,
+    TResult Function(Initial value)? initial,
+    TResult Function(IsLoading value)? isLoading,
+    TResult Function(LoadingFailed value)? loadingFailed,
+    TResult Function(LoadingSuccessful value)? loadingSuccessful,
     required TResult orElse(),
   }) {
     if (isLoading != null) {
@@ -337,36 +336,36 @@ class _$_IsLoading implements _IsLoading {
   }
 }
 
-abstract class _IsLoading implements SearchUserState {
-  const factory _IsLoading() = _$_IsLoading;
+abstract class IsLoading implements SearchUserState {
+  const factory IsLoading() = _$IsLoading;
 }
 
 /// @nodoc
-abstract class _$LoadingFailedCopyWith<$Res> {
-  factory _$LoadingFailedCopyWith(
-          _LoadingFailed value, $Res Function(_LoadingFailed) then) =
-      __$LoadingFailedCopyWithImpl<$Res>;
+abstract class $LoadingFailedCopyWith<$Res> {
+  factory $LoadingFailedCopyWith(
+          LoadingFailed value, $Res Function(LoadingFailed) then) =
+      _$LoadingFailedCopyWithImpl<$Res>;
   $Res call({CrudFailure failure});
 
   $CrudFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
-class __$LoadingFailedCopyWithImpl<$Res>
+class _$LoadingFailedCopyWithImpl<$Res>
     extends _$SearchUserStateCopyWithImpl<$Res>
-    implements _$LoadingFailedCopyWith<$Res> {
-  __$LoadingFailedCopyWithImpl(
-      _LoadingFailed _value, $Res Function(_LoadingFailed) _then)
-      : super(_value, (v) => _then(v as _LoadingFailed));
+    implements $LoadingFailedCopyWith<$Res> {
+  _$LoadingFailedCopyWithImpl(
+      LoadingFailed _value, $Res Function(LoadingFailed) _then)
+      : super(_value, (v) => _then(v as LoadingFailed));
 
   @override
-  _LoadingFailed get _value => super._value as _LoadingFailed;
+  LoadingFailed get _value => super._value as LoadingFailed;
 
   @override
   $Res call({
     Object? failure = freezed,
   }) {
-    return _then(_LoadingFailed(
+    return _then(LoadingFailed(
       failure == freezed
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -384,8 +383,8 @@ class __$LoadingFailedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadingFailed implements _LoadingFailed {
-  const _$_LoadingFailed(this.failure);
+class _$LoadingFailed implements LoadingFailed {
+  const _$LoadingFailed(this.failure);
 
   @override
   final CrudFailure failure;
@@ -399,7 +398,7 @@ class _$_LoadingFailed implements _LoadingFailed {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LoadingFailed &&
+            other is LoadingFailed &&
             const DeepCollectionEquality().equals(other.failure, failure));
   }
 
@@ -409,8 +408,8 @@ class _$_LoadingFailed implements _LoadingFailed {
 
   @JsonKey(ignore: true)
   @override
-  _$LoadingFailedCopyWith<_LoadingFailed> get copyWith =>
-      __$LoadingFailedCopyWithImpl<_LoadingFailed>(this, _$identity);
+  $LoadingFailedCopyWith<LoadingFailed> get copyWith =>
+      _$LoadingFailedCopyWithImpl<LoadingFailed>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -452,10 +451,10 @@ class _$_LoadingFailed implements _LoadingFailed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_IsLoading value) isLoading,
-    required TResult Function(_LoadingFailed value) loadingFailed,
-    required TResult Function(_LoadingSuccessful value) loadingSuccessful,
+    required TResult Function(Initial value) initial,
+    required TResult Function(IsLoading value) isLoading,
+    required TResult Function(LoadingFailed value) loadingFailed,
+    required TResult Function(LoadingSuccessful value) loadingSuccessful,
   }) {
     return loadingFailed(this);
   }
@@ -463,10 +462,10 @@ class _$_LoadingFailed implements _LoadingFailed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_IsLoading value)? isLoading,
-    TResult Function(_LoadingFailed value)? loadingFailed,
-    TResult Function(_LoadingSuccessful value)? loadingSuccessful,
+    TResult Function(Initial value)? initial,
+    TResult Function(IsLoading value)? isLoading,
+    TResult Function(LoadingFailed value)? loadingFailed,
+    TResult Function(LoadingSuccessful value)? loadingSuccessful,
   }) {
     return loadingFailed?.call(this);
   }
@@ -474,10 +473,10 @@ class _$_LoadingFailed implements _LoadingFailed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_IsLoading value)? isLoading,
-    TResult Function(_LoadingFailed value)? loadingFailed,
-    TResult Function(_LoadingSuccessful value)? loadingSuccessful,
+    TResult Function(Initial value)? initial,
+    TResult Function(IsLoading value)? isLoading,
+    TResult Function(LoadingFailed value)? loadingFailed,
+    TResult Function(LoadingSuccessful value)? loadingSuccessful,
     required TResult orElse(),
   }) {
     if (loadingFailed != null) {
@@ -487,39 +486,39 @@ class _$_LoadingFailed implements _LoadingFailed {
   }
 }
 
-abstract class _LoadingFailed implements SearchUserState {
-  const factory _LoadingFailed(CrudFailure failure) = _$_LoadingFailed;
+abstract class LoadingFailed implements SearchUserState {
+  const factory LoadingFailed(CrudFailure failure) = _$LoadingFailed;
 
   CrudFailure get failure;
   @JsonKey(ignore: true)
-  _$LoadingFailedCopyWith<_LoadingFailed> get copyWith =>
+  $LoadingFailedCopyWith<LoadingFailed> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$LoadingSuccessfulCopyWith<$Res> {
-  factory _$LoadingSuccessfulCopyWith(
-          _LoadingSuccessful value, $Res Function(_LoadingSuccessful) then) =
-      __$LoadingSuccessfulCopyWithImpl<$Res>;
+abstract class $LoadingSuccessfulCopyWith<$Res> {
+  factory $LoadingSuccessfulCopyWith(
+          LoadingSuccessful value, $Res Function(LoadingSuccessful) then) =
+      _$LoadingSuccessfulCopyWithImpl<$Res>;
   $Res call({List<User> users});
 }
 
 /// @nodoc
-class __$LoadingSuccessfulCopyWithImpl<$Res>
+class _$LoadingSuccessfulCopyWithImpl<$Res>
     extends _$SearchUserStateCopyWithImpl<$Res>
-    implements _$LoadingSuccessfulCopyWith<$Res> {
-  __$LoadingSuccessfulCopyWithImpl(
-      _LoadingSuccessful _value, $Res Function(_LoadingSuccessful) _then)
-      : super(_value, (v) => _then(v as _LoadingSuccessful));
+    implements $LoadingSuccessfulCopyWith<$Res> {
+  _$LoadingSuccessfulCopyWithImpl(
+      LoadingSuccessful _value, $Res Function(LoadingSuccessful) _then)
+      : super(_value, (v) => _then(v as LoadingSuccessful));
 
   @override
-  _LoadingSuccessful get _value => super._value as _LoadingSuccessful;
+  LoadingSuccessful get _value => super._value as LoadingSuccessful;
 
   @override
   $Res call({
     Object? users = freezed,
   }) {
-    return _then(_LoadingSuccessful(
+    return _then(LoadingSuccessful(
       users == freezed
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
@@ -530,8 +529,8 @@ class __$LoadingSuccessfulCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadingSuccessful implements _LoadingSuccessful {
-  const _$_LoadingSuccessful(this.users);
+class _$LoadingSuccessful implements LoadingSuccessful {
+  const _$LoadingSuccessful(this.users);
 
   @override
   final List<User> users;
@@ -545,7 +544,7 @@ class _$_LoadingSuccessful implements _LoadingSuccessful {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LoadingSuccessful &&
+            other is LoadingSuccessful &&
             const DeepCollectionEquality().equals(other.users, users));
   }
 
@@ -555,8 +554,8 @@ class _$_LoadingSuccessful implements _LoadingSuccessful {
 
   @JsonKey(ignore: true)
   @override
-  _$LoadingSuccessfulCopyWith<_LoadingSuccessful> get copyWith =>
-      __$LoadingSuccessfulCopyWithImpl<_LoadingSuccessful>(this, _$identity);
+  $LoadingSuccessfulCopyWith<LoadingSuccessful> get copyWith =>
+      _$LoadingSuccessfulCopyWithImpl<LoadingSuccessful>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -598,10 +597,10 @@ class _$_LoadingSuccessful implements _LoadingSuccessful {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_IsLoading value) isLoading,
-    required TResult Function(_LoadingFailed value) loadingFailed,
-    required TResult Function(_LoadingSuccessful value) loadingSuccessful,
+    required TResult Function(Initial value) initial,
+    required TResult Function(IsLoading value) isLoading,
+    required TResult Function(LoadingFailed value) loadingFailed,
+    required TResult Function(LoadingSuccessful value) loadingSuccessful,
   }) {
     return loadingSuccessful(this);
   }
@@ -609,10 +608,10 @@ class _$_LoadingSuccessful implements _LoadingSuccessful {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_IsLoading value)? isLoading,
-    TResult Function(_LoadingFailed value)? loadingFailed,
-    TResult Function(_LoadingSuccessful value)? loadingSuccessful,
+    TResult Function(Initial value)? initial,
+    TResult Function(IsLoading value)? isLoading,
+    TResult Function(LoadingFailed value)? loadingFailed,
+    TResult Function(LoadingSuccessful value)? loadingSuccessful,
   }) {
     return loadingSuccessful?.call(this);
   }
@@ -620,10 +619,10 @@ class _$_LoadingSuccessful implements _LoadingSuccessful {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_IsLoading value)? isLoading,
-    TResult Function(_LoadingFailed value)? loadingFailed,
-    TResult Function(_LoadingSuccessful value)? loadingSuccessful,
+    TResult Function(Initial value)? initial,
+    TResult Function(IsLoading value)? isLoading,
+    TResult Function(LoadingFailed value)? loadingFailed,
+    TResult Function(LoadingSuccessful value)? loadingSuccessful,
     required TResult orElse(),
   }) {
     if (loadingSuccessful != null) {
@@ -633,11 +632,11 @@ class _$_LoadingSuccessful implements _LoadingSuccessful {
   }
 }
 
-abstract class _LoadingSuccessful implements SearchUserState {
-  const factory _LoadingSuccessful(List<User> users) = _$_LoadingSuccessful;
+abstract class LoadingSuccessful implements SearchUserState {
+  const factory LoadingSuccessful(List<User> users) = _$LoadingSuccessful;
 
   List<User> get users;
   @JsonKey(ignore: true)
-  _$LoadingSuccessfulCopyWith<_LoadingSuccessful> get copyWith =>
+  $LoadingSuccessfulCopyWith<LoadingSuccessful> get copyWith =>
       throw _privateConstructorUsedError;
 }

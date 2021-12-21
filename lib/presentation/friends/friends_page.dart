@@ -1,22 +1,24 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:collection/src/iterable_extensions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
 import 'package:implicitly_animated_reorderable_list/transitions.dart';
-import 'package:smart_dish/application/friend_request_actor/friend_request_actor_cubit.dart';
+import 'package:smart_dish/application/friend_actor/friend_actor_cubit.dart';
 
-import 'package:smart_dish/application/watcher/friend_request_watcher_cubit.dart';
+import 'package:smart_dish/application/watcher/friend_request_cubit.dart';
 import 'package:smart_dish/application/watcher/friend_watcher_cubit.dart';
 import 'package:smart_dish/di/injection.dart';
 import 'package:smart_dish/domain/core/failure.dart';
 import 'package:smart_dish/domain/friend_request/friend_request.dart';
 import 'package:smart_dish/domain/user/user.dart';
 import 'package:smart_dish/domain/watcher/watcher_cubit.dart';
+import 'package:smart_dish/presentation/friends/widgets/friend_item.dart';
+import 'package:smart_dish/presentation/friends/widgets/request_item.dart';
 import 'package:smart_dish/presentation/widgets/oval_image.dart';
 import 'package:smart_dish/presentation/router/router.gr.dart';
 import 'package:smart_dish/utils/date_time_extensions.dart';
-import 'package:smart_dish/utils/logger.dart';
 
 import '../hybrid_scaffold.dart';
 import 'widgets/buttons.dart';
@@ -58,7 +60,7 @@ class FriendsPage extends StatelessWidget {
                   ),
                 ),
                 const Divider(height: 0),
-                const ReceivedFriendRequests(),
+                const FriendRequestList(),
                 const Divider(height: 0),
                 const Padding(
                   padding: EdgeInsets.all(8.0),
@@ -124,26 +126,21 @@ class FriendsList extends StatelessWidget {
   }
 }
 
-class ReceivedFriendRequests extends StatelessWidget {
-  const ReceivedFriendRequests({
+class FriendRequestList extends StatelessWidget {
+  const FriendRequestList({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FriendRequestWatcherCubit,
-        WatcherState<List<FriendRequest>>>(
-      buildWhen: (WatcherState<List<FriendRequest>> p,
-          WatcherState<List<FriendRequest>> c) {
-        if (p.runtimeType != c.runtimeType) {
-          return true;
+    return BlocBuilder<FriendRequestCubit, WatcherState<List<FriendRequest>>>(
+      buildWhen: (p, c) {
+        if (c is LoadingSuccessful<List<FriendRequest>> &&
+            p is LoadingSuccessful<List<FriendRequest>>) {
+          return p.data.length != c.data.length;
+        } else {
+          return p.runtimeType != c.runtimeType;
         }
-        if (p is LoadingSuccessful<List<FriendRequest>> &&
-            c is LoadingSuccessful<List<FriendRequest>> &&
-            p.data.length != c.data.length) {
-          return true;
-        }
-        return false;
       },
       builder: (context, state) {
         return state.map(
@@ -173,7 +170,7 @@ class ReceivedFriendRequests extends StatelessWidget {
                         sizeFraction: 0.7,
                         curve: Curves.easeInOut,
                         animation: animation,
-                        child: ReceivedRequestItem(request, key: UniqueKey()),
+                        child: RequestItem(request.id!, key: UniqueKey()),
                       );
                     },
                     removeItemBuilder: (context, animation, request) {
@@ -181,7 +178,7 @@ class ReceivedFriendRequests extends StatelessWidget {
                         sizeFraction: 0.7,
                         curve: Curves.easeInOut,
                         animation: animation,
-                        child: ReceivedRequestItem(request, key: UniqueKey()),
+                        child: RequestItem(request.id!, key: UniqueKey()),
                       );
                     },
                   );
@@ -192,162 +189,8 @@ class ReceivedFriendRequests extends StatelessWidget {
   }
 }
 
-class FriendItem extends StatelessWidget {
-  final User user;
-  const FriendItem(
-    this.user, {
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<FriendRequestActorCubit>(),
-      child: BlocBuilder<FriendRequestActorCubit, FriendRequestActorState>(
-        builder: (context, state) {
-          return ListTile(
-            onTap: () {},
-            leading: OvalImage(user.imageUrl),
-            title: Text(user.userName),
-            trailing: state.maybeMap(
-              orElse: () => IconButton(
-                icon: const Icon(Icons.delete),
-                onPressed: () => showDialog(
-                  context: context,
-                  builder: (context) => DeleteFriendDialog(user),
-                ),
-              ),
-              isLoading: (_) => const CircularProgressIndicator(),
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-
-class ReceivedRequestItem extends StatelessWidget {
-  const ReceivedRequestItem(
-    this.request, {
-    Key? key,
-  }) : super(key: key);
-
-  final FriendRequest request;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<FriendRequestActorCubit>(),
-      child: BlocBuilder<FriendRequestActorCubit, FriendRequestActorState>(
-        builder: (context, state) {
-          return ListTile(
-            onTap: () {},
-            leading: OvalImage(
-              request.isReceivedBySignedInUser!
-                  ? request.senderImageUrl
-                  : request.receiverImageUrl,
-            ),
-            title: request.isReceivedBySignedInUser!
-                ? Text(request.senderName, overflow: TextOverflow.ellipsis)
-                : Text(request.receiverName, overflow: TextOverflow.ellipsis),
-            subtitle: state.maybeMap(
-              isConfirming: (_) => const Text("is confirming..."),
-              isRejecting: (_) => const Text("is rejecting..."),
-              isLoading: (_) => const Text("is withdrawing..."),
-              requestConfirmSuccess: (_) => const Text(
-                "Request confirmed.",
-                style: TextStyle(color: Colors.green),
-              ),
-              requestRejectedSuccess: (_) => const Text(
-                "Request rejected.",
-                style: TextStyle(color: Colors.green),
-              ),
-              requestWithdrawSuccess: (_) {
-                return const Text(
-                  "Request withdrawn.",
-                  style: TextStyle(color: Colors.green),
-                );
-              },
-              orElse: () => request.isReceivedBySignedInUser!
-                  ? Text(
-                      "received ${request.createdAt?.toDisplayedString()}",
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                    )
-                  : Text(
-                      "sent ${request.createdAt?.toDisplayedString()}",
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                    ),
-            ),
-            trailing: state.maybeMap(
-              requestConfirmSuccess: (_) =>
-                  const Icon(Icons.check_circle, color: Colors.green),
-              requestRejectedSuccess: (_) =>
-                  const Icon(Icons.check_circle, color: Colors.green),
-              requestWithdrawSuccess: (_) =>
-                  const Icon(Icons.check_circle, color: Colors.green),
-              orElse: () {
-                if (request.isReceivedBySignedInUser!) {
-                  return Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      AcceptFriendRequestButton(request, key: UniqueKey()),
-                      const SizedBox(width: 4),
-                      RejectFriendRequestButton(request, key: UniqueKey()),
-                    ],
-                  );
-                } else {
-                  return WithdrawFriendRequestButton(request);
-                }
-              },
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-
-class DeleteFriendDialog extends StatelessWidget {
-  final User friend;
-  const DeleteFriendDialog(
-    this.friend, {
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<FriendRequestActorCubit>(),
-      child: AlertDialog(
-        title: const Text('Delete Friend'),
-        content: const Text('Are you sure you want to delete this friend?'),
-        actions: [
-          MaterialButton(
-            color: Colors.grey,
-            child: const Text('Cancel'),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          BlocBuilder<FriendRequestActorCubit, FriendRequestActorState>(
-            builder: (context, state) {
-              return state.maybeMap(
-                orElse: () => MaterialButton(
-                  child: const Text('Delete'),
-                  color: Colors.red,
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    context
-                        .read<FriendRequestActorCubit>()
-                        .onDeleteFriend(friend);
-                  },
-                ),
-                isLoading: (_) => const CircularProgressIndicator(),
-              );
-            },
-          )
-        ],
-      ),
-    );
+extension RequestListX on List<FriendRequest> {
+  FriendRequest? findRequestOrNull(String requestId) {
+    return firstWhereOrNull((r) => r.id == requestId);
   }
 }

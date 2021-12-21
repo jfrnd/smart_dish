@@ -31,7 +31,10 @@ class _$FriendRequestTearOff {
       required String receiverId,
       required String receiverName,
       required String receiverImageUrl,
-      @JsonKey(ignore: true) bool? isReceivedBySignedInUser}) {
+      @JsonKey(defaultValue: false) required bool isReceivedBySignedInUser,
+      @JsonKey(defaultValue: false) required bool isBeingConfirmed,
+      @JsonKey(defaultValue: false) required bool isBeingRejected,
+      @JsonKey(ignore: true) CrudFailure? actionFailure}) {
     return _FriendRequest(
       id: id,
       createdAt: createdAt,
@@ -43,6 +46,9 @@ class _$FriendRequestTearOff {
       receiverName: receiverName,
       receiverImageUrl: receiverImageUrl,
       isReceivedBySignedInUser: isReceivedBySignedInUser,
+      isBeingConfirmed: isBeingConfirmed,
+      isBeingRejected: isBeingRejected,
+      actionFailure: actionFailure,
     );
   }
 
@@ -67,8 +73,14 @@ mixin _$FriendRequest {
   String get receiverId => throw _privateConstructorUsedError;
   String get receiverName => throw _privateConstructorUsedError;
   String get receiverImageUrl => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: false)
+  bool get isReceivedBySignedInUser => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: false)
+  bool get isBeingConfirmed => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: false)
+  bool get isBeingRejected => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  bool? get isReceivedBySignedInUser => throw _privateConstructorUsedError;
+  CrudFailure? get actionFailure => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -91,7 +103,12 @@ abstract class $FriendRequestCopyWith<$Res> {
       String receiverId,
       String receiverName,
       String receiverImageUrl,
-      @JsonKey(ignore: true) bool? isReceivedBySignedInUser});
+      @JsonKey(defaultValue: false) bool isReceivedBySignedInUser,
+      @JsonKey(defaultValue: false) bool isBeingConfirmed,
+      @JsonKey(defaultValue: false) bool isBeingRejected,
+      @JsonKey(ignore: true) CrudFailure? actionFailure});
+
+  $CrudFailureCopyWith<$Res>? get actionFailure;
 }
 
 /// @nodoc
@@ -115,6 +132,9 @@ class _$FriendRequestCopyWithImpl<$Res>
     Object? receiverName = freezed,
     Object? receiverImageUrl = freezed,
     Object? isReceivedBySignedInUser = freezed,
+    Object? isBeingConfirmed = freezed,
+    Object? isBeingRejected = freezed,
+    Object? actionFailure = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -156,8 +176,31 @@ class _$FriendRequestCopyWithImpl<$Res>
       isReceivedBySignedInUser: isReceivedBySignedInUser == freezed
           ? _value.isReceivedBySignedInUser
           : isReceivedBySignedInUser // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
+      isBeingConfirmed: isBeingConfirmed == freezed
+          ? _value.isBeingConfirmed
+          : isBeingConfirmed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isBeingRejected: isBeingRejected == freezed
+          ? _value.isBeingRejected
+          : isBeingRejected // ignore: cast_nullable_to_non_nullable
+              as bool,
+      actionFailure: actionFailure == freezed
+          ? _value.actionFailure
+          : actionFailure // ignore: cast_nullable_to_non_nullable
+              as CrudFailure?,
     ));
+  }
+
+  @override
+  $CrudFailureCopyWith<$Res>? get actionFailure {
+    if (_value.actionFailure == null) {
+      return null;
+    }
+
+    return $CrudFailureCopyWith<$Res>(_value.actionFailure!, (value) {
+      return _then(_value.copyWith(actionFailure: value));
+    });
   }
 }
 
@@ -178,7 +221,13 @@ abstract class _$FriendRequestCopyWith<$Res>
       String receiverId,
       String receiverName,
       String receiverImageUrl,
-      @JsonKey(ignore: true) bool? isReceivedBySignedInUser});
+      @JsonKey(defaultValue: false) bool isReceivedBySignedInUser,
+      @JsonKey(defaultValue: false) bool isBeingConfirmed,
+      @JsonKey(defaultValue: false) bool isBeingRejected,
+      @JsonKey(ignore: true) CrudFailure? actionFailure});
+
+  @override
+  $CrudFailureCopyWith<$Res>? get actionFailure;
 }
 
 /// @nodoc
@@ -204,6 +253,9 @@ class __$FriendRequestCopyWithImpl<$Res>
     Object? receiverName = freezed,
     Object? receiverImageUrl = freezed,
     Object? isReceivedBySignedInUser = freezed,
+    Object? isBeingConfirmed = freezed,
+    Object? isBeingRejected = freezed,
+    Object? actionFailure = freezed,
   }) {
     return _then(_FriendRequest(
       id: id == freezed
@@ -245,7 +297,19 @@ class __$FriendRequestCopyWithImpl<$Res>
       isReceivedBySignedInUser: isReceivedBySignedInUser == freezed
           ? _value.isReceivedBySignedInUser
           : isReceivedBySignedInUser // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
+      isBeingConfirmed: isBeingConfirmed == freezed
+          ? _value.isBeingConfirmed
+          : isBeingConfirmed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isBeingRejected: isBeingRejected == freezed
+          ? _value.isBeingRejected
+          : isBeingRejected // ignore: cast_nullable_to_non_nullable
+              as bool,
+      actionFailure: actionFailure == freezed
+          ? _value.actionFailure
+          : actionFailure // ignore: cast_nullable_to_non_nullable
+              as CrudFailure?,
     ));
   }
 }
@@ -253,7 +317,7 @@ class __$FriendRequestCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_FriendRequest extends _FriendRequest {
-  const _$_FriendRequest(
+  _$_FriendRequest(
       {@JsonKey(ignore: true) this.id,
       @JsonKey(ignore: true) this.createdAt,
       required this.accepted,
@@ -263,7 +327,10 @@ class _$_FriendRequest extends _FriendRequest {
       required this.receiverId,
       required this.receiverName,
       required this.receiverImageUrl,
-      @JsonKey(ignore: true) this.isReceivedBySignedInUser})
+      @JsonKey(defaultValue: false) required this.isReceivedBySignedInUser,
+      @JsonKey(defaultValue: false) required this.isBeingConfirmed,
+      @JsonKey(defaultValue: false) required this.isBeingRejected,
+      @JsonKey(ignore: true) this.actionFailure})
       : super._();
 
   factory _$_FriendRequest.fromJson(Map<String, dynamic> json) =>
@@ -290,12 +357,21 @@ class _$_FriendRequest extends _FriendRequest {
   @override
   final String receiverImageUrl;
   @override
+  @JsonKey(defaultValue: false)
+  final bool isReceivedBySignedInUser;
+  @override
+  @JsonKey(defaultValue: false)
+  final bool isBeingConfirmed;
+  @override
+  @JsonKey(defaultValue: false)
+  final bool isBeingRejected;
+  @override
   @JsonKey(ignore: true)
-  final bool? isReceivedBySignedInUser;
+  final CrudFailure? actionFailure;
 
   @override
   String toString() {
-    return 'FriendRequest(id: $id, createdAt: $createdAt, accepted: $accepted, senderId: $senderId, senderName: $senderName, senderImageUrl: $senderImageUrl, receiverId: $receiverId, receiverName: $receiverName, receiverImageUrl: $receiverImageUrl, isReceivedBySignedInUser: $isReceivedBySignedInUser)';
+    return 'FriendRequest(id: $id, createdAt: $createdAt, accepted: $accepted, senderId: $senderId, senderName: $senderName, senderImageUrl: $senderImageUrl, receiverId: $receiverId, receiverName: $receiverName, receiverImageUrl: $receiverImageUrl, isReceivedBySignedInUser: $isReceivedBySignedInUser, isBeingConfirmed: $isBeingConfirmed, isBeingRejected: $isBeingRejected, actionFailure: $actionFailure)';
   }
 
   @override
@@ -318,7 +394,13 @@ class _$_FriendRequest extends _FriendRequest {
             const DeepCollectionEquality()
                 .equals(other.receiverImageUrl, receiverImageUrl) &&
             const DeepCollectionEquality().equals(
-                other.isReceivedBySignedInUser, isReceivedBySignedInUser));
+                other.isReceivedBySignedInUser, isReceivedBySignedInUser) &&
+            const DeepCollectionEquality()
+                .equals(other.isBeingConfirmed, isBeingConfirmed) &&
+            const DeepCollectionEquality()
+                .equals(other.isBeingRejected, isBeingRejected) &&
+            const DeepCollectionEquality()
+                .equals(other.actionFailure, actionFailure));
   }
 
   @override
@@ -333,7 +415,10 @@ class _$_FriendRequest extends _FriendRequest {
       const DeepCollectionEquality().hash(receiverId),
       const DeepCollectionEquality().hash(receiverName),
       const DeepCollectionEquality().hash(receiverImageUrl),
-      const DeepCollectionEquality().hash(isReceivedBySignedInUser));
+      const DeepCollectionEquality().hash(isReceivedBySignedInUser),
+      const DeepCollectionEquality().hash(isBeingConfirmed),
+      const DeepCollectionEquality().hash(isBeingRejected),
+      const DeepCollectionEquality().hash(actionFailure));
 
   @JsonKey(ignore: true)
   @override
@@ -347,19 +432,21 @@ class _$_FriendRequest extends _FriendRequest {
 }
 
 abstract class _FriendRequest extends FriendRequest {
-  const factory _FriendRequest(
-          {@JsonKey(ignore: true) String? id,
-          @JsonKey(ignore: true) DateTime? createdAt,
-          required bool? accepted,
-          required String senderId,
-          required String senderName,
-          required String senderImageUrl,
-          required String receiverId,
-          required String receiverName,
-          required String receiverImageUrl,
-          @JsonKey(ignore: true) bool? isReceivedBySignedInUser}) =
-      _$_FriendRequest;
-  const _FriendRequest._() : super._();
+  factory _FriendRequest(
+      {@JsonKey(ignore: true) String? id,
+      @JsonKey(ignore: true) DateTime? createdAt,
+      required bool? accepted,
+      required String senderId,
+      required String senderName,
+      required String senderImageUrl,
+      required String receiverId,
+      required String receiverName,
+      required String receiverImageUrl,
+      @JsonKey(defaultValue: false) required bool isReceivedBySignedInUser,
+      @JsonKey(defaultValue: false) required bool isBeingConfirmed,
+      @JsonKey(defaultValue: false) required bool isBeingRejected,
+      @JsonKey(ignore: true) CrudFailure? actionFailure}) = _$_FriendRequest;
+  _FriendRequest._() : super._();
 
   factory _FriendRequest.fromJson(Map<String, dynamic> json) =
       _$_FriendRequest.fromJson;
@@ -385,8 +472,17 @@ abstract class _FriendRequest extends FriendRequest {
   @override
   String get receiverImageUrl;
   @override
+  @JsonKey(defaultValue: false)
+  bool get isReceivedBySignedInUser;
+  @override
+  @JsonKey(defaultValue: false)
+  bool get isBeingConfirmed;
+  @override
+  @JsonKey(defaultValue: false)
+  bool get isBeingRejected;
+  @override
   @JsonKey(ignore: true)
-  bool? get isReceivedBySignedInUser;
+  CrudFailure? get actionFailure;
   @override
   @JsonKey(ignore: true)
   _$FriendRequestCopyWith<_FriendRequest> get copyWith =>

@@ -15,6 +15,10 @@ _$_FriendRequest _$$_FriendRequestFromJson(Map<String, dynamic> json) =>
       receiverId: json['receiverId'] as String,
       receiverName: json['receiverName'] as String,
       receiverImageUrl: json['receiverImageUrl'] as String,
+      isReceivedBySignedInUser:
+          json['isReceivedBySignedInUser'] as bool? ?? false,
+      isBeingConfirmed: json['isBeingConfirmed'] as bool? ?? false,
+      isBeingRejected: json['isBeingRejected'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_FriendRequestToJson(_$_FriendRequest instance) =>
@@ -26,4 +30,7 @@ Map<String, dynamic> _$$_FriendRequestToJson(_$_FriendRequest instance) =>
       'receiverId': instance.receiverId,
       'receiverName': instance.receiverName,
       'receiverImageUrl': instance.receiverImageUrl,
+      'isReceivedBySignedInUser': instance.isReceivedBySignedInUser,
+      'isBeingConfirmed': instance.isBeingConfirmed,
+      'isBeingRejected': instance.isBeingRejected,
     };

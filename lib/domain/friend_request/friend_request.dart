@@ -1,7 +1,10 @@
 // ignore_for_file: invalid_annotation_target, constant_identifier_names
 
+import 'dart:convert';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:smart_dish/domain/core/crud_failure.dart';
 
 part 'friend_request.g.dart';
 part 'friend_request.freezed.dart';
@@ -11,9 +14,9 @@ const UPDATED_AT = 'updatedAt';
 
 @freezed
 class FriendRequest with _$FriendRequest {
-  const FriendRequest._();
+  FriendRequest._();
 
-  const factory FriendRequest({
+  factory FriendRequest({
     @JsonKey(ignore: true) String? id,
     @JsonKey(ignore: true) DateTime? createdAt,
     required bool? accepted,
@@ -23,7 +26,10 @@ class FriendRequest with _$FriendRequest {
     required String receiverId,
     required String receiverName,
     required String receiverImageUrl,
-    @JsonKey(ignore: true) bool? isReceivedBySignedInUser,
+    @JsonKey(defaultValue: false) required bool isReceivedBySignedInUser,
+    @JsonKey(defaultValue: false) required bool isBeingConfirmed,
+    @JsonKey(defaultValue: false) required bool isBeingRejected,
+    @JsonKey(ignore: true) CrudFailure? actionFailure,
   }) = _FriendRequest;
 
   factory FriendRequest.fromFirestore(
@@ -47,4 +53,17 @@ class FriendRequest with _$FriendRequest {
 
   factory FriendRequest.fromJson(Map<String, dynamic> json) =>
       _$FriendRequestFromJson(json);
+
+  factory FriendRequest.empty() => FriendRequest(
+        accepted: null,
+        senderId: "",
+        senderName: "",
+        senderImageUrl: "",
+        receiverId: "",
+        receiverName: "",
+        receiverImageUrl: "",
+        isReceivedBySignedInUser: false,
+        isBeingConfirmed: false,
+        isBeingRejected: false,
+      );
 }

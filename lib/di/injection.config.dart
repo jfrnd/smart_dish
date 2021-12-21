@@ -16,13 +16,12 @@ import 'package:shared_preferences/shared_preferences.dart' as _i15;
 
 import '../application/account_editor/account_editor_cubit.dart' as _i26;
 import '../application/dish_editor/dish_editor_cubit.dart' as _i18;
-import '../application/friend_request_actor/friend_request_actor_cubit.dart'
-    as _i19;
+import '../application/friend_actor/friend_actor_cubit.dart' as _i19;
 import '../application/image_cropper/image_cropper_cubit.dart' as _i23;
 import '../application/navigation_cubit/navigation_cubit.dart' as _i13;
 import '../application/search_user/search_user_cubit.dart' as _i24;
 import '../application/watcher/dish_watcher_cubit.dart' as _i27;
-import '../application/watcher/friend_request_watcher_cubit.dart' as _i20;
+import '../application/watcher/friend_request_cubit.dart' as _i20;
 import '../application/watcher/friend_watcher_cubit.dart' as _i21;
 import '../application/watcher/signed_in_user_watcher_cubit.dart' as _i25;
 import '../auth/auth_editor_cubit.dart' as _i16;
@@ -97,10 +96,10 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       () => _i17.AuthWatcherCubit(get<_i8.IAuthRepo>()));
   gh.factory<_i18.DishEditorCubit>(() =>
       _i18.DishEditorCubit(get<_i9.IDishRepo>(), get<_i12.ImagePicker>()));
-  gh.factory<_i19.FriendRequestActorCubit>(
-      () => _i19.FriendRequestActorCubit(get<_i10.IFriendRequestRepo>()));
-  gh.lazySingleton<_i20.FriendRequestWatcherCubit>(
-      () => _i20.FriendRequestWatcherCubit(get<_i10.IFriendRequestRepo>()));
+  gh.factory<_i19.FriendActorCubit>(
+      () => _i19.FriendActorCubit(get<_i10.IFriendRequestRepo>()));
+  gh.lazySingleton<_i20.FriendRequestCubit>(
+      () => _i20.FriendRequestCubit(get<_i10.IFriendRequestRepo>()));
   gh.lazySingleton<_i21.FriendWatcherCubit>(
       () => _i21.FriendWatcherCubit(get<_i11.IUserFriendsRepo>()));
   gh.lazySingleton<_i22.IAccountRepo>(() => _i22.FirebaseAccountRepo(
@@ -112,7 +111,7 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       () => _i23.ImageCropperCubit(get<_i12.ImagePicker>()));
   gh.factory<_i24.SearchUserCubit>(() => _i24.SearchUserCubit(
       get<_i10.IFriendRequestRepo>(),
-      get<_i20.FriendRequestWatcherCubit>(),
+      get<_i20.FriendRequestCubit>(),
       get<_i21.FriendWatcherCubit>(),
       get<_i8.IAuthRepo>()));
   gh.lazySingleton<_i25.SignedInUserWatcherCubit>(

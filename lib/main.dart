@@ -17,7 +17,7 @@ import 'package:smart_dish/utils/logger.dart';
 import 'package:smart_dish/web_test_page.dart';
 import 'application/navigation_cubit/navigation_cubit.dart';
 import 'application/watcher/dish_watcher_cubit.dart';
-import 'application/watcher/friend_request_watcher_cubit.dart';
+import 'application/watcher/friend_request_cubit.dart';
 import 'application/watcher/friend_watcher_cubit.dart';
 import 'application/watcher/signed_in_user_watcher_cubit.dart';
 import 'auth/auth_watcher_cubit.dart';
@@ -28,7 +28,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'presentation/core/notification_manager.dart';
 
-const environment = Environment.dev;
+const environment = Environment.prod;
 const devicePreview = false;
 const webHotReloadTest = false;
 
@@ -94,7 +94,7 @@ class AppWidget extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => getIt<AuthWatcherCubit>()),
         BlocProvider(create: (_) => getIt<FriendWatcherCubit>()),
-        BlocProvider(create: (_) => getIt<FriendRequestWatcherCubit>()),
+        BlocProvider(create: (_) => getIt<FriendRequestCubit>()),
         BlocProvider(create: (_) => getIt<SignedInUserWatcherCubit>()),
         BlocProvider(create: (_) => getIt<DishWatcherCubit>()),
         BlocProvider(create: (_) => getIt<NavigationCubit>()),

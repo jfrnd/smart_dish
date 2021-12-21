@@ -47,17 +47,6 @@ service cloud.firestore {
       function isReceiver() {
         return request.auth.uid == resource.data.receiverId
       }
-      function receiverRejects() {
-        return isAuthenticated() && isReceiver() && request.resource.data.accepted == false && onlyAffectedFieldsAre(request,["accepted"]);
-      }
-      function receiverAccepts() {
-        return isAuthenticated() && isReceiver() && request.resource.data.accepted == true && onlyAffectedFieldsAre(request,["accepted"]);
-      }
-      function senderWithdraws() {
-        return isAuthenticated() && isSender() && request.resource.data.accepted == false && onlyAffectedFieldsAre(request,["accepted"]);
-      }
-
-      allow update: if receiverRejects() || receiverAccepts() || senderWithdraws();
       allow read: if request.auth != null && (isSender() || isReceiver());
     }
 

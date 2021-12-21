@@ -53,6 +53,43 @@ async function receiverHasAlreadySentRequest(
     });
 }
 
+async function userIsSenderOfRequest(userId: string, requestId: string) {
+  return database
+    .collection(FRIEND_REQUESTS)
+    .doc(requestId)
+    .get()
+    .then(async (snapshot) => {
+      if (!snapshot.exists) {
+        throw new functions.https.HttpsError(
+          "not-found",
+          "Friend request not found."
+        );
+      } else {
+        const request: FriendRequest = snapshot.data() as FriendRequest;
+        if (request.senderId == userId) return true;
+      }
+      return false;
+    });
+}
+async function userIsReceiverOfRequest(userId: string, requestId: string) {
+  return database
+    .collection(FRIEND_REQUESTS)
+    .doc(requestId)
+    .get()
+    .then(async (snapshot) => {
+      if (!snapshot.exists) {
+        throw new functions.https.HttpsError(
+          "not-found",
+          "Friend request not found."
+        );
+      } else {
+        const request: FriendRequest = snapshot.data() as FriendRequest;
+        if (request.receiverId == userId) return true;
+      }
+      return false;
+    });
+}
+
 interface SendFriendRequestPayload {
   userId: string;
 }
@@ -113,6 +150,53 @@ export const send = functions
     return;
   });
 
+interface ConfirmRejectFriendRequestPayload {
+  requestId: string;
+}
+
+export const confirm = functions
+  .region("europe-west3")
+  .https.onCall(async (data: ConfirmRejectFriendRequestPayload, context) => {
+    checkAuthentication(context);
+
+    const userId = context.auth!.uid;
+    const requestId = data.requestId;
+
+    if (await userIsReceiverOfRequest(userId, requestId)) {
+      return database
+        .collection(FRIEND_REQUESTS)
+        .doc(requestId)
+        .update({ accepted: true });
+    } else
+      throw new functions.https.HttpsError(
+        "permission-denied",
+        "You have no permission to perform this action."
+      );
+  });
+
+export const reject = functions
+  .region("europe-west3")
+  .https.onCall(async (data: ConfirmRejectFriendRequestPayload, context) => {
+    checkAuthentication(context);
+
+    const userId = context.auth!.uid;
+    const requestId = data.requestId;
+
+    if (
+      (await userIsReceiverOfRequest(userId, requestId)) ||
+      (await userIsSenderOfRequest(userId, requestId))
+    ) {
+      return database
+        .collection(FRIEND_REQUESTS)
+        .doc(requestId)
+        .update({ accepted: false });
+    } else
+      throw new functions.https.HttpsError(
+        "permission-denied",
+        "You have no permission to perform this action."
+      );
+  });
+
 export const onConfirmFriendRequest = functions
   .region("europe-west3")
   .firestore.document(`${FRIEND_REQUESTS}/{requestId}`)
@@ -129,10 +213,6 @@ export const onConfirmFriendRequest = functions
         const receiver = await getUserDocument(after.receiverId);
 
         await change.after.ref.delete();
-
-        console.info("sender");
-        console.info(sender);
-        console.info(receiver);
 
         if (sender.token != undefined && sender.token != "") {
           return sendPushNotificationToUser(
