@@ -17,60 +17,80 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$AuthFailureTearOff {
   const _$AuthFailureTearOff();
 
-  ServerError serverError() {
-    return const ServerError();
+  Unknown unknown(String msg) {
+    return Unknown(
+      msg,
+    );
   }
 
-  InvalidEmail invalidEmail() {
-    return const InvalidEmail();
+  InvalidEmail invalidEmail(String msg) {
+    return InvalidEmail(
+      msg,
+    );
   }
 
-  WrongPassword wrongPassword() {
-    return const WrongPassword();
+  WrongPassword wrongPassword(String msg) {
+    return WrongPassword(
+      msg,
+    );
   }
 
-  WeakPassword weakPassword() {
-    return const WeakPassword();
+  WeakPassword weakPassword(String msg) {
+    return WeakPassword(
+      msg,
+    );
   }
 
-  EmailAlreadyInUse emailAlreadyInUse() {
-    return const EmailAlreadyInUse();
+  EmailAlreadyInUse emailAlreadyInUse(String msg) {
+    return EmailAlreadyInUse(
+      msg,
+    );
   }
 
-  EmailNotVerified emailNotVerified() {
-    return const EmailNotVerified();
+  RequiresRecentLogin requiresRecentLogin(String msg) {
+    return RequiresRecentLogin(
+      msg,
+    );
   }
 
-  RequiresRecentLogin requiresRecentLogin() {
-    return const RequiresRecentLogin();
+  UserNotFound userNotFound(String msg) {
+    return UserNotFound(
+      msg,
+    );
   }
 
-  UserNotFound userNotFound() {
-    return const UserNotFound();
+  UserDisabled userDisabled(String msg) {
+    return UserDisabled(
+      msg,
+    );
   }
 
-  UserDisabled userDisabled() {
-    return const UserDisabled();
+  OperationNotAllowed operationNotAllowed(String msg) {
+    return OperationNotAllowed(
+      msg,
+    );
   }
 
-  OperationNotAllowed operationNotAllowed() {
-    return const OperationNotAllowed();
+  TooManyRequests tooManyRequests(String msg) {
+    return TooManyRequests(
+      msg,
+    );
   }
 
   InvalidEmailAndPasswordCombination invalidEmailAndPasswordCombination() {
     return const InvalidEmailAndPasswordCombination();
   }
 
-  PasswordsDoNotMatch passwordsDoNotMatch() {
-    return const PasswordsDoNotMatch();
-  }
-
   NotSignedIn notSignedIn() {
     return const NotSignedIn();
   }
 
-  TooManyRequests tooManyRequests() {
-    return const TooManyRequests();
+  PasswordsDoNotMatch passwordsDoNotMatch() {
+    return const PasswordsDoNotMatch();
+  }
+
+  EmailNotVerified emailNotVerified() {
+    return const EmailNotVerified();
   }
 }
 
@@ -81,114 +101,114 @@ const $AuthFailure = _$AuthFailureTearOff();
 mixin _$AuthFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() serverError,
-    required TResult Function() invalidEmail,
-    required TResult Function() wrongPassword,
-    required TResult Function() weakPassword,
-    required TResult Function() emailAlreadyInUse,
-    required TResult Function() emailNotVerified,
-    required TResult Function() requiresRecentLogin,
-    required TResult Function() userNotFound,
-    required TResult Function() userDisabled,
-    required TResult Function() operationNotAllowed,
+    required TResult Function(String msg) unknown,
+    required TResult Function(String msg) invalidEmail,
+    required TResult Function(String msg) wrongPassword,
+    required TResult Function(String msg) weakPassword,
+    required TResult Function(String msg) emailAlreadyInUse,
+    required TResult Function(String msg) requiresRecentLogin,
+    required TResult Function(String msg) userNotFound,
+    required TResult Function(String msg) userDisabled,
+    required TResult Function(String msg) operationNotAllowed,
+    required TResult Function(String msg) tooManyRequests,
     required TResult Function() invalidEmailAndPasswordCombination,
-    required TResult Function() passwordsDoNotMatch,
     required TResult Function() notSignedIn,
-    required TResult Function() tooManyRequests,
+    required TResult Function() passwordsDoNotMatch,
+    required TResult Function() emailNotVerified,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
+    required TResult Function(Unknown value) unknown,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(WrongPassword value) wrongPassword,
     required TResult Function(WeakPassword value) weakPassword,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
-    required TResult Function(EmailNotVerified value) emailNotVerified,
     required TResult Function(RequiresRecentLogin value) requiresRecentLogin,
     required TResult Function(UserNotFound value) userNotFound,
     required TResult Function(UserDisabled value) userDisabled,
     required TResult Function(OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(TooManyRequests value) tooManyRequests,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
-    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
     required TResult Function(NotSignedIn value) notSignedIn,
-    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -211,105 +231,127 @@ class _$AuthFailureCopyWithImpl<$Res> implements $AuthFailureCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $ServerErrorCopyWith<$Res> {
-  factory $ServerErrorCopyWith(
-          ServerError value, $Res Function(ServerError) then) =
-      _$ServerErrorCopyWithImpl<$Res>;
+abstract class $UnknownCopyWith<$Res> {
+  factory $UnknownCopyWith(Unknown value, $Res Function(Unknown) then) =
+      _$UnknownCopyWithImpl<$Res>;
+  $Res call({String msg});
 }
 
 /// @nodoc
-class _$ServerErrorCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
-    implements $ServerErrorCopyWith<$Res> {
-  _$ServerErrorCopyWithImpl(
-      ServerError _value, $Res Function(ServerError) _then)
-      : super(_value, (v) => _then(v as ServerError));
+class _$UnknownCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+    implements $UnknownCopyWith<$Res> {
+  _$UnknownCopyWithImpl(Unknown _value, $Res Function(Unknown) _then)
+      : super(_value, (v) => _then(v as Unknown));
 
   @override
-  ServerError get _value => super._value as ServerError;
+  Unknown get _value => super._value as Unknown;
+
+  @override
+  $Res call({
+    Object? msg = freezed,
+  }) {
+    return _then(Unknown(
+      msg == freezed
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$ServerError implements ServerError {
-  const _$ServerError();
+class _$Unknown implements Unknown {
+  const _$Unknown(this.msg);
+
+  @override
+  final String msg;
 
   @override
   String toString() {
-    return 'AuthFailure.serverError()';
+    return 'AuthFailure.unknown(msg: $msg)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ServerError);
+        (other.runtimeType == runtimeType &&
+            other is Unknown &&
+            const DeepCollectionEquality().equals(other.msg, msg));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(msg));
+
+  @JsonKey(ignore: true)
+  @override
+  $UnknownCopyWith<Unknown> get copyWith =>
+      _$UnknownCopyWithImpl<Unknown>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() serverError,
-    required TResult Function() invalidEmail,
-    required TResult Function() wrongPassword,
-    required TResult Function() weakPassword,
-    required TResult Function() emailAlreadyInUse,
-    required TResult Function() emailNotVerified,
-    required TResult Function() requiresRecentLogin,
-    required TResult Function() userNotFound,
-    required TResult Function() userDisabled,
-    required TResult Function() operationNotAllowed,
+    required TResult Function(String msg) unknown,
+    required TResult Function(String msg) invalidEmail,
+    required TResult Function(String msg) wrongPassword,
+    required TResult Function(String msg) weakPassword,
+    required TResult Function(String msg) emailAlreadyInUse,
+    required TResult Function(String msg) requiresRecentLogin,
+    required TResult Function(String msg) userNotFound,
+    required TResult Function(String msg) userDisabled,
+    required TResult Function(String msg) operationNotAllowed,
+    required TResult Function(String msg) tooManyRequests,
     required TResult Function() invalidEmailAndPasswordCombination,
-    required TResult Function() passwordsDoNotMatch,
     required TResult Function() notSignedIn,
-    required TResult Function() tooManyRequests,
+    required TResult Function() passwordsDoNotMatch,
+    required TResult Function() emailNotVerified,
   }) {
-    return serverError();
+    return unknown(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
   }) {
-    return serverError?.call();
+    return unknown?.call(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
     required TResult orElse(),
   }) {
-    if (serverError != null) {
-      return serverError();
+    if (unknown != null) {
+      return unknown(msg);
     }
     return orElse();
   }
@@ -317,76 +359,80 @@ class _$ServerError implements ServerError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
+    required TResult Function(Unknown value) unknown,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(WrongPassword value) wrongPassword,
     required TResult Function(WeakPassword value) weakPassword,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
-    required TResult Function(EmailNotVerified value) emailNotVerified,
     required TResult Function(RequiresRecentLogin value) requiresRecentLogin,
     required TResult Function(UserNotFound value) userNotFound,
     required TResult Function(UserDisabled value) userDisabled,
     required TResult Function(OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(TooManyRequests value) tooManyRequests,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
-    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
     required TResult Function(NotSignedIn value) notSignedIn,
-    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
   }) {
-    return serverError(this);
+    return unknown(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
   }) {
-    return serverError?.call(this);
+    return unknown?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
     required TResult orElse(),
   }) {
-    if (serverError != null) {
-      return serverError(this);
+    if (unknown != null) {
+      return unknown(this);
     }
     return orElse();
   }
 }
 
-abstract class ServerError implements AuthFailure {
-  const factory ServerError() = _$ServerError;
+abstract class Unknown implements AuthFailure {
+  const factory Unknown(String msg) = _$Unknown;
+
+  String get msg;
+  @JsonKey(ignore: true)
+  $UnknownCopyWith<Unknown> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -394,6 +440,7 @@ abstract class $InvalidEmailCopyWith<$Res> {
   factory $InvalidEmailCopyWith(
           InvalidEmail value, $Res Function(InvalidEmail) then) =
       _$InvalidEmailCopyWithImpl<$Res>;
+  $Res call({String msg});
 }
 
 /// @nodoc
@@ -405,90 +452,113 @@ class _$InvalidEmailCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 
   @override
   InvalidEmail get _value => super._value as InvalidEmail;
+
+  @override
+  $Res call({
+    Object? msg = freezed,
+  }) {
+    return _then(InvalidEmail(
+      msg == freezed
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$InvalidEmail implements InvalidEmail {
-  const _$InvalidEmail();
+  const _$InvalidEmail(this.msg);
+
+  @override
+  final String msg;
 
   @override
   String toString() {
-    return 'AuthFailure.invalidEmail()';
+    return 'AuthFailure.invalidEmail(msg: $msg)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is InvalidEmail);
+        (other.runtimeType == runtimeType &&
+            other is InvalidEmail &&
+            const DeepCollectionEquality().equals(other.msg, msg));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(msg));
+
+  @JsonKey(ignore: true)
+  @override
+  $InvalidEmailCopyWith<InvalidEmail> get copyWith =>
+      _$InvalidEmailCopyWithImpl<InvalidEmail>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() serverError,
-    required TResult Function() invalidEmail,
-    required TResult Function() wrongPassword,
-    required TResult Function() weakPassword,
-    required TResult Function() emailAlreadyInUse,
-    required TResult Function() emailNotVerified,
-    required TResult Function() requiresRecentLogin,
-    required TResult Function() userNotFound,
-    required TResult Function() userDisabled,
-    required TResult Function() operationNotAllowed,
+    required TResult Function(String msg) unknown,
+    required TResult Function(String msg) invalidEmail,
+    required TResult Function(String msg) wrongPassword,
+    required TResult Function(String msg) weakPassword,
+    required TResult Function(String msg) emailAlreadyInUse,
+    required TResult Function(String msg) requiresRecentLogin,
+    required TResult Function(String msg) userNotFound,
+    required TResult Function(String msg) userDisabled,
+    required TResult Function(String msg) operationNotAllowed,
+    required TResult Function(String msg) tooManyRequests,
     required TResult Function() invalidEmailAndPasswordCombination,
-    required TResult Function() passwordsDoNotMatch,
     required TResult Function() notSignedIn,
-    required TResult Function() tooManyRequests,
+    required TResult Function() passwordsDoNotMatch,
+    required TResult Function() emailNotVerified,
   }) {
-    return invalidEmail();
+    return invalidEmail(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
   }) {
-    return invalidEmail?.call();
+    return invalidEmail?.call(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
-      return invalidEmail();
+      return invalidEmail(msg);
     }
     return orElse();
   }
@@ -496,21 +566,21 @@ class _$InvalidEmail implements InvalidEmail {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
+    required TResult Function(Unknown value) unknown,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(WrongPassword value) wrongPassword,
     required TResult Function(WeakPassword value) weakPassword,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
-    required TResult Function(EmailNotVerified value) emailNotVerified,
     required TResult Function(RequiresRecentLogin value) requiresRecentLogin,
     required TResult Function(UserNotFound value) userNotFound,
     required TResult Function(UserDisabled value) userDisabled,
     required TResult Function(OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(TooManyRequests value) tooManyRequests,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
-    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
     required TResult Function(NotSignedIn value) notSignedIn,
-    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
   }) {
     return invalidEmail(this);
   }
@@ -518,21 +588,21 @@ class _$InvalidEmail implements InvalidEmail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
   }) {
     return invalidEmail?.call(this);
   }
@@ -540,21 +610,21 @@ class _$InvalidEmail implements InvalidEmail {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -565,7 +635,12 @@ class _$InvalidEmail implements InvalidEmail {
 }
 
 abstract class InvalidEmail implements AuthFailure {
-  const factory InvalidEmail() = _$InvalidEmail;
+  const factory InvalidEmail(String msg) = _$InvalidEmail;
+
+  String get msg;
+  @JsonKey(ignore: true)
+  $InvalidEmailCopyWith<InvalidEmail> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -573,6 +648,7 @@ abstract class $WrongPasswordCopyWith<$Res> {
   factory $WrongPasswordCopyWith(
           WrongPassword value, $Res Function(WrongPassword) then) =
       _$WrongPasswordCopyWithImpl<$Res>;
+  $Res call({String msg});
 }
 
 /// @nodoc
@@ -584,90 +660,113 @@ class _$WrongPasswordCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 
   @override
   WrongPassword get _value => super._value as WrongPassword;
+
+  @override
+  $Res call({
+    Object? msg = freezed,
+  }) {
+    return _then(WrongPassword(
+      msg == freezed
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$WrongPassword implements WrongPassword {
-  const _$WrongPassword();
+  const _$WrongPassword(this.msg);
+
+  @override
+  final String msg;
 
   @override
   String toString() {
-    return 'AuthFailure.wrongPassword()';
+    return 'AuthFailure.wrongPassword(msg: $msg)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is WrongPassword);
+        (other.runtimeType == runtimeType &&
+            other is WrongPassword &&
+            const DeepCollectionEquality().equals(other.msg, msg));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(msg));
+
+  @JsonKey(ignore: true)
+  @override
+  $WrongPasswordCopyWith<WrongPassword> get copyWith =>
+      _$WrongPasswordCopyWithImpl<WrongPassword>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() serverError,
-    required TResult Function() invalidEmail,
-    required TResult Function() wrongPassword,
-    required TResult Function() weakPassword,
-    required TResult Function() emailAlreadyInUse,
-    required TResult Function() emailNotVerified,
-    required TResult Function() requiresRecentLogin,
-    required TResult Function() userNotFound,
-    required TResult Function() userDisabled,
-    required TResult Function() operationNotAllowed,
+    required TResult Function(String msg) unknown,
+    required TResult Function(String msg) invalidEmail,
+    required TResult Function(String msg) wrongPassword,
+    required TResult Function(String msg) weakPassword,
+    required TResult Function(String msg) emailAlreadyInUse,
+    required TResult Function(String msg) requiresRecentLogin,
+    required TResult Function(String msg) userNotFound,
+    required TResult Function(String msg) userDisabled,
+    required TResult Function(String msg) operationNotAllowed,
+    required TResult Function(String msg) tooManyRequests,
     required TResult Function() invalidEmailAndPasswordCombination,
-    required TResult Function() passwordsDoNotMatch,
     required TResult Function() notSignedIn,
-    required TResult Function() tooManyRequests,
+    required TResult Function() passwordsDoNotMatch,
+    required TResult Function() emailNotVerified,
   }) {
-    return wrongPassword();
+    return wrongPassword(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
   }) {
-    return wrongPassword?.call();
+    return wrongPassword?.call(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
     required TResult orElse(),
   }) {
     if (wrongPassword != null) {
-      return wrongPassword();
+      return wrongPassword(msg);
     }
     return orElse();
   }
@@ -675,21 +774,21 @@ class _$WrongPassword implements WrongPassword {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
+    required TResult Function(Unknown value) unknown,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(WrongPassword value) wrongPassword,
     required TResult Function(WeakPassword value) weakPassword,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
-    required TResult Function(EmailNotVerified value) emailNotVerified,
     required TResult Function(RequiresRecentLogin value) requiresRecentLogin,
     required TResult Function(UserNotFound value) userNotFound,
     required TResult Function(UserDisabled value) userDisabled,
     required TResult Function(OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(TooManyRequests value) tooManyRequests,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
-    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
     required TResult Function(NotSignedIn value) notSignedIn,
-    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
   }) {
     return wrongPassword(this);
   }
@@ -697,21 +796,21 @@ class _$WrongPassword implements WrongPassword {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
   }) {
     return wrongPassword?.call(this);
   }
@@ -719,21 +818,21 @@ class _$WrongPassword implements WrongPassword {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
     required TResult orElse(),
   }) {
     if (wrongPassword != null) {
@@ -744,7 +843,12 @@ class _$WrongPassword implements WrongPassword {
 }
 
 abstract class WrongPassword implements AuthFailure {
-  const factory WrongPassword() = _$WrongPassword;
+  const factory WrongPassword(String msg) = _$WrongPassword;
+
+  String get msg;
+  @JsonKey(ignore: true)
+  $WrongPasswordCopyWith<WrongPassword> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -752,6 +856,7 @@ abstract class $WeakPasswordCopyWith<$Res> {
   factory $WeakPasswordCopyWith(
           WeakPassword value, $Res Function(WeakPassword) then) =
       _$WeakPasswordCopyWithImpl<$Res>;
+  $Res call({String msg});
 }
 
 /// @nodoc
@@ -763,90 +868,113 @@ class _$WeakPasswordCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 
   @override
   WeakPassword get _value => super._value as WeakPassword;
+
+  @override
+  $Res call({
+    Object? msg = freezed,
+  }) {
+    return _then(WeakPassword(
+      msg == freezed
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$WeakPassword implements WeakPassword {
-  const _$WeakPassword();
+  const _$WeakPassword(this.msg);
+
+  @override
+  final String msg;
 
   @override
   String toString() {
-    return 'AuthFailure.weakPassword()';
+    return 'AuthFailure.weakPassword(msg: $msg)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is WeakPassword);
+        (other.runtimeType == runtimeType &&
+            other is WeakPassword &&
+            const DeepCollectionEquality().equals(other.msg, msg));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(msg));
+
+  @JsonKey(ignore: true)
+  @override
+  $WeakPasswordCopyWith<WeakPassword> get copyWith =>
+      _$WeakPasswordCopyWithImpl<WeakPassword>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() serverError,
-    required TResult Function() invalidEmail,
-    required TResult Function() wrongPassword,
-    required TResult Function() weakPassword,
-    required TResult Function() emailAlreadyInUse,
-    required TResult Function() emailNotVerified,
-    required TResult Function() requiresRecentLogin,
-    required TResult Function() userNotFound,
-    required TResult Function() userDisabled,
-    required TResult Function() operationNotAllowed,
+    required TResult Function(String msg) unknown,
+    required TResult Function(String msg) invalidEmail,
+    required TResult Function(String msg) wrongPassword,
+    required TResult Function(String msg) weakPassword,
+    required TResult Function(String msg) emailAlreadyInUse,
+    required TResult Function(String msg) requiresRecentLogin,
+    required TResult Function(String msg) userNotFound,
+    required TResult Function(String msg) userDisabled,
+    required TResult Function(String msg) operationNotAllowed,
+    required TResult Function(String msg) tooManyRequests,
     required TResult Function() invalidEmailAndPasswordCombination,
-    required TResult Function() passwordsDoNotMatch,
     required TResult Function() notSignedIn,
-    required TResult Function() tooManyRequests,
+    required TResult Function() passwordsDoNotMatch,
+    required TResult Function() emailNotVerified,
   }) {
-    return weakPassword();
+    return weakPassword(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
   }) {
-    return weakPassword?.call();
+    return weakPassword?.call(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
     required TResult orElse(),
   }) {
     if (weakPassword != null) {
-      return weakPassword();
+      return weakPassword(msg);
     }
     return orElse();
   }
@@ -854,21 +982,21 @@ class _$WeakPassword implements WeakPassword {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
+    required TResult Function(Unknown value) unknown,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(WrongPassword value) wrongPassword,
     required TResult Function(WeakPassword value) weakPassword,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
-    required TResult Function(EmailNotVerified value) emailNotVerified,
     required TResult Function(RequiresRecentLogin value) requiresRecentLogin,
     required TResult Function(UserNotFound value) userNotFound,
     required TResult Function(UserDisabled value) userDisabled,
     required TResult Function(OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(TooManyRequests value) tooManyRequests,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
-    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
     required TResult Function(NotSignedIn value) notSignedIn,
-    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
   }) {
     return weakPassword(this);
   }
@@ -876,21 +1004,21 @@ class _$WeakPassword implements WeakPassword {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
   }) {
     return weakPassword?.call(this);
   }
@@ -898,21 +1026,21 @@ class _$WeakPassword implements WeakPassword {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
     required TResult orElse(),
   }) {
     if (weakPassword != null) {
@@ -923,7 +1051,12 @@ class _$WeakPassword implements WeakPassword {
 }
 
 abstract class WeakPassword implements AuthFailure {
-  const factory WeakPassword() = _$WeakPassword;
+  const factory WeakPassword(String msg) = _$WeakPassword;
+
+  String get msg;
+  @JsonKey(ignore: true)
+  $WeakPasswordCopyWith<WeakPassword> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -931,6 +1064,7 @@ abstract class $EmailAlreadyInUseCopyWith<$Res> {
   factory $EmailAlreadyInUseCopyWith(
           EmailAlreadyInUse value, $Res Function(EmailAlreadyInUse) then) =
       _$EmailAlreadyInUseCopyWithImpl<$Res>;
+  $Res call({String msg});
 }
 
 /// @nodoc
@@ -943,90 +1077,113 @@ class _$EmailAlreadyInUseCopyWithImpl<$Res>
 
   @override
   EmailAlreadyInUse get _value => super._value as EmailAlreadyInUse;
+
+  @override
+  $Res call({
+    Object? msg = freezed,
+  }) {
+    return _then(EmailAlreadyInUse(
+      msg == freezed
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$EmailAlreadyInUse implements EmailAlreadyInUse {
-  const _$EmailAlreadyInUse();
+  const _$EmailAlreadyInUse(this.msg);
+
+  @override
+  final String msg;
 
   @override
   String toString() {
-    return 'AuthFailure.emailAlreadyInUse()';
+    return 'AuthFailure.emailAlreadyInUse(msg: $msg)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is EmailAlreadyInUse);
+        (other.runtimeType == runtimeType &&
+            other is EmailAlreadyInUse &&
+            const DeepCollectionEquality().equals(other.msg, msg));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(msg));
+
+  @JsonKey(ignore: true)
+  @override
+  $EmailAlreadyInUseCopyWith<EmailAlreadyInUse> get copyWith =>
+      _$EmailAlreadyInUseCopyWithImpl<EmailAlreadyInUse>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() serverError,
-    required TResult Function() invalidEmail,
-    required TResult Function() wrongPassword,
-    required TResult Function() weakPassword,
-    required TResult Function() emailAlreadyInUse,
-    required TResult Function() emailNotVerified,
-    required TResult Function() requiresRecentLogin,
-    required TResult Function() userNotFound,
-    required TResult Function() userDisabled,
-    required TResult Function() operationNotAllowed,
+    required TResult Function(String msg) unknown,
+    required TResult Function(String msg) invalidEmail,
+    required TResult Function(String msg) wrongPassword,
+    required TResult Function(String msg) weakPassword,
+    required TResult Function(String msg) emailAlreadyInUse,
+    required TResult Function(String msg) requiresRecentLogin,
+    required TResult Function(String msg) userNotFound,
+    required TResult Function(String msg) userDisabled,
+    required TResult Function(String msg) operationNotAllowed,
+    required TResult Function(String msg) tooManyRequests,
     required TResult Function() invalidEmailAndPasswordCombination,
-    required TResult Function() passwordsDoNotMatch,
     required TResult Function() notSignedIn,
-    required TResult Function() tooManyRequests,
+    required TResult Function() passwordsDoNotMatch,
+    required TResult Function() emailNotVerified,
   }) {
-    return emailAlreadyInUse();
+    return emailAlreadyInUse(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
   }) {
-    return emailAlreadyInUse?.call();
+    return emailAlreadyInUse?.call(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
-      return emailAlreadyInUse();
+      return emailAlreadyInUse(msg);
     }
     return orElse();
   }
@@ -1034,21 +1191,21 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
+    required TResult Function(Unknown value) unknown,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(WrongPassword value) wrongPassword,
     required TResult Function(WeakPassword value) weakPassword,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
-    required TResult Function(EmailNotVerified value) emailNotVerified,
     required TResult Function(RequiresRecentLogin value) requiresRecentLogin,
     required TResult Function(UserNotFound value) userNotFound,
     required TResult Function(UserDisabled value) userDisabled,
     required TResult Function(OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(TooManyRequests value) tooManyRequests,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
-    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
     required TResult Function(NotSignedIn value) notSignedIn,
-    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
   }) {
     return emailAlreadyInUse(this);
   }
@@ -1056,21 +1213,21 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
   }) {
     return emailAlreadyInUse?.call(this);
   }
@@ -1078,21 +1235,21 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -1103,187 +1260,12 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
 }
 
 abstract class EmailAlreadyInUse implements AuthFailure {
-  const factory EmailAlreadyInUse() = _$EmailAlreadyInUse;
-}
+  const factory EmailAlreadyInUse(String msg) = _$EmailAlreadyInUse;
 
-/// @nodoc
-abstract class $EmailNotVerifiedCopyWith<$Res> {
-  factory $EmailNotVerifiedCopyWith(
-          EmailNotVerified value, $Res Function(EmailNotVerified) then) =
-      _$EmailNotVerifiedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$EmailNotVerifiedCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
-    implements $EmailNotVerifiedCopyWith<$Res> {
-  _$EmailNotVerifiedCopyWithImpl(
-      EmailNotVerified _value, $Res Function(EmailNotVerified) _then)
-      : super(_value, (v) => _then(v as EmailNotVerified));
-
-  @override
-  EmailNotVerified get _value => super._value as EmailNotVerified;
-}
-
-/// @nodoc
-
-class _$EmailNotVerified implements EmailNotVerified {
-  const _$EmailNotVerified();
-
-  @override
-  String toString() {
-    return 'AuthFailure.emailNotVerified()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is EmailNotVerified);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() serverError,
-    required TResult Function() invalidEmail,
-    required TResult Function() wrongPassword,
-    required TResult Function() weakPassword,
-    required TResult Function() emailAlreadyInUse,
-    required TResult Function() emailNotVerified,
-    required TResult Function() requiresRecentLogin,
-    required TResult Function() userNotFound,
-    required TResult Function() userDisabled,
-    required TResult Function() operationNotAllowed,
-    required TResult Function() invalidEmailAndPasswordCombination,
-    required TResult Function() passwordsDoNotMatch,
-    required TResult Function() notSignedIn,
-    required TResult Function() tooManyRequests,
-  }) {
-    return emailNotVerified();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
-    TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
-  }) {
-    return emailNotVerified?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
-    TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
-    required TResult orElse(),
-  }) {
-    if (emailNotVerified != null) {
-      return emailNotVerified();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
-    required TResult Function(InvalidEmail value) invalidEmail,
-    required TResult Function(WrongPassword value) wrongPassword,
-    required TResult Function(WeakPassword value) weakPassword,
-    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
-    required TResult Function(EmailNotVerified value) emailNotVerified,
-    required TResult Function(RequiresRecentLogin value) requiresRecentLogin,
-    required TResult Function(UserNotFound value) userNotFound,
-    required TResult Function(UserDisabled value) userDisabled,
-    required TResult Function(OperationNotAllowed value) operationNotAllowed,
-    required TResult Function(InvalidEmailAndPasswordCombination value)
-        invalidEmailAndPasswordCombination,
-    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
-    required TResult Function(NotSignedIn value) notSignedIn,
-    required TResult Function(TooManyRequests value) tooManyRequests,
-  }) {
-    return emailNotVerified(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
-    TResult Function(InvalidEmail value)? invalidEmail,
-    TResult Function(WrongPassword value)? wrongPassword,
-    TResult Function(WeakPassword value)? weakPassword,
-    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
-    TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
-    TResult Function(UserNotFound value)? userNotFound,
-    TResult Function(UserDisabled value)? userDisabled,
-    TResult Function(OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(InvalidEmailAndPasswordCombination value)?
-        invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
-    TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
-  }) {
-    return emailNotVerified?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
-    TResult Function(InvalidEmail value)? invalidEmail,
-    TResult Function(WrongPassword value)? wrongPassword,
-    TResult Function(WeakPassword value)? weakPassword,
-    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
-    TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
-    TResult Function(UserNotFound value)? userNotFound,
-    TResult Function(UserDisabled value)? userDisabled,
-    TResult Function(OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(InvalidEmailAndPasswordCombination value)?
-        invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
-    TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
-    required TResult orElse(),
-  }) {
-    if (emailNotVerified != null) {
-      return emailNotVerified(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class EmailNotVerified implements AuthFailure {
-  const factory EmailNotVerified() = _$EmailNotVerified;
+  String get msg;
+  @JsonKey(ignore: true)
+  $EmailAlreadyInUseCopyWith<EmailAlreadyInUse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1291,6 +1273,7 @@ abstract class $RequiresRecentLoginCopyWith<$Res> {
   factory $RequiresRecentLoginCopyWith(
           RequiresRecentLogin value, $Res Function(RequiresRecentLogin) then) =
       _$RequiresRecentLoginCopyWithImpl<$Res>;
+  $Res call({String msg});
 }
 
 /// @nodoc
@@ -1303,90 +1286,113 @@ class _$RequiresRecentLoginCopyWithImpl<$Res>
 
   @override
   RequiresRecentLogin get _value => super._value as RequiresRecentLogin;
+
+  @override
+  $Res call({
+    Object? msg = freezed,
+  }) {
+    return _then(RequiresRecentLogin(
+      msg == freezed
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$RequiresRecentLogin implements RequiresRecentLogin {
-  const _$RequiresRecentLogin();
+  const _$RequiresRecentLogin(this.msg);
+
+  @override
+  final String msg;
 
   @override
   String toString() {
-    return 'AuthFailure.requiresRecentLogin()';
+    return 'AuthFailure.requiresRecentLogin(msg: $msg)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is RequiresRecentLogin);
+        (other.runtimeType == runtimeType &&
+            other is RequiresRecentLogin &&
+            const DeepCollectionEquality().equals(other.msg, msg));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(msg));
+
+  @JsonKey(ignore: true)
+  @override
+  $RequiresRecentLoginCopyWith<RequiresRecentLogin> get copyWith =>
+      _$RequiresRecentLoginCopyWithImpl<RequiresRecentLogin>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() serverError,
-    required TResult Function() invalidEmail,
-    required TResult Function() wrongPassword,
-    required TResult Function() weakPassword,
-    required TResult Function() emailAlreadyInUse,
-    required TResult Function() emailNotVerified,
-    required TResult Function() requiresRecentLogin,
-    required TResult Function() userNotFound,
-    required TResult Function() userDisabled,
-    required TResult Function() operationNotAllowed,
+    required TResult Function(String msg) unknown,
+    required TResult Function(String msg) invalidEmail,
+    required TResult Function(String msg) wrongPassword,
+    required TResult Function(String msg) weakPassword,
+    required TResult Function(String msg) emailAlreadyInUse,
+    required TResult Function(String msg) requiresRecentLogin,
+    required TResult Function(String msg) userNotFound,
+    required TResult Function(String msg) userDisabled,
+    required TResult Function(String msg) operationNotAllowed,
+    required TResult Function(String msg) tooManyRequests,
     required TResult Function() invalidEmailAndPasswordCombination,
-    required TResult Function() passwordsDoNotMatch,
     required TResult Function() notSignedIn,
-    required TResult Function() tooManyRequests,
+    required TResult Function() passwordsDoNotMatch,
+    required TResult Function() emailNotVerified,
   }) {
-    return requiresRecentLogin();
+    return requiresRecentLogin(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
   }) {
-    return requiresRecentLogin?.call();
+    return requiresRecentLogin?.call(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
     required TResult orElse(),
   }) {
     if (requiresRecentLogin != null) {
-      return requiresRecentLogin();
+      return requiresRecentLogin(msg);
     }
     return orElse();
   }
@@ -1394,21 +1400,21 @@ class _$RequiresRecentLogin implements RequiresRecentLogin {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
+    required TResult Function(Unknown value) unknown,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(WrongPassword value) wrongPassword,
     required TResult Function(WeakPassword value) weakPassword,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
-    required TResult Function(EmailNotVerified value) emailNotVerified,
     required TResult Function(RequiresRecentLogin value) requiresRecentLogin,
     required TResult Function(UserNotFound value) userNotFound,
     required TResult Function(UserDisabled value) userDisabled,
     required TResult Function(OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(TooManyRequests value) tooManyRequests,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
-    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
     required TResult Function(NotSignedIn value) notSignedIn,
-    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
   }) {
     return requiresRecentLogin(this);
   }
@@ -1416,21 +1422,21 @@ class _$RequiresRecentLogin implements RequiresRecentLogin {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
   }) {
     return requiresRecentLogin?.call(this);
   }
@@ -1438,21 +1444,21 @@ class _$RequiresRecentLogin implements RequiresRecentLogin {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
     required TResult orElse(),
   }) {
     if (requiresRecentLogin != null) {
@@ -1463,7 +1469,12 @@ class _$RequiresRecentLogin implements RequiresRecentLogin {
 }
 
 abstract class RequiresRecentLogin implements AuthFailure {
-  const factory RequiresRecentLogin() = _$RequiresRecentLogin;
+  const factory RequiresRecentLogin(String msg) = _$RequiresRecentLogin;
+
+  String get msg;
+  @JsonKey(ignore: true)
+  $RequiresRecentLoginCopyWith<RequiresRecentLogin> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1471,6 +1482,7 @@ abstract class $UserNotFoundCopyWith<$Res> {
   factory $UserNotFoundCopyWith(
           UserNotFound value, $Res Function(UserNotFound) then) =
       _$UserNotFoundCopyWithImpl<$Res>;
+  $Res call({String msg});
 }
 
 /// @nodoc
@@ -1482,90 +1494,113 @@ class _$UserNotFoundCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 
   @override
   UserNotFound get _value => super._value as UserNotFound;
+
+  @override
+  $Res call({
+    Object? msg = freezed,
+  }) {
+    return _then(UserNotFound(
+      msg == freezed
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$UserNotFound implements UserNotFound {
-  const _$UserNotFound();
+  const _$UserNotFound(this.msg);
+
+  @override
+  final String msg;
 
   @override
   String toString() {
-    return 'AuthFailure.userNotFound()';
+    return 'AuthFailure.userNotFound(msg: $msg)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is UserNotFound);
+        (other.runtimeType == runtimeType &&
+            other is UserNotFound &&
+            const DeepCollectionEquality().equals(other.msg, msg));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(msg));
+
+  @JsonKey(ignore: true)
+  @override
+  $UserNotFoundCopyWith<UserNotFound> get copyWith =>
+      _$UserNotFoundCopyWithImpl<UserNotFound>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() serverError,
-    required TResult Function() invalidEmail,
-    required TResult Function() wrongPassword,
-    required TResult Function() weakPassword,
-    required TResult Function() emailAlreadyInUse,
-    required TResult Function() emailNotVerified,
-    required TResult Function() requiresRecentLogin,
-    required TResult Function() userNotFound,
-    required TResult Function() userDisabled,
-    required TResult Function() operationNotAllowed,
+    required TResult Function(String msg) unknown,
+    required TResult Function(String msg) invalidEmail,
+    required TResult Function(String msg) wrongPassword,
+    required TResult Function(String msg) weakPassword,
+    required TResult Function(String msg) emailAlreadyInUse,
+    required TResult Function(String msg) requiresRecentLogin,
+    required TResult Function(String msg) userNotFound,
+    required TResult Function(String msg) userDisabled,
+    required TResult Function(String msg) operationNotAllowed,
+    required TResult Function(String msg) tooManyRequests,
     required TResult Function() invalidEmailAndPasswordCombination,
-    required TResult Function() passwordsDoNotMatch,
     required TResult Function() notSignedIn,
-    required TResult Function() tooManyRequests,
+    required TResult Function() passwordsDoNotMatch,
+    required TResult Function() emailNotVerified,
   }) {
-    return userNotFound();
+    return userNotFound(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
   }) {
-    return userNotFound?.call();
+    return userNotFound?.call(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
     required TResult orElse(),
   }) {
     if (userNotFound != null) {
-      return userNotFound();
+      return userNotFound(msg);
     }
     return orElse();
   }
@@ -1573,21 +1608,21 @@ class _$UserNotFound implements UserNotFound {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
+    required TResult Function(Unknown value) unknown,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(WrongPassword value) wrongPassword,
     required TResult Function(WeakPassword value) weakPassword,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
-    required TResult Function(EmailNotVerified value) emailNotVerified,
     required TResult Function(RequiresRecentLogin value) requiresRecentLogin,
     required TResult Function(UserNotFound value) userNotFound,
     required TResult Function(UserDisabled value) userDisabled,
     required TResult Function(OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(TooManyRequests value) tooManyRequests,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
-    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
     required TResult Function(NotSignedIn value) notSignedIn,
-    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
   }) {
     return userNotFound(this);
   }
@@ -1595,21 +1630,21 @@ class _$UserNotFound implements UserNotFound {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
   }) {
     return userNotFound?.call(this);
   }
@@ -1617,21 +1652,21 @@ class _$UserNotFound implements UserNotFound {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
     required TResult orElse(),
   }) {
     if (userNotFound != null) {
@@ -1642,7 +1677,12 @@ class _$UserNotFound implements UserNotFound {
 }
 
 abstract class UserNotFound implements AuthFailure {
-  const factory UserNotFound() = _$UserNotFound;
+  const factory UserNotFound(String msg) = _$UserNotFound;
+
+  String get msg;
+  @JsonKey(ignore: true)
+  $UserNotFoundCopyWith<UserNotFound> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1650,6 +1690,7 @@ abstract class $UserDisabledCopyWith<$Res> {
   factory $UserDisabledCopyWith(
           UserDisabled value, $Res Function(UserDisabled) then) =
       _$UserDisabledCopyWithImpl<$Res>;
+  $Res call({String msg});
 }
 
 /// @nodoc
@@ -1661,90 +1702,113 @@ class _$UserDisabledCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 
   @override
   UserDisabled get _value => super._value as UserDisabled;
+
+  @override
+  $Res call({
+    Object? msg = freezed,
+  }) {
+    return _then(UserDisabled(
+      msg == freezed
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$UserDisabled implements UserDisabled {
-  const _$UserDisabled();
+  const _$UserDisabled(this.msg);
+
+  @override
+  final String msg;
 
   @override
   String toString() {
-    return 'AuthFailure.userDisabled()';
+    return 'AuthFailure.userDisabled(msg: $msg)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is UserDisabled);
+        (other.runtimeType == runtimeType &&
+            other is UserDisabled &&
+            const DeepCollectionEquality().equals(other.msg, msg));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(msg));
+
+  @JsonKey(ignore: true)
+  @override
+  $UserDisabledCopyWith<UserDisabled> get copyWith =>
+      _$UserDisabledCopyWithImpl<UserDisabled>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() serverError,
-    required TResult Function() invalidEmail,
-    required TResult Function() wrongPassword,
-    required TResult Function() weakPassword,
-    required TResult Function() emailAlreadyInUse,
-    required TResult Function() emailNotVerified,
-    required TResult Function() requiresRecentLogin,
-    required TResult Function() userNotFound,
-    required TResult Function() userDisabled,
-    required TResult Function() operationNotAllowed,
+    required TResult Function(String msg) unknown,
+    required TResult Function(String msg) invalidEmail,
+    required TResult Function(String msg) wrongPassword,
+    required TResult Function(String msg) weakPassword,
+    required TResult Function(String msg) emailAlreadyInUse,
+    required TResult Function(String msg) requiresRecentLogin,
+    required TResult Function(String msg) userNotFound,
+    required TResult Function(String msg) userDisabled,
+    required TResult Function(String msg) operationNotAllowed,
+    required TResult Function(String msg) tooManyRequests,
     required TResult Function() invalidEmailAndPasswordCombination,
-    required TResult Function() passwordsDoNotMatch,
     required TResult Function() notSignedIn,
-    required TResult Function() tooManyRequests,
+    required TResult Function() passwordsDoNotMatch,
+    required TResult Function() emailNotVerified,
   }) {
-    return userDisabled();
+    return userDisabled(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
   }) {
-    return userDisabled?.call();
+    return userDisabled?.call(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
     required TResult orElse(),
   }) {
     if (userDisabled != null) {
-      return userDisabled();
+      return userDisabled(msg);
     }
     return orElse();
   }
@@ -1752,21 +1816,21 @@ class _$UserDisabled implements UserDisabled {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
+    required TResult Function(Unknown value) unknown,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(WrongPassword value) wrongPassword,
     required TResult Function(WeakPassword value) weakPassword,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
-    required TResult Function(EmailNotVerified value) emailNotVerified,
     required TResult Function(RequiresRecentLogin value) requiresRecentLogin,
     required TResult Function(UserNotFound value) userNotFound,
     required TResult Function(UserDisabled value) userDisabled,
     required TResult Function(OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(TooManyRequests value) tooManyRequests,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
-    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
     required TResult Function(NotSignedIn value) notSignedIn,
-    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
   }) {
     return userDisabled(this);
   }
@@ -1774,21 +1838,21 @@ class _$UserDisabled implements UserDisabled {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
   }) {
     return userDisabled?.call(this);
   }
@@ -1796,21 +1860,21 @@ class _$UserDisabled implements UserDisabled {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
     required TResult orElse(),
   }) {
     if (userDisabled != null) {
@@ -1821,7 +1885,12 @@ class _$UserDisabled implements UserDisabled {
 }
 
 abstract class UserDisabled implements AuthFailure {
-  const factory UserDisabled() = _$UserDisabled;
+  const factory UserDisabled(String msg) = _$UserDisabled;
+
+  String get msg;
+  @JsonKey(ignore: true)
+  $UserDisabledCopyWith<UserDisabled> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1829,6 +1898,7 @@ abstract class $OperationNotAllowedCopyWith<$Res> {
   factory $OperationNotAllowedCopyWith(
           OperationNotAllowed value, $Res Function(OperationNotAllowed) then) =
       _$OperationNotAllowedCopyWithImpl<$Res>;
+  $Res call({String msg});
 }
 
 /// @nodoc
@@ -1841,90 +1911,113 @@ class _$OperationNotAllowedCopyWithImpl<$Res>
 
   @override
   OperationNotAllowed get _value => super._value as OperationNotAllowed;
+
+  @override
+  $Res call({
+    Object? msg = freezed,
+  }) {
+    return _then(OperationNotAllowed(
+      msg == freezed
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$OperationNotAllowed implements OperationNotAllowed {
-  const _$OperationNotAllowed();
+  const _$OperationNotAllowed(this.msg);
+
+  @override
+  final String msg;
 
   @override
   String toString() {
-    return 'AuthFailure.operationNotAllowed()';
+    return 'AuthFailure.operationNotAllowed(msg: $msg)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is OperationNotAllowed);
+        (other.runtimeType == runtimeType &&
+            other is OperationNotAllowed &&
+            const DeepCollectionEquality().equals(other.msg, msg));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(msg));
+
+  @JsonKey(ignore: true)
+  @override
+  $OperationNotAllowedCopyWith<OperationNotAllowed> get copyWith =>
+      _$OperationNotAllowedCopyWithImpl<OperationNotAllowed>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() serverError,
-    required TResult Function() invalidEmail,
-    required TResult Function() wrongPassword,
-    required TResult Function() weakPassword,
-    required TResult Function() emailAlreadyInUse,
-    required TResult Function() emailNotVerified,
-    required TResult Function() requiresRecentLogin,
-    required TResult Function() userNotFound,
-    required TResult Function() userDisabled,
-    required TResult Function() operationNotAllowed,
+    required TResult Function(String msg) unknown,
+    required TResult Function(String msg) invalidEmail,
+    required TResult Function(String msg) wrongPassword,
+    required TResult Function(String msg) weakPassword,
+    required TResult Function(String msg) emailAlreadyInUse,
+    required TResult Function(String msg) requiresRecentLogin,
+    required TResult Function(String msg) userNotFound,
+    required TResult Function(String msg) userDisabled,
+    required TResult Function(String msg) operationNotAllowed,
+    required TResult Function(String msg) tooManyRequests,
     required TResult Function() invalidEmailAndPasswordCombination,
-    required TResult Function() passwordsDoNotMatch,
     required TResult Function() notSignedIn,
-    required TResult Function() tooManyRequests,
+    required TResult Function() passwordsDoNotMatch,
+    required TResult Function() emailNotVerified,
   }) {
-    return operationNotAllowed();
+    return operationNotAllowed(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
   }) {
-    return operationNotAllowed?.call();
+    return operationNotAllowed?.call(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
     required TResult orElse(),
   }) {
     if (operationNotAllowed != null) {
-      return operationNotAllowed();
+      return operationNotAllowed(msg);
     }
     return orElse();
   }
@@ -1932,21 +2025,21 @@ class _$OperationNotAllowed implements OperationNotAllowed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
+    required TResult Function(Unknown value) unknown,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(WrongPassword value) wrongPassword,
     required TResult Function(WeakPassword value) weakPassword,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
-    required TResult Function(EmailNotVerified value) emailNotVerified,
     required TResult Function(RequiresRecentLogin value) requiresRecentLogin,
     required TResult Function(UserNotFound value) userNotFound,
     required TResult Function(UserDisabled value) userDisabled,
     required TResult Function(OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(TooManyRequests value) tooManyRequests,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
-    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
     required TResult Function(NotSignedIn value) notSignedIn,
-    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
   }) {
     return operationNotAllowed(this);
   }
@@ -1954,21 +2047,21 @@ class _$OperationNotAllowed implements OperationNotAllowed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
   }) {
     return operationNotAllowed?.call(this);
   }
@@ -1976,21 +2069,21 @@ class _$OperationNotAllowed implements OperationNotAllowed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
     required TResult orElse(),
   }) {
     if (operationNotAllowed != null) {
@@ -2001,7 +2094,221 @@ class _$OperationNotAllowed implements OperationNotAllowed {
 }
 
 abstract class OperationNotAllowed implements AuthFailure {
-  const factory OperationNotAllowed() = _$OperationNotAllowed;
+  const factory OperationNotAllowed(String msg) = _$OperationNotAllowed;
+
+  String get msg;
+  @JsonKey(ignore: true)
+  $OperationNotAllowedCopyWith<OperationNotAllowed> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TooManyRequestsCopyWith<$Res> {
+  factory $TooManyRequestsCopyWith(
+          TooManyRequests value, $Res Function(TooManyRequests) then) =
+      _$TooManyRequestsCopyWithImpl<$Res>;
+  $Res call({String msg});
+}
+
+/// @nodoc
+class _$TooManyRequestsCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements $TooManyRequestsCopyWith<$Res> {
+  _$TooManyRequestsCopyWithImpl(
+      TooManyRequests _value, $Res Function(TooManyRequests) _then)
+      : super(_value, (v) => _then(v as TooManyRequests));
+
+  @override
+  TooManyRequests get _value => super._value as TooManyRequests;
+
+  @override
+  $Res call({
+    Object? msg = freezed,
+  }) {
+    return _then(TooManyRequests(
+      msg == freezed
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TooManyRequests implements TooManyRequests {
+  const _$TooManyRequests(this.msg);
+
+  @override
+  final String msg;
+
+  @override
+  String toString() {
+    return 'AuthFailure.tooManyRequests(msg: $msg)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is TooManyRequests &&
+            const DeepCollectionEquality().equals(other.msg, msg));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(msg));
+
+  @JsonKey(ignore: true)
+  @override
+  $TooManyRequestsCopyWith<TooManyRequests> get copyWith =>
+      _$TooManyRequestsCopyWithImpl<TooManyRequests>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String msg) unknown,
+    required TResult Function(String msg) invalidEmail,
+    required TResult Function(String msg) wrongPassword,
+    required TResult Function(String msg) weakPassword,
+    required TResult Function(String msg) emailAlreadyInUse,
+    required TResult Function(String msg) requiresRecentLogin,
+    required TResult Function(String msg) userNotFound,
+    required TResult Function(String msg) userDisabled,
+    required TResult Function(String msg) operationNotAllowed,
+    required TResult Function(String msg) tooManyRequests,
+    required TResult Function() invalidEmailAndPasswordCombination,
+    required TResult Function() notSignedIn,
+    required TResult Function() passwordsDoNotMatch,
+    required TResult Function() emailNotVerified,
+  }) {
+    return tooManyRequests(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? notSignedIn,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
+  }) {
+    return tooManyRequests?.call(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? notSignedIn,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
+    required TResult orElse(),
+  }) {
+    if (tooManyRequests != null) {
+      return tooManyRequests(msg);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Unknown value) unknown,
+    required TResult Function(InvalidEmail value) invalidEmail,
+    required TResult Function(WrongPassword value) wrongPassword,
+    required TResult Function(WeakPassword value) weakPassword,
+    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(RequiresRecentLogin value) requiresRecentLogin,
+    required TResult Function(UserNotFound value) userNotFound,
+    required TResult Function(UserDisabled value) userDisabled,
+    required TResult Function(OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(InvalidEmailAndPasswordCombination value)
+        invalidEmailAndPasswordCombination,
+    required TResult Function(NotSignedIn value) notSignedIn,
+    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
+  }) {
+    return tooManyRequests(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Unknown value)? unknown,
+    TResult Function(InvalidEmail value)? invalidEmail,
+    TResult Function(WrongPassword value)? wrongPassword,
+    TResult Function(WeakPassword value)? weakPassword,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
+    TResult Function(UserNotFound value)? userNotFound,
+    TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(NotSignedIn value)? notSignedIn,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
+  }) {
+    return tooManyRequests?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Unknown value)? unknown,
+    TResult Function(InvalidEmail value)? invalidEmail,
+    TResult Function(WrongPassword value)? wrongPassword,
+    TResult Function(WeakPassword value)? weakPassword,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
+    TResult Function(UserNotFound value)? userNotFound,
+    TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(NotSignedIn value)? notSignedIn,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
+    required TResult orElse(),
+  }) {
+    if (tooManyRequests != null) {
+      return tooManyRequests(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TooManyRequests implements AuthFailure {
+  const factory TooManyRequests(String msg) = _$TooManyRequests;
+
+  String get msg;
+  @JsonKey(ignore: true)
+  $TooManyRequestsCopyWith<TooManyRequests> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2050,20 +2357,20 @@ class _$InvalidEmailAndPasswordCombination
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() serverError,
-    required TResult Function() invalidEmail,
-    required TResult Function() wrongPassword,
-    required TResult Function() weakPassword,
-    required TResult Function() emailAlreadyInUse,
-    required TResult Function() emailNotVerified,
-    required TResult Function() requiresRecentLogin,
-    required TResult Function() userNotFound,
-    required TResult Function() userDisabled,
-    required TResult Function() operationNotAllowed,
+    required TResult Function(String msg) unknown,
+    required TResult Function(String msg) invalidEmail,
+    required TResult Function(String msg) wrongPassword,
+    required TResult Function(String msg) weakPassword,
+    required TResult Function(String msg) emailAlreadyInUse,
+    required TResult Function(String msg) requiresRecentLogin,
+    required TResult Function(String msg) userNotFound,
+    required TResult Function(String msg) userDisabled,
+    required TResult Function(String msg) operationNotAllowed,
+    required TResult Function(String msg) tooManyRequests,
     required TResult Function() invalidEmailAndPasswordCombination,
-    required TResult Function() passwordsDoNotMatch,
     required TResult Function() notSignedIn,
-    required TResult Function() tooManyRequests,
+    required TResult Function() passwordsDoNotMatch,
+    required TResult Function() emailNotVerified,
   }) {
     return invalidEmailAndPasswordCombination();
   }
@@ -2071,20 +2378,20 @@ class _$InvalidEmailAndPasswordCombination
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
   }) {
     return invalidEmailAndPasswordCombination?.call();
   }
@@ -2092,20 +2399,20 @@ class _$InvalidEmailAndPasswordCombination
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
     required TResult orElse(),
   }) {
     if (invalidEmailAndPasswordCombination != null) {
@@ -2117,21 +2424,21 @@ class _$InvalidEmailAndPasswordCombination
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
+    required TResult Function(Unknown value) unknown,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(WrongPassword value) wrongPassword,
     required TResult Function(WeakPassword value) weakPassword,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
-    required TResult Function(EmailNotVerified value) emailNotVerified,
     required TResult Function(RequiresRecentLogin value) requiresRecentLogin,
     required TResult Function(UserNotFound value) userNotFound,
     required TResult Function(UserDisabled value) userDisabled,
     required TResult Function(OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(TooManyRequests value) tooManyRequests,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
-    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
     required TResult Function(NotSignedIn value) notSignedIn,
-    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
   }) {
     return invalidEmailAndPasswordCombination(this);
   }
@@ -2139,21 +2446,21 @@ class _$InvalidEmailAndPasswordCombination
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
   }) {
     return invalidEmailAndPasswordCombination?.call(this);
   }
@@ -2161,21 +2468,21 @@ class _$InvalidEmailAndPasswordCombination
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
     required TResult orElse(),
   }) {
     if (invalidEmailAndPasswordCombination != null) {
@@ -2188,6 +2495,185 @@ class _$InvalidEmailAndPasswordCombination
 abstract class InvalidEmailAndPasswordCombination implements AuthFailure {
   const factory InvalidEmailAndPasswordCombination() =
       _$InvalidEmailAndPasswordCombination;
+}
+
+/// @nodoc
+abstract class $NotSignedInCopyWith<$Res> {
+  factory $NotSignedInCopyWith(
+          NotSignedIn value, $Res Function(NotSignedIn) then) =
+      _$NotSignedInCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$NotSignedInCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+    implements $NotSignedInCopyWith<$Res> {
+  _$NotSignedInCopyWithImpl(
+      NotSignedIn _value, $Res Function(NotSignedIn) _then)
+      : super(_value, (v) => _then(v as NotSignedIn));
+
+  @override
+  NotSignedIn get _value => super._value as NotSignedIn;
+}
+
+/// @nodoc
+
+class _$NotSignedIn implements NotSignedIn {
+  const _$NotSignedIn();
+
+  @override
+  String toString() {
+    return 'AuthFailure.notSignedIn()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is NotSignedIn);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String msg) unknown,
+    required TResult Function(String msg) invalidEmail,
+    required TResult Function(String msg) wrongPassword,
+    required TResult Function(String msg) weakPassword,
+    required TResult Function(String msg) emailAlreadyInUse,
+    required TResult Function(String msg) requiresRecentLogin,
+    required TResult Function(String msg) userNotFound,
+    required TResult Function(String msg) userDisabled,
+    required TResult Function(String msg) operationNotAllowed,
+    required TResult Function(String msg) tooManyRequests,
+    required TResult Function() invalidEmailAndPasswordCombination,
+    required TResult Function() notSignedIn,
+    required TResult Function() passwordsDoNotMatch,
+    required TResult Function() emailNotVerified,
+  }) {
+    return notSignedIn();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? notSignedIn,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
+  }) {
+    return notSignedIn?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? notSignedIn,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
+    required TResult orElse(),
+  }) {
+    if (notSignedIn != null) {
+      return notSignedIn();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Unknown value) unknown,
+    required TResult Function(InvalidEmail value) invalidEmail,
+    required TResult Function(WrongPassword value) wrongPassword,
+    required TResult Function(WeakPassword value) weakPassword,
+    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(RequiresRecentLogin value) requiresRecentLogin,
+    required TResult Function(UserNotFound value) userNotFound,
+    required TResult Function(UserDisabled value) userDisabled,
+    required TResult Function(OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(InvalidEmailAndPasswordCombination value)
+        invalidEmailAndPasswordCombination,
+    required TResult Function(NotSignedIn value) notSignedIn,
+    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
+  }) {
+    return notSignedIn(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Unknown value)? unknown,
+    TResult Function(InvalidEmail value)? invalidEmail,
+    TResult Function(WrongPassword value)? wrongPassword,
+    TResult Function(WeakPassword value)? weakPassword,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
+    TResult Function(UserNotFound value)? userNotFound,
+    TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(NotSignedIn value)? notSignedIn,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
+  }) {
+    return notSignedIn?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Unknown value)? unknown,
+    TResult Function(InvalidEmail value)? invalidEmail,
+    TResult Function(WrongPassword value)? wrongPassword,
+    TResult Function(WeakPassword value)? weakPassword,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
+    TResult Function(UserNotFound value)? userNotFound,
+    TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(NotSignedIn value)? notSignedIn,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
+    required TResult orElse(),
+  }) {
+    if (notSignedIn != null) {
+      return notSignedIn(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NotSignedIn implements AuthFailure {
+  const factory NotSignedIn() = _$NotSignedIn;
 }
 
 /// @nodoc
@@ -2231,20 +2717,20 @@ class _$PasswordsDoNotMatch implements PasswordsDoNotMatch {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() serverError,
-    required TResult Function() invalidEmail,
-    required TResult Function() wrongPassword,
-    required TResult Function() weakPassword,
-    required TResult Function() emailAlreadyInUse,
-    required TResult Function() emailNotVerified,
-    required TResult Function() requiresRecentLogin,
-    required TResult Function() userNotFound,
-    required TResult Function() userDisabled,
-    required TResult Function() operationNotAllowed,
+    required TResult Function(String msg) unknown,
+    required TResult Function(String msg) invalidEmail,
+    required TResult Function(String msg) wrongPassword,
+    required TResult Function(String msg) weakPassword,
+    required TResult Function(String msg) emailAlreadyInUse,
+    required TResult Function(String msg) requiresRecentLogin,
+    required TResult Function(String msg) userNotFound,
+    required TResult Function(String msg) userDisabled,
+    required TResult Function(String msg) operationNotAllowed,
+    required TResult Function(String msg) tooManyRequests,
     required TResult Function() invalidEmailAndPasswordCombination,
-    required TResult Function() passwordsDoNotMatch,
     required TResult Function() notSignedIn,
-    required TResult Function() tooManyRequests,
+    required TResult Function() passwordsDoNotMatch,
+    required TResult Function() emailNotVerified,
   }) {
     return passwordsDoNotMatch();
   }
@@ -2252,20 +2738,20 @@ class _$PasswordsDoNotMatch implements PasswordsDoNotMatch {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
   }) {
     return passwordsDoNotMatch?.call();
   }
@@ -2273,20 +2759,20 @@ class _$PasswordsDoNotMatch implements PasswordsDoNotMatch {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
     required TResult orElse(),
   }) {
     if (passwordsDoNotMatch != null) {
@@ -2298,21 +2784,21 @@ class _$PasswordsDoNotMatch implements PasswordsDoNotMatch {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
+    required TResult Function(Unknown value) unknown,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(WrongPassword value) wrongPassword,
     required TResult Function(WeakPassword value) weakPassword,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
-    required TResult Function(EmailNotVerified value) emailNotVerified,
     required TResult Function(RequiresRecentLogin value) requiresRecentLogin,
     required TResult Function(UserNotFound value) userNotFound,
     required TResult Function(UserDisabled value) userDisabled,
     required TResult Function(OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(TooManyRequests value) tooManyRequests,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
-    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
     required TResult Function(NotSignedIn value) notSignedIn,
-    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
   }) {
     return passwordsDoNotMatch(this);
   }
@@ -2320,21 +2806,21 @@ class _$PasswordsDoNotMatch implements PasswordsDoNotMatch {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
   }) {
     return passwordsDoNotMatch?.call(this);
   }
@@ -2342,21 +2828,21 @@ class _$PasswordsDoNotMatch implements PasswordsDoNotMatch {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
     required TResult orElse(),
   }) {
     if (passwordsDoNotMatch != null) {
@@ -2371,217 +2857,38 @@ abstract class PasswordsDoNotMatch implements AuthFailure {
 }
 
 /// @nodoc
-abstract class $NotSignedInCopyWith<$Res> {
-  factory $NotSignedInCopyWith(
-          NotSignedIn value, $Res Function(NotSignedIn) then) =
-      _$NotSignedInCopyWithImpl<$Res>;
+abstract class $EmailNotVerifiedCopyWith<$Res> {
+  factory $EmailNotVerifiedCopyWith(
+          EmailNotVerified value, $Res Function(EmailNotVerified) then) =
+      _$EmailNotVerifiedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$NotSignedInCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
-    implements $NotSignedInCopyWith<$Res> {
-  _$NotSignedInCopyWithImpl(
-      NotSignedIn _value, $Res Function(NotSignedIn) _then)
-      : super(_value, (v) => _then(v as NotSignedIn));
-
-  @override
-  NotSignedIn get _value => super._value as NotSignedIn;
-}
-
-/// @nodoc
-
-class _$NotSignedIn implements NotSignedIn {
-  const _$NotSignedIn();
-
-  @override
-  String toString() {
-    return 'AuthFailure.notSignedIn()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is NotSignedIn);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() serverError,
-    required TResult Function() invalidEmail,
-    required TResult Function() wrongPassword,
-    required TResult Function() weakPassword,
-    required TResult Function() emailAlreadyInUse,
-    required TResult Function() emailNotVerified,
-    required TResult Function() requiresRecentLogin,
-    required TResult Function() userNotFound,
-    required TResult Function() userDisabled,
-    required TResult Function() operationNotAllowed,
-    required TResult Function() invalidEmailAndPasswordCombination,
-    required TResult Function() passwordsDoNotMatch,
-    required TResult Function() notSignedIn,
-    required TResult Function() tooManyRequests,
-  }) {
-    return notSignedIn();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
-    TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
-  }) {
-    return notSignedIn?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
-    TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
-    required TResult orElse(),
-  }) {
-    if (notSignedIn != null) {
-      return notSignedIn();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
-    required TResult Function(InvalidEmail value) invalidEmail,
-    required TResult Function(WrongPassword value) wrongPassword,
-    required TResult Function(WeakPassword value) weakPassword,
-    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
-    required TResult Function(EmailNotVerified value) emailNotVerified,
-    required TResult Function(RequiresRecentLogin value) requiresRecentLogin,
-    required TResult Function(UserNotFound value) userNotFound,
-    required TResult Function(UserDisabled value) userDisabled,
-    required TResult Function(OperationNotAllowed value) operationNotAllowed,
-    required TResult Function(InvalidEmailAndPasswordCombination value)
-        invalidEmailAndPasswordCombination,
-    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
-    required TResult Function(NotSignedIn value) notSignedIn,
-    required TResult Function(TooManyRequests value) tooManyRequests,
-  }) {
-    return notSignedIn(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
-    TResult Function(InvalidEmail value)? invalidEmail,
-    TResult Function(WrongPassword value)? wrongPassword,
-    TResult Function(WeakPassword value)? weakPassword,
-    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
-    TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
-    TResult Function(UserNotFound value)? userNotFound,
-    TResult Function(UserDisabled value)? userDisabled,
-    TResult Function(OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(InvalidEmailAndPasswordCombination value)?
-        invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
-    TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
-  }) {
-    return notSignedIn?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
-    TResult Function(InvalidEmail value)? invalidEmail,
-    TResult Function(WrongPassword value)? wrongPassword,
-    TResult Function(WeakPassword value)? weakPassword,
-    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
-    TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
-    TResult Function(UserNotFound value)? userNotFound,
-    TResult Function(UserDisabled value)? userDisabled,
-    TResult Function(OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(InvalidEmailAndPasswordCombination value)?
-        invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
-    TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
-    required TResult orElse(),
-  }) {
-    if (notSignedIn != null) {
-      return notSignedIn(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class NotSignedIn implements AuthFailure {
-  const factory NotSignedIn() = _$NotSignedIn;
-}
-
-/// @nodoc
-abstract class $TooManyRequestsCopyWith<$Res> {
-  factory $TooManyRequestsCopyWith(
-          TooManyRequests value, $Res Function(TooManyRequests) then) =
-      _$TooManyRequestsCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$TooManyRequestsCopyWithImpl<$Res>
+class _$EmailNotVerifiedCopyWithImpl<$Res>
     extends _$AuthFailureCopyWithImpl<$Res>
-    implements $TooManyRequestsCopyWith<$Res> {
-  _$TooManyRequestsCopyWithImpl(
-      TooManyRequests _value, $Res Function(TooManyRequests) _then)
-      : super(_value, (v) => _then(v as TooManyRequests));
+    implements $EmailNotVerifiedCopyWith<$Res> {
+  _$EmailNotVerifiedCopyWithImpl(
+      EmailNotVerified _value, $Res Function(EmailNotVerified) _then)
+      : super(_value, (v) => _then(v as EmailNotVerified));
 
   @override
-  TooManyRequests get _value => super._value as TooManyRequests;
+  EmailNotVerified get _value => super._value as EmailNotVerified;
 }
 
 /// @nodoc
 
-class _$TooManyRequests implements TooManyRequests {
-  const _$TooManyRequests();
+class _$EmailNotVerified implements EmailNotVerified {
+  const _$EmailNotVerified();
 
   @override
   String toString() {
-    return 'AuthFailure.tooManyRequests()';
+    return 'AuthFailure.emailNotVerified()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is TooManyRequests);
+        (other.runtimeType == runtimeType && other is EmailNotVerified);
   }
 
   @override
@@ -2590,66 +2897,66 @@ class _$TooManyRequests implements TooManyRequests {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() serverError,
-    required TResult Function() invalidEmail,
-    required TResult Function() wrongPassword,
-    required TResult Function() weakPassword,
-    required TResult Function() emailAlreadyInUse,
-    required TResult Function() emailNotVerified,
-    required TResult Function() requiresRecentLogin,
-    required TResult Function() userNotFound,
-    required TResult Function() userDisabled,
-    required TResult Function() operationNotAllowed,
+    required TResult Function(String msg) unknown,
+    required TResult Function(String msg) invalidEmail,
+    required TResult Function(String msg) wrongPassword,
+    required TResult Function(String msg) weakPassword,
+    required TResult Function(String msg) emailAlreadyInUse,
+    required TResult Function(String msg) requiresRecentLogin,
+    required TResult Function(String msg) userNotFound,
+    required TResult Function(String msg) userDisabled,
+    required TResult Function(String msg) operationNotAllowed,
+    required TResult Function(String msg) tooManyRequests,
     required TResult Function() invalidEmailAndPasswordCombination,
-    required TResult Function() passwordsDoNotMatch,
     required TResult Function() notSignedIn,
-    required TResult Function() tooManyRequests,
+    required TResult Function() passwordsDoNotMatch,
+    required TResult Function() emailNotVerified,
   }) {
-    return tooManyRequests();
+    return emailNotVerified();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
   }) {
-    return tooManyRequests?.call();
+    return emailNotVerified?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? invalidEmail,
-    TResult Function()? wrongPassword,
-    TResult Function()? weakPassword,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? emailNotVerified,
-    TResult Function()? requiresRecentLogin,
-    TResult Function()? userNotFound,
-    TResult Function()? userDisabled,
-    TResult Function()? operationNotAllowed,
+    TResult Function(String msg)? unknown,
+    TResult Function(String msg)? invalidEmail,
+    TResult Function(String msg)? wrongPassword,
+    TResult Function(String msg)? weakPassword,
+    TResult Function(String msg)? emailAlreadyInUse,
+    TResult Function(String msg)? requiresRecentLogin,
+    TResult Function(String msg)? userNotFound,
+    TResult Function(String msg)? userDisabled,
+    TResult Function(String msg)? operationNotAllowed,
+    TResult Function(String msg)? tooManyRequests,
     TResult Function()? invalidEmailAndPasswordCombination,
-    TResult Function()? passwordsDoNotMatch,
     TResult Function()? notSignedIn,
-    TResult Function()? tooManyRequests,
+    TResult Function()? passwordsDoNotMatch,
+    TResult Function()? emailNotVerified,
     required TResult orElse(),
   }) {
-    if (tooManyRequests != null) {
-      return tooManyRequests();
+    if (emailNotVerified != null) {
+      return emailNotVerified();
     }
     return orElse();
   }
@@ -2657,74 +2964,74 @@ class _$TooManyRequests implements TooManyRequests {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
+    required TResult Function(Unknown value) unknown,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(WrongPassword value) wrongPassword,
     required TResult Function(WeakPassword value) weakPassword,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
-    required TResult Function(EmailNotVerified value) emailNotVerified,
     required TResult Function(RequiresRecentLogin value) requiresRecentLogin,
     required TResult Function(UserNotFound value) userNotFound,
     required TResult Function(UserDisabled value) userDisabled,
     required TResult Function(OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(TooManyRequests value) tooManyRequests,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
-    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
     required TResult Function(NotSignedIn value) notSignedIn,
-    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(PasswordsDoNotMatch value) passwordsDoNotMatch,
+    required TResult Function(EmailNotVerified value) emailNotVerified,
   }) {
-    return tooManyRequests(this);
+    return emailNotVerified(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
   }) {
-    return tooManyRequests?.call(this);
+    return emailNotVerified?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
+    TResult Function(Unknown value)? unknown,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(WrongPassword value)? wrongPassword,
     TResult Function(WeakPassword value)? weakPassword,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
-    TResult Function(EmailNotVerified value)? emailNotVerified,
     TResult Function(RequiresRecentLogin value)? requiresRecentLogin,
     TResult Function(UserNotFound value)? userNotFound,
     TResult Function(UserDisabled value)? userDisabled,
     TResult Function(OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(TooManyRequests value)? tooManyRequests,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
-    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
     TResult Function(NotSignedIn value)? notSignedIn,
-    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(PasswordsDoNotMatch value)? passwordsDoNotMatch,
+    TResult Function(EmailNotVerified value)? emailNotVerified,
     required TResult orElse(),
   }) {
-    if (tooManyRequests != null) {
-      return tooManyRequests(this);
+    if (emailNotVerified != null) {
+      return emailNotVerified(this);
     }
     return orElse();
   }
 }
 
-abstract class TooManyRequests implements AuthFailure {
-  const factory TooManyRequests() = _$TooManyRequests;
+abstract class EmailNotVerified implements AuthFailure {
+  const factory EmailNotVerified() = _$EmailNotVerified;
 }

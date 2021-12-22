@@ -53,7 +53,7 @@ class FirebaseAccountRepo implements IAccountRepo {
           .map(
         (snapshot) {
           if (!snapshot.exists) {
-            return left<CrudFailure, User>(const CrudFailure.doesNotExist());
+            return left<CrudFailure, User>(const CrudFailure.unknown(""));
           } else {
             return right<CrudFailure, User>(snapshot.data()!);
           }
@@ -69,11 +69,9 @@ class FirebaseAccountRepo implements IAccountRepo {
     ).onErrorReturnWith(
       (e, stackTrace) {
         if (e is FirebaseException) {
-          return left(
-            CrudFailure.firebase(e.message ?? "Unknown error."),
-          );
+          return left(e.toCrudFailure());
         } else {
-          return left(CrudFailure.unknown(e.toString()));
+          throw (e);
         }
       },
     );
@@ -87,7 +85,7 @@ class FirebaseAccountRepo implements IAccountRepo {
       return right(unit);
     } on FirebaseException catch (e) {
       logger.d(e.message);
-      return left(CrudFailure.firebase(e.message ?? "Unknown error."));
+      return left(e.toCrudFailure());
     }
   }
 
@@ -110,8 +108,7 @@ class FirebaseAccountRepo implements IAccountRepo {
 
       return const Right(unit);
     } on FirebaseException catch (e) {
-      logger.d(e.message);
-      return left(CrudFailure.firebase(e.message ?? "Unknown error."));
+      return left(e.toCrudFailure());
     }
   }
 }

@@ -99,12 +99,11 @@ class SignInBox extends StatelessWidget {
               EmailTextField(
                 textInputAction: TextInputAction.next,
                 onChanged: context.read<AuthEditorCubit>().textField1Changed,
-                shownAuthFailures: const [
-                  ServerError(),
+                shownAuthFailure: const [
                   InvalidEmailAndPasswordCombination(),
-                  InvalidEmail(),
+                  InvalidEmail(""),
                   EmailNotVerified(),
-                  UserDisabled(),
+                  UserDisabled(""),
                 ],
               ),
               PasswordTextField(
@@ -113,9 +112,8 @@ class SignInBox extends StatelessWidget {
                 onFieldSubmitted: (_) =>
                     context.read<AuthEditorCubit>().signInPressed(),
                 shownAuthFailures: const [
-                  ServerError(),
                   InvalidEmailAndPasswordCombination(),
-                  UserDisabled(),
+                  UserDisabled(""),
                 ],
               ),
               SubmitButton<AuthEditorCubit>(

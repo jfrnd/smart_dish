@@ -39,18 +39,18 @@ class CreateAccountDialog extends StatelessWidget {
               EmailTextField(
                 textInputAction: TextInputAction.next,
                 onChanged: context.read<AuthEditorCubit>().textField1Changed,
-                shownAuthFailures: const [
-                  OperationNotAllowed(),
-                  EmailAlreadyInUse(),
-                  InvalidEmail(),
+                shownAuthFailure: const [
+                  OperationNotAllowed(""),
+                  EmailAlreadyInUse(""),
+                  InvalidEmail(""),
                 ],
               ),
               PasswordTextField(
                 textInputAction: TextInputAction.next,
                 onChanged: context.read<AuthEditorCubit>().textField2Changed,
                 shownAuthFailures: const [
-                  OperationNotAllowed(),
-                  WeakPassword(),
+                  OperationNotAllowed(""),
+                  WeakPassword(""),
                   PasswordsDoNotMatch(),
                 ],
               ),
@@ -59,8 +59,8 @@ class CreateAccountDialog extends StatelessWidget {
                 onChanged: context.read<AuthEditorCubit>().textField3Changed,
                 hintText: "Confirm Password",
                 shownAuthFailures: const [
-                  OperationNotAllowed(),
-                  WeakPassword(),
+                  OperationNotAllowed(""),
+                  WeakPassword(""),
                   PasswordsDoNotMatch(),
                 ],
                 onFieldSubmitted: (_) =>

@@ -75,7 +75,7 @@ class FirebaseDishRepo implements IDishRepo {
           .toFirestore());
       return right(unit);
     } on FirebaseException catch (e) {
-      return left(CrudFailure.firebase(e.message ?? "Unknown error."));
+      return left(e.toCrudFailure());
     }
   }
 
@@ -108,7 +108,7 @@ class FirebaseDishRepo implements IDishRepo {
           .update(dish.copyWith(imageUrl: imageUrl).toFirestore());
       return right(unit);
     } on FirebaseException catch (e) {
-      return left(CrudFailure.firebase(e.message ?? "Unknown error."));
+      return left(e.toCrudFailure());
     }
   }
 
@@ -118,7 +118,7 @@ class FirebaseDishRepo implements IDishRepo {
       await _firestore.collection(DISHES).doc(dish.id).delete();
       return right(unit);
     } on FirebaseException catch (e) {
-      return left(CrudFailure.firebase(e.message ?? "Unknown error."));
+      return left(e.toCrudFailure());
     }
   }
 
@@ -154,9 +154,7 @@ class FirebaseDishRepo implements IDishRepo {
         .onErrorReturnWith(
       (e, stackTrace) {
         if (e is FirebaseException) {
-          return left<CrudFailure, List<Dish>>(
-            CrudFailure.firebase((e).message ?? "Unknown error."),
-          );
+          return left(e.toCrudFailure());
         } else {
           throw (e);
         }

@@ -62,10 +62,11 @@ class FirebaseFriendsRepo implements IUserFriendsRepo {
           )
           .onErrorReturnWith(
         (e, stackTrace) {
-          return left<CrudFailure, List<User>>(
-            CrudFailure.firebase(
-                (e as FirebaseException).message ?? "Unknown error."),
-          );
+          if (e is FirebaseException) {
+            return left(e.toCrudFailure());
+          } else {
+            throw (e);
+          }
         },
       );
     } else {
@@ -94,10 +95,11 @@ class FirebaseFriendsRepo implements IUserFriendsRepo {
         )
         .onErrorReturnWith(
       (e, stackTrace) {
-        return left<CrudFailure, List<String>>(
-          CrudFailure.firebase(
-              (e as FirebaseException).message ?? "Unknown error."),
-        );
+        if (e is FirebaseException) {
+          return left(e.toCrudFailure());
+        } else {
+          throw (e);
+        }
       },
     );
   }

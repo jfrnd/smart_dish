@@ -18,7 +18,7 @@ class FriendRequestCubit extends WatcherCubit<List<FriendRequest>> {
           await _repo.rejectFriendRequest(requestId).then(
                 (failureOrUnit) => failureOrUnit.fold(
                   (failure) {
-                    if (failure != const CrudFailure.doesNotExist()) {
+                    if (failure is! NotFound) {
                       setRequestToFailureState(state, requestId, failure);
                     }
                   },
@@ -40,7 +40,7 @@ class FriendRequestCubit extends WatcherCubit<List<FriendRequest>> {
           await _repo.confirmFriendRequest(requestId).then(
                 (failureOrUnit) => failureOrUnit.fold(
                   (failure) {
-                    if (failure != const CrudFailure.doesNotExist()) {
+                    if (failure is! NotFound) {
                       setRequestToFailureState(state, requestId, failure);
                     }
                   },

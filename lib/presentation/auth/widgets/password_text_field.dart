@@ -5,7 +5,6 @@ import 'package:smart_dish/auth/auth_editor_cubit.dart';
 import 'package:smart_dish/auth/auth_failure.dart';
 import 'package:smart_dish/domain/core/failure.dart';
 
-
 class PasswordTextField extends StatelessWidget {
   final TextInputAction textInputAction;
   final void Function(String)? onFieldSubmitted;
@@ -52,12 +51,12 @@ class PasswordTextField extends StatelessWidget {
             validator: (value) => value == null || value.isEmpty
                 ? "Cannot be empty"
                 : context.read<AuthEditorCubit>().state.failureOrSuccess?.fold(
-                      (authFailure) => (const [
-                                    ServerError(),
-                                    TooManyRequests()
-                                  ] +
-                                  shownAuthFailures)
-                              .contains(authFailure)
+                      (authFailure) => authFailure is Unknown ||
+                              authFailure is TooManyRequests ||
+                              shownAuthFailures.any((failure) {
+                                return authFailure.runtimeType ==
+                                    failure.runtimeType;
+                              })
                           ? authFailure.toMessage()
                           : null,
                       (success) => null,

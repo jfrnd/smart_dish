@@ -26,8 +26,8 @@ class UpdatePasswordDialog extends StatelessWidget {
               textInputAction: TextInputAction.next,
               onChanged: context.read<AuthEditorCubit>().textField1Changed,
               shownAuthFailures: const [
-                WrongPassword(),
-                RequiresRecentLogin(),
+                WrongPassword(""),
+                RequiresRecentLogin(""),
               ],
             ),
             PasswordTextField(
@@ -35,9 +35,9 @@ class UpdatePasswordDialog extends StatelessWidget {
               textInputAction: TextInputAction.next,
               onChanged: context.read<AuthEditorCubit>().textField2Changed,
               shownAuthFailures: const [
-                RequiresRecentLogin(),
+                RequiresRecentLogin(""),
                 PasswordsDoNotMatch(),
-                WeakPassword(),
+                WeakPassword(""),
               ],
             ),
             PasswordTextField(
@@ -45,9 +45,9 @@ class UpdatePasswordDialog extends StatelessWidget {
               textInputAction: TextInputAction.done,
               onChanged: context.read<AuthEditorCubit>().textField3Changed,
               shownAuthFailures: const [
-                RequiresRecentLogin(),
+                RequiresRecentLogin(""),
                 PasswordsDoNotMatch(),
-                WeakPassword(),
+                WeakPassword(""),
               ],
               onFieldSubmitted: (_) =>
                   context.read<AuthEditorCubit>().changePasswordPressed(),

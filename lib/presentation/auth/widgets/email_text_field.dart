@@ -9,14 +9,14 @@ class EmailTextField extends StatelessWidget {
   final TextInputAction textInputAction;
   final void Function(String)? onFieldSubmitted;
   final void Function(String) onChanged;
-  final List<AuthFailure> shownAuthFailures;
+  final List<AuthFailure> shownAuthFailure;
   final String hintText;
 
   const EmailTextField({
     Key? key,
     required this.textInputAction,
     this.onFieldSubmitted,
-    required this.shownAuthFailures,
+    required this.shownAuthFailure,
     this.hintText = "Email",
     required this.onChanged,
   }) : super(key: key);
@@ -50,12 +50,12 @@ class EmailTextField extends StatelessWidget {
             validator: (value) => value == null || value.isEmpty
                 ? "Cannot be empty"
                 : context.read<AuthEditorCubit>().state.failureOrSuccess?.fold(
-                      (authFailure) => (const [
-                                    ServerError(),
-                                    TooManyRequests()
-                                  ] +
-                                  shownAuthFailures)
-                              .contains(authFailure)
+                      (authFailure) => authFailure is Unknown ||
+                              authFailure is TooManyRequests ||
+                              shownAuthFailure.any((failure) {
+                                return authFailure.runtimeType ==
+                                    failure.runtimeType;
+                              })
                           ? authFailure.toMessage()
                           : null,
                       (success) => null,

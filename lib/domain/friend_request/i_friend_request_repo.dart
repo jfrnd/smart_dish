@@ -11,7 +11,6 @@ import 'package:smart_dish/domain/core/crud_failure.dart';
 import 'package:smart_dish/domain/friend_request/friend_request.dart';
 import 'package:smart_dish/domain/user/user.dart';
 import 'package:smart_dish/domain/watcher/i_watcher_repo.dart';
-import 'package:smart_dish/utils/logger.dart';
 
 const FRIEND_REQUESTS = "friendRequests";
 const FRIENDSHIPS = "friendships";
@@ -99,10 +98,11 @@ class FirebaseFriendRequestRepo implements IFriendRequestRepo {
       });
     }).onErrorReturnWith(
       (e, stackTrace) {
-        return left<CrudFailure, List<FriendRequest>>(
-          CrudFailure.firebase(
-              (e as FirebaseException).message ?? "Unknown error."),
-        );
+        if (e is FirebaseException) {
+          return left(e.toCrudFailure());
+        } else {
+          throw (e);
+        }
       },
     );
   }
@@ -123,10 +123,10 @@ class FirebaseFriendRequestRepo implements IFriendRequestRepo {
             .then((snapshot) =>
                 right(snapshot.docs.map((doc) => doc.data()).toList()));
       } on FirebaseException catch (e) {
-        return left(CrudFailure.firebase(e.message ?? "Unknown error."));
+        return left(e.toCrudFailure());
       }
     } else {
-      return left(const CrudFailure.doesNotExist());
+      return left(const CrudFailure.notFound("Nothing found."));
     }
   }
 
@@ -137,7 +137,7 @@ class FirebaseFriendRequestRepo implements IFriendRequestRepo {
       await callable({"userId": user.id});
       return right(unit);
     } on FirebaseException catch (e) {
-      return left(CrudFailure.firebase(e.message ?? "Unknown error."));
+      return left(e.toCrudFailure());
     }
   }
 
@@ -149,12 +149,7 @@ class FirebaseFriendRequestRepo implements IFriendRequestRepo {
       await callable({"requestId": requestId});
       return right(unit);
     } on FirebaseException catch (e) {
-      logger.d(e.code);
-      if (e.code == "not-found") {
-        return left(const CrudFailure.doesNotExist());
-      } else {
-        return left(CrudFailure.firebase(e.message ?? "Unknown error."));
-      }
+      return left(e.toCrudFailure());
     }
   }
 
@@ -162,16 +157,11 @@ class FirebaseFriendRequestRepo implements IFriendRequestRepo {
   Future<Either<CrudFailure, Unit>> rejectFriendRequest(
       String requestId) async {
     try {
-      logger.d('123');
       final callable = _functions.httpsCallable("friendRequest-reject");
       await callable({"requestId": requestId});
       return right(unit);
     } on FirebaseException catch (e) {
-      if (e.code == "not-found") {
-        return left(const CrudFailure.doesNotExist());
-      } else {
-        return left(CrudFailure.firebase(e.message ?? "Unknown error."));
-      }
+      return left(e.toCrudFailure());
     }
   }
 
@@ -182,7 +172,7 @@ class FirebaseFriendRequestRepo implements IFriendRequestRepo {
       await callable({"userId": userId});
       return right(unit);
     } on FirebaseException catch (e) {
-      return left(CrudFailure.firebase(e.message ?? "Unknown error."));
+      return left(e.toCrudFailure());
     }
   }
 }

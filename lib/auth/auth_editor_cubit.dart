@@ -45,7 +45,8 @@ class AuthEditorCubit extends EditorCubit {
       emit(
         state.copyWith(
           isSubmitting: false,
-          failureOrSuccess: left(const AuthFailure.wrongPassword()),
+          failureOrSuccess:
+              left(const AuthFailure.wrongPassword("Wrong password.")),
         ),
       );
     }
@@ -131,7 +132,8 @@ class AuthEditorCubit extends EditorCubit {
     } else if (oldPassword.isEmpty) {
       emit(
         state.copyWith(
-          failureOrSuccess: left(const AuthFailure.wrongPassword()),
+          failureOrSuccess:
+              left(const AuthFailure.wrongPassword("Wrong password.")),
         ),
       );
     }
@@ -196,7 +198,8 @@ class AuthEditorCubit extends EditorCubit {
           );
     } else {
       emit(state.copyWith(
-          failureOrSuccess: const Left(AuthFailure.invalidEmail())));
+          failureOrSuccess:
+              const Left(AuthFailure.invalidEmail("Invalid Email."))));
     }
   }
 

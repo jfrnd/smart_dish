@@ -9,29 +9,41 @@ extension FailureX on Failure {
   String toMessage() {
     if (this is CrudFailure) {
       return (this as CrudFailure).map(
-        firebase: (failure) => failure.info,
-        doesNotExist: (failure) => "Does not exist.",
-        stillLoading: (failure) => "Still loading.",
-        unknown: (failure) => failure.info,
-      );
+          stillLoading: (f) => "Still loading",
+          unknown: (f) => f.msg,
+          cancelled: (f) => f.msg,
+          aborted: (f) => f.msg,
+          dataLoss: (f) => f.msg,
+          alreadyExists: (f) => f.msg,
+          deadlineExceeded: (f) => f.msg,
+          failedPrecondition: (f) => f.msg,
+          internal: (f) => f.msg,
+          invalidArgument: (f) => f.msg,
+          notFound: (f) => f.msg,
+          ok: (f) => f.msg,
+          outOfRange: (f) => f.msg,
+          permissionDenied: (f) => f.msg,
+          resourceExhausted: (f) => f.msg,
+          unauthenticated: (f) => f.msg,
+          unavailable: (f) => f.msg,
+          unimplemented: (f) => f.msg);
     } else if (this is AuthFailure) {
       return (this as AuthFailure).map(
-        weakPassword: (_) => "Please choose a stronger password.",
-        operationNotAllowed: (_) => "This Sign-in-Method is not activated.",
-        userDisabled: (_) => "Account was disabled. Please contact support.",
-        requiresRecentLogin: (_) =>
-            "This is a security-sensitive operation. Please log in again.",
-        userNotFound: (_) => "User not found.",
-        invalidEmail: (_) => "Email address is invalid.",
-        wrongPassword: (_) => "Wrong Password.",
-        emailNotVerified: (_) => "Email not verified yet.",
-        serverError: (_) => "Unexpected server error occured.",
-        emailAlreadyInUse: (_) => "Email address already in use.",
+        unknown: (f) => f.msg,
+        weakPassword: (f) => f.msg,
+        operationNotAllowed: (f) => f.msg,
+        userDisabled: (f) => f.msg,
+        requiresRecentLogin: (f) => f.msg,
+        userNotFound: (f) => f.msg,
+        invalidEmail: (f) => f.msg,
+        tooManyRequests: (f) => f.msg,
+        wrongPassword: (f) => f.msg,
+        emailAlreadyInUse: (f) => f.msg,
         invalidEmailAndPasswordCombination: (_) =>
             "Email and/or password are wrong.",
         passwordsDoNotMatch: (_) => "Passwords do not match.",
-        notSignedIn: (_) => "Not signed in.",
-        tooManyRequests: (_) => "Too many requests.",
+        notSignedIn: (_) => "User not signed in.",
+        emailNotVerified: (_) => "Email not verified.",
       );
     } else {
       return "Failure.";

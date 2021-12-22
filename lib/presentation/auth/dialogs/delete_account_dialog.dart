@@ -37,8 +37,8 @@ class DeleteAccountDialog extends StatelessWidget {
                   onChanged: context.read<AuthEditorCubit>().textField1Changed,
                   textInputAction: TextInputAction.done,
                   shownAuthFailures: const [
-                    WrongPassword(),
-                    RequiresRecentLogin(),
+                    WrongPassword(""),
+                    RequiresRecentLogin(""),
                   ],
                   onFieldSubmitted: (_) =>
                       context.read<AuthEditorCubit>().deletePressed(),

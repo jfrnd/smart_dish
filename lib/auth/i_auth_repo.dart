@@ -6,7 +6,6 @@ import 'package:firebase_auth/firebase_auth.dart' as fba;
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:injectable/injectable.dart';
 import 'package:smart_dish/domain/user/user.dart';
-import 'package:smart_dish/utils/logger.dart';
 
 import 'auth_failure.dart';
 
@@ -89,20 +88,7 @@ class FirebaseAuthRepo implements IAuthRepo {
 
       return right(unit);
     } on fba.FirebaseAuthException catch (e) {
-      if (e.code == 'email-already-in-use') {
-        return left(const AuthFailure.emailAlreadyInUse());
-      } else if (e.code == 'invalid-email') {
-        return left(const AuthFailure.invalidEmail());
-      } else if (e.code == 'weak-password') {
-        return left(const AuthFailure.weakPassword());
-      } else if (e.code == 'operation-not-allowed') {
-        return left(const AuthFailure.operationNotAllowed());
-      } else if (e.code == 'too-many-requests') {
-        return left(const AuthFailure.tooManyRequests());
-      } else {
-        logger.e('Unexpected server error with ${e.code}');
-        return left(const AuthFailure.serverError());
-      }
+      return left(e.toCrudFailure());
     }
   }
 
@@ -128,15 +114,8 @@ class FirebaseAuthRepo implements IAuthRepo {
     } on fba.FirebaseAuthException catch (e) {
       if (e.code == 'wrong-password' || e.code == 'user-not-found') {
         return left(const AuthFailure.invalidEmailAndPasswordCombination());
-      } else if (e.code == 'user-disabled') {
-        return left(const AuthFailure.userDisabled());
-      } else if (e.code == 'invalid-email') {
-        return left(const AuthFailure.invalidEmail());
-      } else if (e.code == 'too-many-requests') {
-        return left(const AuthFailure.tooManyRequests());
       } else {
-        logger.e('Unexpected server error with ${e.code}');
-        return left(const AuthFailure.serverError());
+        return left(e.toCrudFailure());
       }
     }
   }
@@ -150,16 +129,7 @@ class FirebaseAuthRepo implements IAuthRepo {
       );
       return right(unit);
     } on fba.FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        return left(const AuthFailure.userNotFound());
-      } else if (e.code == 'invalid-email') {
-        return left(const AuthFailure.invalidEmail());
-      } else if (e.code == 'too-many-requests') {
-        return left(const AuthFailure.tooManyRequests());
-      } else {
-        logger.e('Unexpected server error with ${e.code}');
-        return left(const AuthFailure.serverError());
-      }
+      return left(e.toCrudFailure());
     }
   }
 
@@ -216,14 +186,7 @@ class FirebaseAuthRepo implements IAuthRepo {
       await _firebaseAuth.currentUser?.delete();
       return right(unit);
     } on fba.FirebaseAuthException catch (e) {
-      if (e.code == 'requires-recent-login') {
-        return left(const AuthFailure.requiresRecentLogin());
-      } else if (e.code == 'too-many-requests') {
-        return left(const AuthFailure.tooManyRequests());
-      } else {
-        logger.e('Unexpected server error with ${e.code}');
-        return left(const AuthFailure.serverError());
-      }
+      return left(e.toCrudFailure());
     }
   }
 
@@ -238,16 +201,7 @@ class FirebaseAuthRepo implements IAuthRepo {
       await _firebaseAuth.currentUser!.updatePassword(newPassword);
       return right(unit);
     } on fba.FirebaseAuthException catch (e) {
-      if (e.code == 'requires-recent-login') {
-        return left(const AuthFailure.requiresRecentLogin());
-      } else if (e.code == 'weak-password') {
-        return left(const AuthFailure.weakPassword());
-      } else if (e.code == 'too-many-requests') {
-        return left(const AuthFailure.tooManyRequests());
-      } else {
-        logger.e('Unexpected server error with ${e.code}');
-        return left(const AuthFailure.serverError());
-      }
+      return left(e.toCrudFailure());
     }
   }
 
@@ -269,14 +223,7 @@ class FirebaseAuthRepo implements IAuthRepo {
       await _firebaseAuth.currentUser?.reauthenticateWithCredential(credential);
       return right(unit);
     } on fba.FirebaseAuthException catch (e) {
-      if (e.code == 'wrong-password') {
-        return left(const AuthFailure.wrongPassword());
-      } else if (e.code == 'too-many-requests') {
-        return left(const AuthFailure.tooManyRequests());
-      } else {
-        logger.e('Unexpected server error with ${e.code}');
-        return left(const AuthFailure.serverError());
-      }
+      return left(e.toCrudFailure());
     }
   }
 
@@ -291,18 +238,7 @@ class FirebaseAuthRepo implements IAuthRepo {
       await _firebaseAuth.currentUser!.verifyBeforeUpdateEmail(newEmail);
       return right(unit);
     } on fba.FirebaseAuthException catch (e) {
-      if (e.code == 'requires-recent-login') {
-        return left(const AuthFailure.requiresRecentLogin());
-      } else if (e.code == 'invalid-email') {
-        return left(const AuthFailure.invalidEmail());
-      } else if (e.code == 'email-already-in-use') {
-        return left(const AuthFailure.emailAlreadyInUse());
-      } else if (e.code == 'too-many-requests') {
-        return left(const AuthFailure.tooManyRequests());
-      } else {
-        logger.e('Unexpected server error with ${e.code}');
-        return left(const AuthFailure.serverError());
-      }
+      return left(e.toCrudFailure());
     }
   }
 
@@ -326,11 +262,9 @@ class FirebaseAuthRepo implements IAuthRepo {
         {"token": token},
         SetOptions(merge: true),
       );
-
       return right(unit);
     } on fba.FirebaseAuthException catch (e) {
-      logger.e('Unexpected server error with ${e.code}');
-      return left(const AuthFailure.serverError());
+      return left(e.toCrudFailure());
     }
   }
 
@@ -341,16 +275,13 @@ class FirebaseAuthRepo implements IAuthRepo {
         return left(const AuthFailure.notSignedIn());
       }
       final userId = await getUserId();
-
       await _fs.collection(USERS).doc(userId).set(
         {"token": ""},
         SetOptions(merge: true),
       );
-
       return right(unit);
     } on fba.FirebaseAuthException catch (e) {
-      logger.e('Unexpected server error with ${e.code}');
-      return left(const AuthFailure.serverError());
+      return left(e.toCrudFailure());
     }
   }
 }

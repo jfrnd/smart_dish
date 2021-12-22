@@ -38,8 +38,8 @@ class UpdateEmailDialog extends StatelessWidget {
                 textInputAction: TextInputAction.next,
                 onChanged: context.read<AuthEditorCubit>().textField1Changed,
                 shownAuthFailures: const [
-                  WrongPassword(),
-                  RequiresRecentLogin(),
+                  WrongPassword(""),
+                  RequiresRecentLogin(""),
                 ],
               ),
               EmailTextField(
@@ -48,9 +48,9 @@ class UpdateEmailDialog extends StatelessWidget {
                 hintText: "New email",
                 onFieldSubmitted: (_) =>
                     context.read<AuthEditorCubit>().updateEmailPressed(),
-                shownAuthFailures: const [
-                  InvalidEmail(),
-                  EmailAlreadyInUse(),
+                shownAuthFailure: const [
+                  InvalidEmail(""),
+                  EmailAlreadyInUse(""),
                 ],
               ),
               const InfoText<AuthEditorCubit>(

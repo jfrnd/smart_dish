@@ -26,9 +26,9 @@ class ForgotPasswordDialog extends StatelessWidget {
               onChanged: context.read<AuthEditorCubit>().textField1Changed,
               onFieldSubmitted: (_) =>
                   context.read<AuthEditorCubit>().resetPasswordPressed(),
-              shownAuthFailures: const [
-                UserNotFound(),
-                InvalidEmail(),
+              shownAuthFailure: const [
+                UserNotFound(""),
+                InvalidEmail(""),
               ],
             ),
             const InfoText<AuthEditorCubit>(
