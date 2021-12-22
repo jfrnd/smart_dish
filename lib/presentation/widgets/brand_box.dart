@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_dish/utils/platform.dart';
 
 class BrandBox extends StatelessWidget {
   const BrandBox({
@@ -10,7 +10,7 @@ class BrandBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints(
-          maxWidth: kIsWeb ? 400 : MediaQuery.of(context).size.width),
+          maxWidth: deviceIsDesktop ? 400 : MediaQuery.of(context).size.width),
       child: Padding(
         padding: const EdgeInsets.all(32.0),
         child: Column(

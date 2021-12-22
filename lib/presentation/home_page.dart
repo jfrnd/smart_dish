@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_dish/application/watcher/dish_watcher_cubit.dart';
-import 'package:flutter/foundation.dart';
 import 'package:smart_dish/domain/dish/dish.dart';
 import 'package:smart_dish/domain/watcher/watcher_cubit.dart';
 import 'package:smart_dish/presentation/create_update_dish_page.dart';
@@ -11,6 +10,7 @@ import 'package:smart_dish/presentation/widgets/oval_image.dart';
 import 'package:smart_dish/presentation/router/router.gr.dart';
 import 'package:smart_dish/utils/date_time_extensions.dart';
 import 'package:smart_dish/domain/core/failure.dart';
+import 'package:smart_dish/utils/platform.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -50,9 +50,7 @@ class Dishes extends StatelessWidget {
           ),
           loadingSuccessful: (state) {
             final dishes = state.data;
-            return (kIsWeb &&
-                    defaultTargetPlatform != TargetPlatform.iOS &&
-                    defaultTargetPlatform != TargetPlatform.android)
+            return deviceIsDesktop
                 ? WebDishList(dishes: dishes)
                 : MobileDishList(dishes: dishes);
           },

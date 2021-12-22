@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_dish/application/account_editor/account_editor_cubit.dart';
 import 'package:smart_dish/application/watcher/signed_in_user_watcher_cubit.dart';
@@ -14,6 +13,7 @@ import 'package:smart_dish/presentation/auth/dialogs/delete_account_dialog.dart'
 import 'package:smart_dish/presentation/core/loading_in_progress_overlay.dart';
 import 'package:smart_dish/presentation/user/dialogs/update_user_name_dialog.dart';
 import 'package:smart_dish/presentation/widgets/cropable_image.dart';
+import 'package:smart_dish/utils/platform.dart';
 
 import '../../hybrid_scaffold.dart';
 
@@ -75,11 +75,7 @@ class AccountSettings extends StatelessWidget {
               final user = state.data;
               return SingleChildScrollView(
                 child: SizedBox(
-                  width: kIsWeb &&
-                          defaultTargetPlatform != TargetPlatform.iOS &&
-                          defaultTargetPlatform != TargetPlatform.android
-                      ? orientationThreshold
-                      : null,
+                  width: deviceIsDesktop ? orientationThreshold : null,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,

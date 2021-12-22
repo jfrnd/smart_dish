@@ -50,25 +50,29 @@ extension FailureX on Failure {
     }
   }
 
-  void showError(BuildContext context, bool isWeb) => isWeb
-      ? showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            content: ListTile(
-              leading: const Icon(Icons.error, color: Colors.red),
-              title: Text(toMessage()),
+  Object showError(BuildContext context, bool deviceIsDesktop) {
+    if (deviceIsDesktop) {
+      return showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          content: ListTile(
+            leading: const Icon(Icons.error, color: Colors.red),
+            title: Text(toMessage()),
+          ),
+        ),
+      );
+    } else {
+      return ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: ListTile(
+            leading: const Icon(Icons.error, color: Colors.red),
+            title: Text(
+              toMessage(),
+              style: const TextStyle(color: Colors.white),
             ),
           ),
-        )
-      : ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: ListTile(
-              leading: const Icon(Icons.error, color: Colors.red),
-              title: Text(
-                toMessage(),
-                style: const TextStyle(color: Colors.white),
-              ),
-            ),
-          ),
-        );
+        ),
+      );
+    }
+  }
 }

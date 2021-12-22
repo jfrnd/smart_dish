@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_dish/utils/platform.dart';
 
 import 'navigation/navigation.dart';
 
@@ -21,9 +21,7 @@ class HybridScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (kIsWeb &&
-        defaultTargetPlatform != TargetPlatform.iOS &&
-        defaultTargetPlatform != TargetPlatform.android) {
+    if (deviceIsDesktop) {
       return Material(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,

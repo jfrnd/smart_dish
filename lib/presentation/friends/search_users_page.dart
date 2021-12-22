@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_dish/application/search_user/search_user_cubit.dart';
@@ -8,6 +7,7 @@ import 'package:smart_dish/domain/user/user_extended_data.dart';
 import 'package:smart_dish/presentation/friends/widgets/buttons.dart';
 import 'package:smart_dish/presentation/friends/widgets/request_item.dart';
 import 'package:smart_dish/presentation/widgets/oval_image.dart';
+import 'package:smart_dish/utils/platform.dart';
 
 import '../hybrid_scaffold.dart';
 
@@ -29,11 +29,7 @@ class SearchUsersPage extends StatelessWidget {
           body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: SizedBox(
-              width: kIsWeb &&
-                      defaultTargetPlatform != TargetPlatform.iOS &&
-                      defaultTargetPlatform != TargetPlatform.android
-                  ? orientationThreshold
-                  : null,
+              width: deviceIsDesktop ? orientationThreshold : null,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -94,7 +90,7 @@ class ResultList extends StatelessWidget {
                             : const Text("This is you."));
                   } else if (user.hasOpenFriendRequest &&
                       !user.isSignedInUser) {
-                    return RequestItem(user.friendRequest!.id!);
+                    return RequestItem(user.friendRequest!);
                   } else {
                     return ListTile(
                       leading: OvalImage(user.imageUrl),

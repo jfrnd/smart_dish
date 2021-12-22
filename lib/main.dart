@@ -14,6 +14,7 @@ import 'package:overlay_support/overlay_support.dart';
 import 'package:smart_dish/presentation/router/router.gr.dart';
 import 'package:smart_dish/utils/app_bloc_observer.dart';
 import 'package:smart_dish/utils/logger.dart';
+import 'package:smart_dish/utils/platform.dart';
 import 'package:smart_dish/web_test_page.dart';
 import 'application/navigation_cubit/navigation_cubit.dart';
 import 'application/watcher/dish_watcher_cubit.dart';
@@ -50,7 +51,7 @@ Future<void> main() async {
     // await getIt<IAuthRepo>().signOut();
   }
 
-  if (!kIsWeb) {
+  if (clientIsMobile) {
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
     await FirebaseMessaging.instance
@@ -65,7 +66,7 @@ Future<void> main() async {
     () => runApp(
       devicePreview
           ? DevicePreview(
-              enabled: !kReleaseMode && !kIsWeb,
+              enabled: !kReleaseMode && clientIsMobile && devicePreview,
               builder: (context) => AppWidget(),
             )
           : AppWidget(),
@@ -100,7 +101,7 @@ class AppWidget extends StatelessWidget {
         BlocProvider(create: (_) => getIt<DishWatcherCubit>()),
         BlocProvider(create: (_) => getIt<NavigationCubit>()),
       ],
-      child: webHotReloadTest && kIsWeb
+      child: webHotReloadTest && clientIsWeb
           ? WebTest(themeData)
           : OverlaySupport.global(
               child: MaterialApp.router(

@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -18,6 +17,7 @@ import 'package:smart_dish/presentation/widgets/brand_box.dart';
 import 'package:smart_dish/presentation/core/loading_in_progress_overlay.dart';
 import 'package:smart_dish/presentation/router/router.gr.dart';
 import 'package:smart_dish/utils/context_extensions.dart';
+import 'package:smart_dish/utils/platform.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -31,11 +31,7 @@ class SignInPage extends StatelessWidget {
         ),
       ],
       child: Scaffold(
-        appBar: kIsWeb &&
-                defaultTargetPlatform != TargetPlatform.iOS &&
-                defaultTargetPlatform != TargetPlatform.android
-            ? null
-            : AppBar(title: const Text("Sign In")),
+        appBar: deviceIsDesktop ? null : AppBar(title: const Text("Sign In")),
         backgroundColor: Colors.grey[200],
         body: BlocListener<AuthWatcherCubit, AuthWatcherState>(
           listener: (context, state) {
@@ -85,11 +81,7 @@ class SignInBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints(
-          maxWidth: kIsWeb &&
-                  defaultTargetPlatform != TargetPlatform.iOS &&
-                  defaultTargetPlatform != TargetPlatform.android
-              ? 350
-              : MediaQuery.of(context).size.width),
+          maxWidth: deviceIsDesktop ? 350 : MediaQuery.of(context).size.width),
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(8.0),

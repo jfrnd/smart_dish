@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:collection/collection.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
@@ -15,6 +14,7 @@ import 'package:smart_dish/domain/watcher/watcher_cubit.dart';
 import 'package:smart_dish/presentation/friends/widgets/friend_item.dart';
 import 'package:smart_dish/presentation/friends/widgets/request_item.dart';
 import 'package:smart_dish/presentation/router/router.gr.dart';
+import 'package:smart_dish/utils/platform.dart';
 
 import '../hybrid_scaffold.dart';
 
@@ -30,11 +30,7 @@ class FriendsPage extends StatelessWidget {
         child: Align(
           alignment: Alignment.topCenter,
           child: SizedBox(
-            width: kIsWeb &&
-                    defaultTargetPlatform != TargetPlatform.iOS &&
-                    defaultTargetPlatform != TargetPlatform.android
-                ? orientationThreshold
-                : null,
+            width: deviceIsDesktop ? orientationThreshold : null,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -110,7 +106,10 @@ class FriendsList extends StatelessWidget {
                         sizeFraction: 0.7,
                         curve: Curves.easeInOut,
                         animation: animation,
-                        child: FriendItem(user, key: UniqueKey()),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          child: FriendItem(user, key: UniqueKey()),
+                        ),
                       );
                     },
                   );
@@ -165,15 +164,7 @@ class FriendRequestList extends StatelessWidget {
                         sizeFraction: 0.7,
                         curve: Curves.easeInOut,
                         animation: animation,
-                        child: RequestItem(request.id!, key: UniqueKey()),
-                      );
-                    },
-                    removeItemBuilder: (context, animation, request) {
-                      return SizeFadeTransition(
-                        sizeFraction: 0.7,
-                        curve: Curves.easeInOut,
-                        animation: animation,
-                        child: RequestItem(request.id!, key: UniqueKey()),
+                        child: RequestItem(request, key: UniqueKey()),
                       );
                     },
                   );

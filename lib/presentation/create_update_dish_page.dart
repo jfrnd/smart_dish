@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,6 +8,7 @@ import 'package:smart_dish/domain/core/failure.dart';
 import 'package:smart_dish/domain/dish/dish.dart';
 import 'package:smart_dish/presentation/core/loading_in_progress_overlay.dart';
 import 'package:smart_dish/presentation/widgets/cropable_image.dart';
+import 'package:smart_dish/utils/platform.dart';
 
 class CreateUpdateDishDialog extends StatelessWidget {
   final Dish? dish;
@@ -40,11 +40,7 @@ class CreateUpdateDishPage extends StatelessWidget {
       child: BlocConsumer<DishEditorCubit, DishEditorState>(
         listener: (context, state) {
           state.failureOrSuccess?.fold(
-            (failure) => failure.showError(
-                context,
-                kIsWeb &&
-                    defaultTargetPlatform != TargetPlatform.iOS &&
-                    defaultTargetPlatform != TargetPlatform.android),
+            (failure) => failure.showError(context, deviceIsMobile),
             (success) => AutoRouter.of(context).pop(),
           );
         },
@@ -63,17 +59,11 @@ class CreateUpdateDishPage extends StatelessWidget {
               Scaffold(
                 appBar: AppBar(
                   title: const Text("Create Dish"),
-                  automaticallyImplyLeading: kIsWeb &&
-                          defaultTargetPlatform != TargetPlatform.iOS &&
-                          defaultTargetPlatform != TargetPlatform.android
-                      ? false
-                      : true,
+                  automaticallyImplyLeading: deviceIsDesktop ? false : true,
                   actions: [
                     Visibility(
                       visible: state.isUpdating &&
-                          !kIsWeb &&
-                          defaultTargetPlatform != TargetPlatform.iOS &&
-                          defaultTargetPlatform != TargetPlatform.android &&
+                          deviceIsMobile &&
                           hasPermssionToUpdate,
                       child: IconButton(
                         icon: const Icon(Icons.delete),
@@ -84,11 +74,7 @@ class CreateUpdateDishPage extends StatelessWidget {
                       ),
                     ),
                     Visibility(
-                      visible: kIsWeb &&
-                          defaultTargetPlatform != TargetPlatform.iOS &&
-                          defaultTargetPlatform != TargetPlatform.android &&
-                          defaultTargetPlatform != TargetPlatform.iOS &&
-                          defaultTargetPlatform != TargetPlatform.android,
+                      visible: deviceIsDesktop,
                       child: IconButton(
                         icon: const Icon(Icons.cancel),
                         onPressed: () => Navigator.of(context).pop(),
@@ -110,10 +96,7 @@ class CreateUpdateDishPage extends StatelessWidget {
                     child: Column(
                       children: [
                         Visibility(
-                          visible: kIsWeb &&
-                              defaultTargetPlatform != TargetPlatform.iOS &&
-                              defaultTargetPlatform != TargetPlatform.android &&
-                              state.isLoading,
+                          visible: deviceIsDesktop && state.isLoading,
                           child: const LinearProgressIndicator(minHeight: 5),
                         ),
                         Padding(
@@ -154,10 +137,7 @@ class CreateUpdateDishPage extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: Visibility(
                             visible: state.isUpdating &&
-                                kIsWeb &&
-                                defaultTargetPlatform != TargetPlatform.iOS &&
-                                defaultTargetPlatform !=
-                                    TargetPlatform.android &&
+                                deviceIsDesktop &&
                                 hasPermssionToUpdate,
                             child: TextButton.icon(
                               label: const Text(
@@ -181,10 +161,7 @@ class CreateUpdateDishPage extends StatelessWidget {
                 ),
               ),
               LoadingInProgressOverlay(
-                  isLoading: state.isLoading &&
-                      !(kIsWeb &&
-                          defaultTargetPlatform != TargetPlatform.iOS &&
-                          defaultTargetPlatform != TargetPlatform.android))
+                  isLoading: state.isLoading && deviceIsMobile)
             ],
           );
         },
