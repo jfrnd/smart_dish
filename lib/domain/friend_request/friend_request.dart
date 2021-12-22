@@ -1,7 +1,5 @@
 // ignore_for_file: invalid_annotation_target, constant_identifier_names
 
-import 'dart:convert';
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:smart_dish/domain/core/crud_failure.dart';

@@ -4,14 +4,12 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:smart_dish/domain/editor/editor_cubit.dart';
 import 'package:smart_dish/domain/user/i_account_repo.dart';
-import 'package:image_picker/image_picker.dart';
 
 @injectable
 class AccountEditorCubit extends EditorCubit {
   final IAccountRepo _accountRepo;
-  final ImagePicker _imagePicker;
 
-  AccountEditorCubit(this._accountRepo, this._imagePicker);
+  AccountEditorCubit(this._accountRepo);
 
   Future<void> updateUserNamePressed() async {
     final userName = state.textField1;
@@ -46,10 +44,6 @@ class AccountEditorCubit extends EditorCubit {
   }
 
   Future<void> updateUserPic(Uint8List image) async {
-    // final pickedFile =
-    //     await _imagePicker.pickImage(source: ImageSource.gallery);
-
-    // if (pickedFile != null) {
     emit(state.copyWith(isSubmitting: true));
 
     await _accountRepo.updateUserPic(image).then(
@@ -68,6 +62,5 @@ class AccountEditorCubit extends EditorCubit {
             ),
           ),
         );
-    // }
   }
 }

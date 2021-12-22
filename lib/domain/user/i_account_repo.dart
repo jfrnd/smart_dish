@@ -14,6 +14,7 @@ import 'package:smart_dish/domain/user/user.dart';
 import 'package:smart_dish/domain/watcher/i_watcher_repo.dart';
 import 'package:smart_dish/utils/logger.dart';
 
+// ignore: constant_identifier_names
 const USER_IMAGE = "userImage";
 
 abstract class IAccountRepo implements IWatcherRepo<User> {

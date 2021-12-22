@@ -10,7 +10,6 @@ import 'package:smart_dish/presentation/friends/widgets/request_item.dart';
 import 'package:smart_dish/presentation/widgets/oval_image.dart';
 
 import '../hybrid_scaffold.dart';
-import 'friends_page.dart';
 
 class SearchUsersPage extends StatelessWidget {
   const SearchUsersPage({Key? key}) : super(key: key);

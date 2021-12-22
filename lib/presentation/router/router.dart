@@ -1,6 +1,4 @@
 import 'package:auto_route/annotations.dart';
-import 'package:flutter/animation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_dish/presentation/auth/pages/email_verify_waiting_page.dart';
 import 'package:smart_dish/presentation/auth/pages/sign_in_page.dart';

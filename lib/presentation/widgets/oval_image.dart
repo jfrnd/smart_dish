@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class OvalImage extends StatelessWidget {
@@ -17,24 +18,20 @@ class OvalImage extends StatelessWidget {
       child: SizedBox(
         height: size,
         width: size,
-        child: Image.network(
-          imageUrl,
+        child: CachedNetworkImage(
+          imageUrl: imageUrl,
           fit: BoxFit.cover,
-          loadingBuilder: (context, child, loadingProgress) {
-            if (loadingProgress == null) {
-              return child;
-            }
+          errorWidget: (context, url, error) =>
+              FittedBox(child: Icon(emptyIconData)),
+          progressIndicatorBuilder: (context, url, progress) {
             return Center(
               child: CircularProgressIndicator(
-                value: loadingProgress.expectedTotalBytes != null
-                    ? loadingProgress.cumulativeBytesLoaded /
-                        loadingProgress.expectedTotalBytes!
+                value: progress.totalSize != null
+                    ? progress.downloaded / progress.totalSize!
                     : null,
               ),
             );
           },
-          errorBuilder: (context, error, stackTrace) =>
-              FittedBox(child: Icon(emptyIconData)),
         ),
       ),
     );

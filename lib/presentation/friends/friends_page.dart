@@ -1,27 +1,22 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:collection/src/iterable_extensions.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
 import 'package:implicitly_animated_reorderable_list/transitions.dart';
-import 'package:smart_dish/application/friend_actor/friend_actor_cubit.dart';
 
 import 'package:smart_dish/application/watcher/friend_request_cubit.dart';
 import 'package:smart_dish/application/watcher/friend_watcher_cubit.dart';
-import 'package:smart_dish/di/injection.dart';
 import 'package:smart_dish/domain/core/failure.dart';
 import 'package:smart_dish/domain/friend_request/friend_request.dart';
 import 'package:smart_dish/domain/user/user.dart';
 import 'package:smart_dish/domain/watcher/watcher_cubit.dart';
 import 'package:smart_dish/presentation/friends/widgets/friend_item.dart';
 import 'package:smart_dish/presentation/friends/widgets/request_item.dart';
-import 'package:smart_dish/presentation/widgets/oval_image.dart';
 import 'package:smart_dish/presentation/router/router.gr.dart';
-import 'package:smart_dish/utils/date_time_extensions.dart';
 
 import '../hybrid_scaffold.dart';
-import 'widgets/buttons.dart';
 
 class FriendsPage extends StatelessWidget {
   const FriendsPage({Key? key}) : super(key: key);

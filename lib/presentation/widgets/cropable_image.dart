@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:crop_your_image/crop_your_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -121,26 +122,21 @@ class CropableImage extends StatelessWidget {
                                 Icons.add_photo_alternate,
                               )),
                             )
-                          : Image.network(
-                              initialImageUrl,
+                          : CachedNetworkImage(
+                              imageUrl: initialImageUrl,
                               fit: BoxFit.cover,
-                              loadingBuilder:
-                                  (context, child, loadingProgress) {
-                                if (loadingProgress == null) {
-                                  return child;
-                                }
+                              progressIndicatorBuilder:
+                                  (context, url, progress) {
                                 return Center(
                                   child: CircularProgressIndicator(
-                                    value: loadingProgress.expectedTotalBytes !=
-                                            null
-                                        ? loadingProgress
-                                                .cumulativeBytesLoaded /
-                                            loadingProgress.expectedTotalBytes!
+                                    value: progress.totalSize != null
+                                        ? progress.downloaded /
+                                            progress.totalSize!
                                         : null,
                                   ),
                                 );
                               },
-                              errorBuilder: (context, error, stackTrace) {
+                              errorWidget: (context, url, error) {
                                 logger.e(error);
                                 return const FittedBox(
                                   child: Icon(

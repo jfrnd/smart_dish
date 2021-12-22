@@ -6,8 +6,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:overlay_support/overlay_support.dart';
@@ -21,6 +21,7 @@ import 'application/watcher/friend_request_cubit.dart';
 import 'application/watcher/friend_watcher_cubit.dart';
 import 'application/watcher/signed_in_user_watcher_cubit.dart';
 import 'auth/auth_watcher_cubit.dart';
+// ignore: unused_import
 import 'auth/i_auth_repo.dart';
 import 'di/injection.dart';
 import 'package:device_preview/device_preview.dart';
@@ -28,7 +29,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'presentation/core/notification_manager.dart';
 
-const environment = Environment.prod;
+const environment = Environment.dev;
 const devicePreview = false;
 const webHotReloadTest = false;
 
@@ -45,7 +46,7 @@ Future<void> main() async {
   await configureInjection(environment);
   if (environment == Environment.dev) {
     //if there is data with invalid data schema in cache
-    await getIt<FirebaseFirestore>().clearPersistence();
+    // await getIt<FirebaseFirestore>().clearPersistence();
     // await getIt<IAuthRepo>().signOut();
   }
 

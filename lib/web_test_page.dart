@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:smart_dish/domain/dish/dish.dart';
 import 'package:smart_dish/domain/user/user.dart';
 import 'package:smart_dish/main.dart';
-import 'package:smart_dish/presentation/home_page.dart';
 import 'package:smart_dish/presentation/navigation/navigation.dart';
 
 class WebTest extends StatelessWidget {
@@ -47,11 +46,10 @@ class WebTestPage extends StatelessWidget {
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height,
-                  child: Center(
+                  child: const Center(
                     child: CircularProgressIndicator(),
                   ),
                 )
-                // WebDishList(dishes: dishes),
               ],
             ),
           ),

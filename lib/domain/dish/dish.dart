@@ -3,7 +3,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:smart_dish/domain/user/user.dart';
-import 'package:cloud_firestore_odm/cloud_firestore_odm.dart';
 
 part 'dish.g.dart';
 part 'dish.freezed.dart';

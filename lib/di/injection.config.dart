@@ -116,8 +116,8 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       get<_i8.IAuthRepo>()));
   gh.lazySingleton<_i25.SignedInUserWatcherCubit>(
       () => _i25.SignedInUserWatcherCubit(get<_i22.IAccountRepo>()));
-  gh.factory<_i26.AccountEditorCubit>(() => _i26.AccountEditorCubit(
-      get<_i22.IAccountRepo>(), get<_i12.ImagePicker>()));
+  gh.factory<_i26.AccountEditorCubit>(
+      () => _i26.AccountEditorCubit(get<_i22.IAccountRepo>()));
   gh.factory<_i27.DishWatcherCubit>(() => _i27.DishWatcherCubit(
       get<_i21.FriendWatcherCubit>(),
       get<_i9.IDishRepo>(),
