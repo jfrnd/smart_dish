@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_dish/presentation/auth/pages/email_verify_waiting_page.dart';
 import 'package:smart_dish/presentation/auth/pages/sign_in_page.dart';
 import 'package:smart_dish/presentation/core/splash_page.dart';
-import 'package:smart_dish/presentation/create_update_dish_page.dart';
+import 'package:smart_dish/presentation/dish/create_update_dish_page.dart';
 import 'package:smart_dish/presentation/friends/friends_page.dart';
 import 'package:smart_dish/presentation/friends/search_users_page.dart';
 import 'package:smart_dish/presentation/user/pages/account_settings_page.dart';

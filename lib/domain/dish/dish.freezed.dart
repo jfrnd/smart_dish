@@ -22,13 +22,19 @@ class _$DishTearOff {
   const _$DishTearOff();
 
   _Dish call(
-      {@JsonKey(ignore: true) String? id,
-      @JsonKey(ignore: true) DateTime? createdAt,
-      @JsonKey(ignore: true) DateTime? updatedAt,
+      {@JsonKey(ignore: true)
+          String? id,
+      @JsonKey(name: CREATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          required DateTime createdAt,
+      @JsonKey(name: UPDATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          required DateTime updatedAt,
       required String imageUrl,
       required String name,
       required String createdBy,
-      @JsonKey(ignore: true) User? creator}) {
+      @JsonKey(name: INGREDIENTS, fromJson: Ingredient.ingredientsFromJson, toJson: Ingredient.ingredientsToJson, defaultValue: <Ingredient>[])
+          required List<Ingredient> ingredients,
+      @JsonKey(ignore: true)
+          User? creator}) {
     return _Dish(
       id: id,
       createdAt: createdAt,
@@ -36,6 +42,7 @@ class _$DishTearOff {
       imageUrl: imageUrl,
       name: name,
       createdBy: createdBy,
+      ingredients: ingredients,
       creator: creator,
     );
   }
@@ -52,13 +59,25 @@ const $Dish = _$DishTearOff();
 mixin _$Dish {
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  DateTime? get createdAt => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: CREATED_AT,
+      fromJson: DateTimeConverter.dateTimeFromTimestamp,
+      toJson: DateTimeConverter.dateTimeToTimestamp)
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: UPDATED_AT,
+      fromJson: DateTimeConverter.dateTimeFromTimestamp,
+      toJson: DateTimeConverter.dateTimeToTimestamp)
+  DateTime get updatedAt => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get createdBy => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: INGREDIENTS,
+      fromJson: Ingredient.ingredientsFromJson,
+      toJson: Ingredient.ingredientsToJson,
+      defaultValue: <Ingredient>[])
+  List<Ingredient> get ingredients => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   User? get creator => throw _privateConstructorUsedError;
 
@@ -72,13 +91,19 @@ abstract class $DishCopyWith<$Res> {
   factory $DishCopyWith(Dish value, $Res Function(Dish) then) =
       _$DishCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(ignore: true) String? id,
-      @JsonKey(ignore: true) DateTime? createdAt,
-      @JsonKey(ignore: true) DateTime? updatedAt,
+      {@JsonKey(ignore: true)
+          String? id,
+      @JsonKey(name: CREATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          DateTime createdAt,
+      @JsonKey(name: UPDATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          DateTime updatedAt,
       String imageUrl,
       String name,
       String createdBy,
-      @JsonKey(ignore: true) User? creator});
+      @JsonKey(name: INGREDIENTS, fromJson: Ingredient.ingredientsFromJson, toJson: Ingredient.ingredientsToJson, defaultValue: <Ingredient>[])
+          List<Ingredient> ingredients,
+      @JsonKey(ignore: true)
+          User? creator});
 
   $UserCopyWith<$Res>? get creator;
 }
@@ -99,6 +124,7 @@ class _$DishCopyWithImpl<$Res> implements $DishCopyWith<$Res> {
     Object? imageUrl = freezed,
     Object? name = freezed,
     Object? createdBy = freezed,
+    Object? ingredients = freezed,
     Object? creator = freezed,
   }) {
     return _then(_value.copyWith(
@@ -109,11 +135,11 @@ class _$DishCopyWithImpl<$Res> implements $DishCopyWith<$Res> {
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -126,6 +152,10 @@ class _$DishCopyWithImpl<$Res> implements $DishCopyWith<$Res> {
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
               as String,
+      ingredients: ingredients == freezed
+          ? _value.ingredients
+          : ingredients // ignore: cast_nullable_to_non_nullable
+              as List<Ingredient>,
       creator: creator == freezed
           ? _value.creator
           : creator // ignore: cast_nullable_to_non_nullable
@@ -151,13 +181,19 @@ abstract class _$DishCopyWith<$Res> implements $DishCopyWith<$Res> {
       __$DishCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(ignore: true) String? id,
-      @JsonKey(ignore: true) DateTime? createdAt,
-      @JsonKey(ignore: true) DateTime? updatedAt,
+      {@JsonKey(ignore: true)
+          String? id,
+      @JsonKey(name: CREATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          DateTime createdAt,
+      @JsonKey(name: UPDATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          DateTime updatedAt,
       String imageUrl,
       String name,
       String createdBy,
-      @JsonKey(ignore: true) User? creator});
+      @JsonKey(name: INGREDIENTS, fromJson: Ingredient.ingredientsFromJson, toJson: Ingredient.ingredientsToJson, defaultValue: <Ingredient>[])
+          List<Ingredient> ingredients,
+      @JsonKey(ignore: true)
+          User? creator});
 
   @override
   $UserCopyWith<$Res>? get creator;
@@ -180,6 +216,7 @@ class __$DishCopyWithImpl<$Res> extends _$DishCopyWithImpl<$Res>
     Object? imageUrl = freezed,
     Object? name = freezed,
     Object? createdBy = freezed,
+    Object? ingredients = freezed,
     Object? creator = freezed,
   }) {
     return _then(_Dish(
@@ -190,11 +227,11 @@ class __$DishCopyWithImpl<$Res> extends _$DishCopyWithImpl<$Res>
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -207,6 +244,10 @@ class __$DishCopyWithImpl<$Res> extends _$DishCopyWithImpl<$Res>
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
               as String,
+      ingredients: ingredients == freezed
+          ? _value.ingredients
+          : ingredients // ignore: cast_nullable_to_non_nullable
+              as List<Ingredient>,
       creator: creator == freezed
           ? _value.creator
           : creator // ignore: cast_nullable_to_non_nullable
@@ -219,13 +260,19 @@ class __$DishCopyWithImpl<$Res> extends _$DishCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Dish extends _Dish {
   const _$_Dish(
-      {@JsonKey(ignore: true) this.id,
-      @JsonKey(ignore: true) this.createdAt,
-      @JsonKey(ignore: true) this.updatedAt,
+      {@JsonKey(ignore: true)
+          this.id,
+      @JsonKey(name: CREATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          required this.createdAt,
+      @JsonKey(name: UPDATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          required this.updatedAt,
       required this.imageUrl,
       required this.name,
       required this.createdBy,
-      @JsonKey(ignore: true) this.creator})
+      @JsonKey(name: INGREDIENTS, fromJson: Ingredient.ingredientsFromJson, toJson: Ingredient.ingredientsToJson, defaultValue: <Ingredient>[])
+          required this.ingredients,
+      @JsonKey(ignore: true)
+          this.creator})
       : super._();
 
   factory _$_Dish.fromJson(Map<String, dynamic> json) => _$$_DishFromJson(json);
@@ -234,11 +281,17 @@ class _$_Dish extends _Dish {
   @JsonKey(ignore: true)
   final String? id;
   @override
-  @JsonKey(ignore: true)
-  final DateTime? createdAt;
+  @JsonKey(
+      name: CREATED_AT,
+      fromJson: DateTimeConverter.dateTimeFromTimestamp,
+      toJson: DateTimeConverter.dateTimeToTimestamp)
+  final DateTime createdAt;
   @override
-  @JsonKey(ignore: true)
-  final DateTime? updatedAt;
+  @JsonKey(
+      name: UPDATED_AT,
+      fromJson: DateTimeConverter.dateTimeFromTimestamp,
+      toJson: DateTimeConverter.dateTimeToTimestamp)
+  final DateTime updatedAt;
   @override
   final String imageUrl;
   @override
@@ -246,12 +299,19 @@ class _$_Dish extends _Dish {
   @override
   final String createdBy;
   @override
+  @JsonKey(
+      name: INGREDIENTS,
+      fromJson: Ingredient.ingredientsFromJson,
+      toJson: Ingredient.ingredientsToJson,
+      defaultValue: <Ingredient>[])
+  final List<Ingredient> ingredients;
+  @override
   @JsonKey(ignore: true)
   final User? creator;
 
   @override
   String toString() {
-    return 'Dish(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, imageUrl: $imageUrl, name: $name, createdBy: $createdBy, creator: $creator)';
+    return 'Dish(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, imageUrl: $imageUrl, name: $name, createdBy: $createdBy, ingredients: $ingredients, creator: $creator)';
   }
 
   @override
@@ -265,6 +325,8 @@ class _$_Dish extends _Dish {
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.createdBy, createdBy) &&
+            const DeepCollectionEquality()
+                .equals(other.ingredients, ingredients) &&
             const DeepCollectionEquality().equals(other.creator, creator));
   }
 
@@ -277,6 +339,7 @@ class _$_Dish extends _Dish {
       const DeepCollectionEquality().hash(imageUrl),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(createdBy),
+      const DeepCollectionEquality().hash(ingredients),
       const DeepCollectionEquality().hash(creator));
 
   @JsonKey(ignore: true)
@@ -292,13 +355,19 @@ class _$_Dish extends _Dish {
 
 abstract class _Dish extends Dish {
   const factory _Dish(
-      {@JsonKey(ignore: true) String? id,
-      @JsonKey(ignore: true) DateTime? createdAt,
-      @JsonKey(ignore: true) DateTime? updatedAt,
+      {@JsonKey(ignore: true)
+          String? id,
+      @JsonKey(name: CREATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          required DateTime createdAt,
+      @JsonKey(name: UPDATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          required DateTime updatedAt,
       required String imageUrl,
       required String name,
       required String createdBy,
-      @JsonKey(ignore: true) User? creator}) = _$_Dish;
+      @JsonKey(name: INGREDIENTS, fromJson: Ingredient.ingredientsFromJson, toJson: Ingredient.ingredientsToJson, defaultValue: <Ingredient>[])
+          required List<Ingredient> ingredients,
+      @JsonKey(ignore: true)
+          User? creator}) = _$_Dish;
   const _Dish._() : super._();
 
   factory _Dish.fromJson(Map<String, dynamic> json) = _$_Dish.fromJson;
@@ -307,17 +376,30 @@ abstract class _Dish extends Dish {
   @JsonKey(ignore: true)
   String? get id;
   @override
-  @JsonKey(ignore: true)
-  DateTime? get createdAt;
+  @JsonKey(
+      name: CREATED_AT,
+      fromJson: DateTimeConverter.dateTimeFromTimestamp,
+      toJson: DateTimeConverter.dateTimeToTimestamp)
+  DateTime get createdAt;
   @override
-  @JsonKey(ignore: true)
-  DateTime? get updatedAt;
+  @JsonKey(
+      name: UPDATED_AT,
+      fromJson: DateTimeConverter.dateTimeFromTimestamp,
+      toJson: DateTimeConverter.dateTimeToTimestamp)
+  DateTime get updatedAt;
   @override
   String get imageUrl;
   @override
   String get name;
   @override
   String get createdBy;
+  @override
+  @JsonKey(
+      name: INGREDIENTS,
+      fromJson: Ingredient.ingredientsFromJson,
+      toJson: Ingredient.ingredientsToJson,
+      defaultValue: <Ingredient>[])
+  List<Ingredient> get ingredients;
   @override
   @JsonKey(ignore: true)
   User? get creator;

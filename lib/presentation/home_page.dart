@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_dish/application/watcher/dish_watcher_cubit.dart';
 import 'package:smart_dish/domain/dish/dish.dart';
 import 'package:smart_dish/domain/watcher/watcher_cubit.dart';
-import 'package:smart_dish/presentation/create_update_dish_page.dart';
+import 'package:smart_dish/presentation/dish/create_update_dish_page.dart';
 import 'package:smart_dish/presentation/hybrid_scaffold.dart';
 import 'package:smart_dish/presentation/widgets/oval_image.dart';
 import 'package:smart_dish/presentation/router/router.gr.dart';
@@ -89,13 +89,12 @@ class WebDishList extends StatelessWidget {
                 ),
               ),
               ListTile(
-                leading: OvalImage(dish.creator?.imageUrl ?? ""),
                 title: Text(
                   dish.name,
                   overflow: TextOverflow.ellipsis,
                 ),
                 subtitle: Text(
-                  "updated ${dish.updatedAt!.toDisplayedString()} by ${dish.creator?.userName ?? ""}",
+                  "updated ${dish.updatedAt.toDisplayedString()} by ${dish.creator?.userName ?? ""}",
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -145,12 +144,11 @@ class MobileDishList extends StatelessWidget {
             dish.imageUrl,
             emptyIconData: Icons.dining_sharp,
           ),
-          trailing: OvalImage(dish.creator?.imageUrl ?? ""),
           onTap: () =>
               AutoRouter.of(context).push(CreateUpdateDishRoute(dish: dish)),
           title: Text(dish.name),
           subtitle: Text(
-              "updated ${dish.updatedAt!.toDisplayedString()} by ${dish.creator?.userName ?? ""}"),
+              "updated ${dish.updatedAt.toDisplayedString()} by ${dish.creator?.userName ?? ""}"),
         );
       },
     );

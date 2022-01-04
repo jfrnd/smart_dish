@@ -68,10 +68,13 @@ final dishes = [
     updatedAt: DateTime.now(),
     id: "123",
     creator: User(
+      email: "",
+      updatedAt: DateTime.now(),
       imageUrl: "",
       userName: "Jan",
       createdAt: DateTime.now(),
     ),
+    ingredients: [],
   ),
   Dish(
     imageUrl: "",
@@ -81,10 +84,13 @@ final dishes = [
     updatedAt: DateTime.now(),
     id: "123",
     creator: User(
+      email: "",
+      updatedAt: DateTime.now(),
       imageUrl: "",
       userName: "Jan",
       createdAt: DateTime.now(),
     ),
+    ingredients: [],
   ),
   Dish(
     imageUrl: "",
@@ -94,10 +100,13 @@ final dishes = [
     updatedAt: DateTime.now(),
     id: "123",
     creator: User(
+      email: "",
+      updatedAt: DateTime.now(),
       imageUrl: "",
       userName: "Jan",
       createdAt: DateTime.now(),
     ),
+    ingredients: [],
   ),
   Dish(
     imageUrl: "",
@@ -107,9 +116,12 @@ final dishes = [
     updatedAt: DateTime.now(),
     id: "123",
     creator: User(
+      email: "",
+      updatedAt: DateTime.now(),
       imageUrl: "",
       userName: "Jan11111111111111111111111111111111111111111111111",
       createdAt: DateTime.now(),
     ),
+    ingredients: [],
   ),
 ];

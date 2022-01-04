@@ -7,6 +7,8 @@
 // **************************************************************************
 // AutoRouteGenerator
 // **************************************************************************
+//
+// ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i9;
 import 'package:flutter/material.dart' as _i10;
@@ -15,7 +17,7 @@ import '../../domain/dish/dish.dart' as _i11;
 import '../auth/pages/email_verify_waiting_page.dart' as _i3;
 import '../auth/pages/sign_in_page.dart' as _i2;
 import '../core/splash_page.dart' as _i1;
-import '../create_update_dish_page.dart' as _i8;
+import '../dish/create_update_dish_page.dart' as _i8;
 import '../friends/friends_page.dart' as _i6;
 import '../friends/search_users_page.dart' as _i7;
 import '../home_page.dart' as _i4;

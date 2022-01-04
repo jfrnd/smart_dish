@@ -93,7 +93,7 @@ class AccountSettings extends StatelessWidget {
                             builder: (_) => const UpdateEmailDialog()),
                         leading: const Icon(Icons.email),
                         title: const Text("Email"),
-                        subtitle: Text(user.email ?? ""),
+                        subtitle: Text(user.email),
                         trailing: const Icon(Icons.edit),
                       ),
                       ListTile(

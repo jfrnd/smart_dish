@@ -1,3 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+class DateTimeConverter {
+  static DateTime dateTimeFromTimestamp(Timestamp timestamp) =>
+      timestamp.toDate();
+
+  static Timestamp dateTimeToTimestamp(DateTime dateTime) =>
+      Timestamp.fromDate(dateTime);
+}
+
 extension DisplayTime on DateTime {
   String toDisplayedString() {
     final date = DateTime(year, month, day);

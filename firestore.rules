@@ -28,15 +28,20 @@ service cloud.firestore {
         return resource.data.createdBy == request.auth.uid;
       }
 
+      function isCreatedForAuthenticatedUser(request) {
+        return request.resource.data.createdBy == request.auth.uid;
+      }
+
       function usersAreFriends() { 
         return exists(path("/databases/"+database+"/documents/friendships/"+resource.data.createdBy+"__"+request.auth.uid)) 
           || exists(path("/databases/"+database+"/documents/friendships/"+request.auth.uid+"__"+resource.data.createdBy))
       }
 
 
-      allow read: if isAuthenticated() && (isCreator() ||usersAreFriends());
-      allow create: if isAuthenticated();
-      allow update, delete: if isAuthenticated() && isCreator();
+      allow read: if isAuthenticated() && (isCreator() || usersAreFriends());
+      allow create: if isAuthenticated() && isCreatedForAuthenticatedUser(request);
+      allow update: if isAuthenticated() && isCreator() && onlyAffectedFieldsAre(request,["imageUrl","name", "ingredients"]);
+      allow delete: if isAuthenticated() && isCreator();
     }
 
 

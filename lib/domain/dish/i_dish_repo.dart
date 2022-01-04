@@ -71,6 +71,9 @@ class FirebaseDishRepo implements IDishRepo {
           .copyWith(
             createdBy: userId,
             imageUrl: imageUrl,
+            ingredients: dish.ingredients
+                .where((ingredient) => ingredient.name.trim().isNotEmpty)
+                .toList(),
           )
           .toFirestore());
       return right(unit);
@@ -102,10 +105,13 @@ class FirebaseDishRepo implements IDishRepo {
             .getDownloadURL();
       }
 
-      await _firestore
-          .collection(DISHES)
-          .doc(dish.id)
-          .update(dish.copyWith(imageUrl: imageUrl).toFirestore());
+      await _firestore.collection(DISHES).doc(dish.id).update(dish
+          .copyWith(
+              imageUrl: imageUrl,
+              ingredients: dish.ingredients
+                  .where((ingredient) => ingredient.name.trim().isNotEmpty)
+                  .toList())
+          .toFirestore());
       return right(unit);
     } on FirebaseException catch (e) {
       return left(e.toCrudFailure());

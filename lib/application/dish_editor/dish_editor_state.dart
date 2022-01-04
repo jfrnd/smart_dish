@@ -4,7 +4,9 @@ part of 'dish_editor_cubit.dart';
 class DishEditorState with _$DishEditorState {
   const factory DishEditorState({
     required bool isLoading,
-    required bool isUpdating,
+    required bool isCreatingNewDish,
+    required bool isInEditMode,
+    required bool hasPermissionToUpdate,
     required bool showErrorMessages,
     required Either<CrudFailure, Unit>? failureOrSuccess,
     required Dish dish,
@@ -13,7 +15,9 @@ class DishEditorState with _$DishEditorState {
 
   factory DishEditorState.initial() => DishEditorState(
         isLoading: false,
-        isUpdating: false,
+        isCreatingNewDish: false,
+        isInEditMode: false,
+        hasPermissionToUpdate: false,
         showErrorMessages: false,
         failureOrSuccess: null,
         dish: Dish.empty(),

@@ -19,14 +19,18 @@ class _$DishEditorStateTearOff {
 
   _Initial call(
       {required bool isLoading,
-      required bool isUpdating,
+      required bool isCreatingNewDish,
+      required bool isInEditMode,
+      required bool hasPermissionToUpdate,
       required bool showErrorMessages,
       required Either<CrudFailure, Unit>? failureOrSuccess,
       required Dish dish,
       required Uint8List? image}) {
     return _Initial(
       isLoading: isLoading,
-      isUpdating: isUpdating,
+      isCreatingNewDish: isCreatingNewDish,
+      isInEditMode: isInEditMode,
+      hasPermissionToUpdate: hasPermissionToUpdate,
       showErrorMessages: showErrorMessages,
       failureOrSuccess: failureOrSuccess,
       dish: dish,
@@ -41,7 +45,9 @@ const $DishEditorState = _$DishEditorStateTearOff();
 /// @nodoc
 mixin _$DishEditorState {
   bool get isLoading => throw _privateConstructorUsedError;
-  bool get isUpdating => throw _privateConstructorUsedError;
+  bool get isCreatingNewDish => throw _privateConstructorUsedError;
+  bool get isInEditMode => throw _privateConstructorUsedError;
+  bool get hasPermissionToUpdate => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   Either<CrudFailure, Unit>? get failureOrSuccess =>
       throw _privateConstructorUsedError;
@@ -60,7 +66,9 @@ abstract class $DishEditorStateCopyWith<$Res> {
       _$DishEditorStateCopyWithImpl<$Res>;
   $Res call(
       {bool isLoading,
-      bool isUpdating,
+      bool isCreatingNewDish,
+      bool isInEditMode,
+      bool hasPermissionToUpdate,
       bool showErrorMessages,
       Either<CrudFailure, Unit>? failureOrSuccess,
       Dish dish,
@@ -81,7 +89,9 @@ class _$DishEditorStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
-    Object? isUpdating = freezed,
+    Object? isCreatingNewDish = freezed,
+    Object? isInEditMode = freezed,
+    Object? hasPermissionToUpdate = freezed,
     Object? showErrorMessages = freezed,
     Object? failureOrSuccess = freezed,
     Object? dish = freezed,
@@ -92,9 +102,17 @@ class _$DishEditorStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isUpdating: isUpdating == freezed
-          ? _value.isUpdating
-          : isUpdating // ignore: cast_nullable_to_non_nullable
+      isCreatingNewDish: isCreatingNewDish == freezed
+          ? _value.isCreatingNewDish
+          : isCreatingNewDish // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isInEditMode: isInEditMode == freezed
+          ? _value.isInEditMode
+          : isInEditMode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasPermissionToUpdate: hasPermissionToUpdate == freezed
+          ? _value.hasPermissionToUpdate
+          : hasPermissionToUpdate // ignore: cast_nullable_to_non_nullable
               as bool,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
@@ -131,7 +149,9 @@ abstract class _$InitialCopyWith<$Res>
   @override
   $Res call(
       {bool isLoading,
-      bool isUpdating,
+      bool isCreatingNewDish,
+      bool isInEditMode,
+      bool hasPermissionToUpdate,
       bool showErrorMessages,
       Either<CrudFailure, Unit>? failureOrSuccess,
       Dish dish,
@@ -153,7 +173,9 @@ class __$InitialCopyWithImpl<$Res> extends _$DishEditorStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
-    Object? isUpdating = freezed,
+    Object? isCreatingNewDish = freezed,
+    Object? isInEditMode = freezed,
+    Object? hasPermissionToUpdate = freezed,
     Object? showErrorMessages = freezed,
     Object? failureOrSuccess = freezed,
     Object? dish = freezed,
@@ -164,9 +186,17 @@ class __$InitialCopyWithImpl<$Res> extends _$DishEditorStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isUpdating: isUpdating == freezed
-          ? _value.isUpdating
-          : isUpdating // ignore: cast_nullable_to_non_nullable
+      isCreatingNewDish: isCreatingNewDish == freezed
+          ? _value.isCreatingNewDish
+          : isCreatingNewDish // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isInEditMode: isInEditMode == freezed
+          ? _value.isInEditMode
+          : isInEditMode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasPermissionToUpdate: hasPermissionToUpdate == freezed
+          ? _value.hasPermissionToUpdate
+          : hasPermissionToUpdate // ignore: cast_nullable_to_non_nullable
               as bool,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
@@ -193,7 +223,9 @@ class __$InitialCopyWithImpl<$Res> extends _$DishEditorStateCopyWithImpl<$Res>
 class _$_Initial implements _Initial {
   const _$_Initial(
       {required this.isLoading,
-      required this.isUpdating,
+      required this.isCreatingNewDish,
+      required this.isInEditMode,
+      required this.hasPermissionToUpdate,
       required this.showErrorMessages,
       required this.failureOrSuccess,
       required this.dish,
@@ -202,7 +234,11 @@ class _$_Initial implements _Initial {
   @override
   final bool isLoading;
   @override
-  final bool isUpdating;
+  final bool isCreatingNewDish;
+  @override
+  final bool isInEditMode;
+  @override
+  final bool hasPermissionToUpdate;
   @override
   final bool showErrorMessages;
   @override
@@ -214,7 +250,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'DishEditorState(isLoading: $isLoading, isUpdating: $isUpdating, showErrorMessages: $showErrorMessages, failureOrSuccess: $failureOrSuccess, dish: $dish, image: $image)';
+    return 'DishEditorState(isLoading: $isLoading, isCreatingNewDish: $isCreatingNewDish, isInEditMode: $isInEditMode, hasPermissionToUpdate: $hasPermissionToUpdate, showErrorMessages: $showErrorMessages, failureOrSuccess: $failureOrSuccess, dish: $dish, image: $image)';
   }
 
   @override
@@ -224,7 +260,11 @@ class _$_Initial implements _Initial {
             other is _Initial &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
-                .equals(other.isUpdating, isUpdating) &&
+                .equals(other.isCreatingNewDish, isCreatingNewDish) &&
+            const DeepCollectionEquality()
+                .equals(other.isInEditMode, isInEditMode) &&
+            const DeepCollectionEquality()
+                .equals(other.hasPermissionToUpdate, hasPermissionToUpdate) &&
             const DeepCollectionEquality()
                 .equals(other.showErrorMessages, showErrorMessages) &&
             const DeepCollectionEquality()
@@ -237,7 +277,9 @@ class _$_Initial implements _Initial {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(isUpdating),
+      const DeepCollectionEquality().hash(isCreatingNewDish),
+      const DeepCollectionEquality().hash(isInEditMode),
+      const DeepCollectionEquality().hash(hasPermissionToUpdate),
       const DeepCollectionEquality().hash(showErrorMessages),
       const DeepCollectionEquality().hash(failureOrSuccess),
       const DeepCollectionEquality().hash(dish),
@@ -252,7 +294,9 @@ class _$_Initial implements _Initial {
 abstract class _Initial implements DishEditorState {
   const factory _Initial(
       {required bool isLoading,
-      required bool isUpdating,
+      required bool isCreatingNewDish,
+      required bool isInEditMode,
+      required bool hasPermissionToUpdate,
       required bool showErrorMessages,
       required Either<CrudFailure, Unit>? failureOrSuccess,
       required Dish dish,
@@ -261,7 +305,11 @@ abstract class _Initial implements DishEditorState {
   @override
   bool get isLoading;
   @override
-  bool get isUpdating;
+  bool get isCreatingNewDish;
+  @override
+  bool get isInEditMode;
+  @override
+  bool get hasPermissionToUpdate;
   @override
   bool get showErrorMessages;
   @override

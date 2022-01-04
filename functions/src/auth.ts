@@ -1,4 +1,4 @@
-import * as admin from "firebase-admin";
+import { firestore, storage } from "firebase-admin";
 import * as functions from "firebase-functions";
 import { v4 as uuidv4 } from "uuid";
 import { database } from ".";
@@ -14,13 +14,12 @@ export const onCreateUser = functions
       .where(USERNAME, "==", userName)
       .get()
       .then((snapshot) => snapshot.size > 0);
-    if (alreadyExists) userName = userName + "-" + uuidv4().substr(0, 9);
-
+    if (alreadyExists) userName = userName + "-" + uuidv4().substring(0, 9);
     return database.collection(USERS).doc(user.uid).set(
       {
         userName: userName,
-        createdAt: admin.firestore.Timestamp.now(),
-        updatedAt: admin.firestore.Timestamp.now(),
+        createdAt: firestore.Timestamp.now(),
+        updatedAt: firestore.Timestamp.now(),
         imageUrl: "",
       },
       { merge: false }
@@ -31,7 +30,7 @@ export const onDeleteUser = functions
   .region("europe-west3")
   .auth.user()
   .onDelete(async (user) => {
-    const bucket = admin.storage().bucket();
+    const bucket = storage().bucket();
 
     const path = `${user.uid}/userImage`;
 

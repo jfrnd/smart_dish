@@ -7,7 +7,7 @@ const orientationThreshold = 700.0;
 
 class HybridScaffold extends StatelessWidget {
   final Widget body;
-  final Widget? appBar;
+  final PreferredSizeWidget? appBar;
   final Widget? floatingActionButton;
   final bool hideNavBarInMobile;
 
@@ -49,7 +49,7 @@ class HybridScaffold extends StatelessWidget {
       );
     } else {
       return Scaffold(
-        appBar: AppBar(title: const Text("SmartDish")),
+        appBar: appBar,
         drawer: hideNavBarInMobile ? null : const MainNavigation(),
         floatingActionButton: floatingActionButton,
         body: body,

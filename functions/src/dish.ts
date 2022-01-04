@@ -1,4 +1,4 @@
-import * as admin from "firebase-admin";
+import { storage, firestore } from "firebase-admin";
 import * as functions from "firebase-functions";
 import { DISHES } from "./consts";
 import { getFriendsOfUser } from "./friendship";
@@ -11,6 +11,7 @@ export interface Dish {
   createdBy: string;
   createdAt: FirebaseFirestore.Timestamp;
   updatedAt: FirebaseFirestore.Timestamp;
+  ingredients: string[];
 }
 
 export const onUpdateDish = functions
@@ -21,7 +22,7 @@ export const onUpdateDish = functions
     const after: Dish = change.after.data() as Dish;
     if (before.updatedAt.isEqual(after.updatedAt)) {
       return change.after.ref.update({
-        updatedAt: admin.firestore.Timestamp.now(),
+        updatedAt: firestore.Timestamp.now(),
       });
     }
     return;
@@ -31,39 +32,54 @@ export const onCreateDish = functions
   .region("europe-west3")
   .firestore.document(`${DISHES}/{dishId}`)
   .onCreate(async (snapshot, context) => {
-    const dish = snapshot.data() as Dish;
-    const creator = await getUserDocument(dish.createdBy);
-    const friends = await getFriendsOfUser(dish.createdBy);
-
-    const jobs: Promise<any>[] = [];
-    friends.forEach(async (user) => {
-      if (user.token != undefined && user.token != "") {
-        const job = sendPushNotificationToUser(
-          user.token,
-          "New dish created",
-          `${creator.userName} created a new dish: ${dish.name}.`,
-          dish.imageUrl == "" ? creator.imageUrl : dish.imageUrl
-        );
-        jobs.push(job);
-      }
-    });
-    await Promise.all(jobs);
-
-    return snapshot.ref.update({
-      createdAt: admin.firestore.Timestamp.now(),
-      updatedAt: admin.firestore.Timestamp.now(),
-    });
+    await sendPushNotifictaionToFriends(snapshot);
+    return addMetaData(snapshot);
   });
+
+async function addMetaData(
+  snapshot: functions.firestore.QueryDocumentSnapshot
+): Promise<firestore.WriteResult> {
+  return snapshot.ref.update({
+    createdAt: firestore.Timestamp.now(),
+    updatedAt: firestore.Timestamp.now(),
+  });
+}
+
+async function sendPushNotifictaionToFriends(
+  snapshot: functions.firestore.QueryDocumentSnapshot
+) {
+  const dish = snapshot.data() as Dish;
+  const jobs: Promise<any>[] = [];
+  const creator = await getUserDocument(dish.createdBy);
+  const friends = await getFriendsOfUser(dish.createdBy);
+
+  friends.forEach(async (user) => {
+    const job = sendPushNotificationToUser(
+      user,
+      "New dish created",
+      `${creator.userName} created a new dish: ${dish.name}.`,
+      dish.imageUrl == "" ? creator.imageUrl : dish.imageUrl
+    );
+    jobs.push(job);
+  });
+  await Promise.all(jobs);
+}
 
 export const onDeleteDish = functions
   .region("europe-west3")
   .firestore.document(`${DISHES}/{dishId}`)
   .onDelete(async (snapshot, context) => {
-    const dish: Dish = snapshot.data() as Dish;
-
-    const bucket = admin.storage().bucket();
-
-    const path = `${dish.createdBy}/dishes/${snapshot.id}`;
-
-    return bucket.file(path).delete();
+    return deleteDishPicture(snapshot);
   });
+
+function deleteDishPicture(
+  snapshot: functions.firestore.QueryDocumentSnapshot
+) {
+  const dish: Dish = snapshot.data() as Dish;
+
+  const bucket = storage().bucket();
+
+  const path = `${dish.createdBy}/dishes/${snapshot.id}`;
+
+  return bucket.file(path).delete();
+}

@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart' as fba;
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:injectable/injectable.dart';
 import 'package:smart_dish/domain/user/user.dart';
+import 'package:smart_dish/utils/logger.dart';
 
 import 'auth_failure.dart';
 

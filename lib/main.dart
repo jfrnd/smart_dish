@@ -47,7 +47,7 @@ Future<void> main() async {
   await configureInjection(environment);
   if (environment == Environment.dev) {
     //if there is data with invalid data schema in cache
-    await getIt<FirebaseFirestore>().clearPersistence();
+    // await getIt<FirebaseFirestore>().clearPersistence();
     // await getIt<IAuthRepo>().signOut();
   }
 

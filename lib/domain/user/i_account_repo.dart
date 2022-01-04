@@ -19,6 +19,7 @@ const USER_IMAGE = "userImage";
 
 abstract class IAccountRepo implements IWatcherRepo<User> {
   Stream<Either<CrudFailure, User>> watchSignedInUser();
+  Future<User> getSignedInUser();
   Future<Either<CrudFailure, Unit>> updateUserName(String newUserName);
   Future<Either<CrudFailure, Unit>> updateUserPic(Uint8List image);
 }
@@ -109,6 +110,32 @@ class FirebaseAccountRepo implements IAccountRepo {
       return const Right(unit);
     } on FirebaseException catch (e) {
       return left(e.toCrudFailure());
+    }
+  }
+
+  @override
+  Future<User> getSignedInUser() async {
+    final uid = await _authRepo.getUserId();
+    try {
+      return _fs
+          .collection(USERS)
+          .doc(uid)
+          .withConverter<User>(
+            fromFirestore: (snapshot, _) => User.fromFirestore(snapshot, _),
+            toFirestore: (user, _) => user.toFirestore(_),
+          )
+          .get()
+          .then(
+        (snapshot) {
+          if (!snapshot.exists) {
+            throw NotAuthenticatedError();
+          } else {
+            return snapshot.data()!;
+          }
+        },
+      );
+    } on FirebaseException catch (e) {
+      throw NotAuthenticatedError();
     }
   }
 }

@@ -1,14 +1,20 @@
-import * as admin from "firebase-admin";
+import { messaging } from "firebase-admin";
+import { User } from "./user_doc";
 
 export async function sendPushNotificationToUser(
-  token: string,
+  user: User,
   title: string,
   body: string,
   imageUrl: string,
   data?: { [key: string]: string } | undefined
 ): Promise<any> {
-  const message: admin.messaging.Message = {
-    token: token,
+  if (user.token == "" || user.token == undefined) {
+    console.log("User has no token.");
+    return;
+  }
+
+  const message: messaging.Message = {
+    token: user.token,
     notification: {
       title: title,
       body: body,
@@ -17,8 +23,7 @@ export async function sendPushNotificationToUser(
     data: data,
   };
 
-  return admin
-    .messaging()
+  return messaging()
     .send(message)
     .then((response) => {
       // Response is a message ID string.

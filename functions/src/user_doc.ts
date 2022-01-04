@@ -1,11 +1,11 @@
-import * as admin from "firebase-admin";
+import {firestore} from "firebase-admin";
 import * as functions from "firebase-functions";
 import { database } from ".";
 import { checkAuthentication } from "./auth";
 
 export const USERS = "users";
 export const USERNAME = "userName";
-export interface User extends admin.firestore.DocumentData {
+export interface User extends firestore.DocumentData {
   createdAt: FirebaseFirestore.Timestamp;
   imageUrl: string;
   updatedAt: FirebaseFirestore.Timestamp;

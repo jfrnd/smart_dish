@@ -1,11 +1,11 @@
-import * as admin from "firebase-admin";
+import { firestore } from "firebase-admin";
 import * as functions from "firebase-functions";
 import { database } from ".";
 import { checkAuthentication } from "./auth";
 import { FRIENDSHIPS } from "./consts";
 import { getUserDocument, User } from "./user_doc";
 
-export interface FriendShip extends admin.firestore.DocumentData {
+export interface FriendShip extends firestore.DocumentData {
   createdAt: FirebaseFirestore.Timestamp;
   users: string[];
 }
@@ -15,7 +15,7 @@ export function createFriendShip(id1: string, id2: string) {
 
   const friendShip: FriendShip = {
     users: [uniqueOrder[0], uniqueOrder[1]],
-    createdAt: admin.firestore.Timestamp.now(),
+    createdAt: firestore.Timestamp.now(),
   };
 
   const batch = database.batch();

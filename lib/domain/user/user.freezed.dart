@@ -22,13 +22,18 @@ class _$UserTearOff {
   const _$UserTearOff();
 
   _User call(
-      {@JsonKey(ignore: true) String? id,
+      {@JsonKey(ignore: true)
+          String? id,
       required String userName,
       required String imageUrl,
-      @JsonKey(ignore: true) DateTime? createdAt,
-      @JsonKey(ignore: true) DateTime? updatedAt,
-      @JsonKey(ignore: true) String? email,
-      @JsonKey(ignore: true) UserExtendedData? extendedData}) {
+      @JsonKey(name: CREATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          required DateTime createdAt,
+      @JsonKey(name: UPDATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          required DateTime updatedAt,
+      @JsonKey(defaultValue: "")
+          required String email,
+      @JsonKey(ignore: true)
+          UserExtendedData? extendedData}) {
     return _User(
       id: id,
       userName: userName,
@@ -54,12 +59,18 @@ mixin _$User {
   String? get id => throw _privateConstructorUsedError;
   String get userName => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  DateTime? get createdAt => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  String? get email => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: CREATED_AT,
+      fromJson: DateTimeConverter.dateTimeFromTimestamp,
+      toJson: DateTimeConverter.dateTimeToTimestamp)
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: UPDATED_AT,
+      fromJson: DateTimeConverter.dateTimeFromTimestamp,
+      toJson: DateTimeConverter.dateTimeToTimestamp)
+  DateTime get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: "")
+  String get email => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   UserExtendedData? get extendedData => throw _privateConstructorUsedError;
 
@@ -73,13 +84,18 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(ignore: true) String? id,
+      {@JsonKey(ignore: true)
+          String? id,
       String userName,
       String imageUrl,
-      @JsonKey(ignore: true) DateTime? createdAt,
-      @JsonKey(ignore: true) DateTime? updatedAt,
-      @JsonKey(ignore: true) String? email,
-      @JsonKey(ignore: true) UserExtendedData? extendedData});
+      @JsonKey(name: CREATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          DateTime createdAt,
+      @JsonKey(name: UPDATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          DateTime updatedAt,
+      @JsonKey(defaultValue: "")
+          String email,
+      @JsonKey(ignore: true)
+          UserExtendedData? extendedData});
 
   $UserExtendedDataCopyWith<$Res>? get extendedData;
 }
@@ -118,15 +134,15 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       extendedData: extendedData == freezed
           ? _value.extendedData
           : extendedData // ignore: cast_nullable_to_non_nullable
@@ -152,13 +168,18 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$UserCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(ignore: true) String? id,
+      {@JsonKey(ignore: true)
+          String? id,
       String userName,
       String imageUrl,
-      @JsonKey(ignore: true) DateTime? createdAt,
-      @JsonKey(ignore: true) DateTime? updatedAt,
-      @JsonKey(ignore: true) String? email,
-      @JsonKey(ignore: true) UserExtendedData? extendedData});
+      @JsonKey(name: CREATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          DateTime createdAt,
+      @JsonKey(name: UPDATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          DateTime updatedAt,
+      @JsonKey(defaultValue: "")
+          String email,
+      @JsonKey(ignore: true)
+          UserExtendedData? extendedData});
 
   @override
   $UserExtendedDataCopyWith<$Res>? get extendedData;
@@ -199,15 +220,15 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       extendedData: extendedData == freezed
           ? _value.extendedData
           : extendedData // ignore: cast_nullable_to_non_nullable
@@ -220,13 +241,18 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_User extends _User {
   const _$_User(
-      {@JsonKey(ignore: true) this.id,
+      {@JsonKey(ignore: true)
+          this.id,
       required this.userName,
       required this.imageUrl,
-      @JsonKey(ignore: true) this.createdAt,
-      @JsonKey(ignore: true) this.updatedAt,
-      @JsonKey(ignore: true) this.email,
-      @JsonKey(ignore: true) this.extendedData})
+      @JsonKey(name: CREATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          required this.createdAt,
+      @JsonKey(name: UPDATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          required this.updatedAt,
+      @JsonKey(defaultValue: "")
+          required this.email,
+      @JsonKey(ignore: true)
+          this.extendedData})
       : super._();
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
@@ -239,14 +265,20 @@ class _$_User extends _User {
   @override
   final String imageUrl;
   @override
-  @JsonKey(ignore: true)
-  final DateTime? createdAt;
+  @JsonKey(
+      name: CREATED_AT,
+      fromJson: DateTimeConverter.dateTimeFromTimestamp,
+      toJson: DateTimeConverter.dateTimeToTimestamp)
+  final DateTime createdAt;
   @override
-  @JsonKey(ignore: true)
-  final DateTime? updatedAt;
+  @JsonKey(
+      name: UPDATED_AT,
+      fromJson: DateTimeConverter.dateTimeFromTimestamp,
+      toJson: DateTimeConverter.dateTimeToTimestamp)
+  final DateTime updatedAt;
   @override
-  @JsonKey(ignore: true)
-  final String? email;
+  @JsonKey(defaultValue: "")
+  final String email;
   @override
   @JsonKey(ignore: true)
   final UserExtendedData? extendedData;
@@ -295,13 +327,18 @@ class _$_User extends _User {
 
 abstract class _User extends User {
   const factory _User(
-      {@JsonKey(ignore: true) String? id,
+      {@JsonKey(ignore: true)
+          String? id,
       required String userName,
       required String imageUrl,
-      @JsonKey(ignore: true) DateTime? createdAt,
-      @JsonKey(ignore: true) DateTime? updatedAt,
-      @JsonKey(ignore: true) String? email,
-      @JsonKey(ignore: true) UserExtendedData? extendedData}) = _$_User;
+      @JsonKey(name: CREATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          required DateTime createdAt,
+      @JsonKey(name: UPDATED_AT, fromJson: DateTimeConverter.dateTimeFromTimestamp, toJson: DateTimeConverter.dateTimeToTimestamp)
+          required DateTime updatedAt,
+      @JsonKey(defaultValue: "")
+          required String email,
+      @JsonKey(ignore: true)
+          UserExtendedData? extendedData}) = _$_User;
   const _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
@@ -314,14 +351,20 @@ abstract class _User extends User {
   @override
   String get imageUrl;
   @override
-  @JsonKey(ignore: true)
-  DateTime? get createdAt;
+  @JsonKey(
+      name: CREATED_AT,
+      fromJson: DateTimeConverter.dateTimeFromTimestamp,
+      toJson: DateTimeConverter.dateTimeToTimestamp)
+  DateTime get createdAt;
   @override
-  @JsonKey(ignore: true)
-  DateTime? get updatedAt;
+  @JsonKey(
+      name: UPDATED_AT,
+      fromJson: DateTimeConverter.dateTimeFromTimestamp,
+      toJson: DateTimeConverter.dateTimeToTimestamp)
+  DateTime get updatedAt;
   @override
-  @JsonKey(ignore: true)
-  String? get email;
+  @JsonKey(defaultValue: "")
+  String get email;
   @override
   @JsonKey(ignore: true)
   UserExtendedData? get extendedData;
