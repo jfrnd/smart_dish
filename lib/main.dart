@@ -30,7 +30,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'presentation/core/notification_manager.dart';
 
-const environment = Environment.dev;
+const environment = Environment.prod;
 const devicePreview = false;
 const webHotReloadTest = false;
 
@@ -47,8 +47,8 @@ Future<void> main() async {
   await configureInjection(environment);
   if (environment == Environment.dev) {
     //if there is data with invalid data schema in cache
-    // await getIt<FirebaseFirestore>().clearPersistence();
-    // await getIt<IAuthRepo>().signOut();
+    await getIt<FirebaseFirestore>().clearPersistence();
+    await getIt<IAuthRepo>().signOut();
   }
 
   if (clientIsMobile) {
