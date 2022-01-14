@@ -44,6 +44,27 @@ service cloud.firestore {
       allow delete: if isAuthenticated() && isCreator();
     }
 
+    match /households/{householdId} {
+      function isMember() {
+        return request.auth.uid in resource.data.members;
+      }
+      function isAdmin() {
+        return request.auth.uid in resource.data.admins;
+      }
+
+      function isCreatedForAuthenticatedUser(request) {
+        return request.resource.data.createdBy == request.auth.uid;
+      }
+
+      function isValidObject(request) {
+        return request.resource.data.createdBy != null; // TODO: add more
+      }
+
+      allow create: if isAuthenticated() && isCreatedForAuthenticatedUser(request) && isValidObject(request);
+      allow update: if isAuthenticated() && isAdmin() && isValidObject(request);
+      allow delete: if isAuthenticated() && isAdmin();
+      allow read: if isAuthenticated() && isMember();
+    }
 
     match /friendRequests/{requestId}/{anyFile=**} {
       function isSender() {
@@ -54,7 +75,5 @@ service cloud.firestore {
       }
       allow read: if request.auth != null && (isSender() || isReceiver());
     }
-
   }
-
 }

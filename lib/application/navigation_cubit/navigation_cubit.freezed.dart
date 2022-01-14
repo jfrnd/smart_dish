@@ -29,6 +29,10 @@ class _$NavigationStateTearOff {
     return const AccountSettingsSelected();
   }
 
+  HouseholdsSelected householdsSelected() {
+    return const HouseholdsSelected();
+  }
+
   FriendsSelected friendsSelected() {
     return const FriendsSelected();
   }
@@ -44,6 +48,7 @@ mixin _$NavigationState {
     required TResult Function() initial,
     required TResult Function() homeSelected,
     required TResult Function() accountSettingsSelected,
+    required TResult Function() householdsSelected,
     required TResult Function() friendsSelected,
   }) =>
       throw _privateConstructorUsedError;
@@ -52,6 +57,7 @@ mixin _$NavigationState {
     TResult Function()? initial,
     TResult Function()? homeSelected,
     TResult Function()? accountSettingsSelected,
+    TResult Function()? householdsSelected,
     TResult Function()? friendsSelected,
   }) =>
       throw _privateConstructorUsedError;
@@ -60,6 +66,7 @@ mixin _$NavigationState {
     TResult Function()? initial,
     TResult Function()? homeSelected,
     TResult Function()? accountSettingsSelected,
+    TResult Function()? householdsSelected,
     TResult Function()? friendsSelected,
     required TResult orElse(),
   }) =>
@@ -70,6 +77,7 @@ mixin _$NavigationState {
     required TResult Function(HomeSelected value) homeSelected,
     required TResult Function(AccountSettingsSelected value)
         accountSettingsSelected,
+    required TResult Function(HouseholdsSelected value) householdsSelected,
     required TResult Function(FriendsSelected value) friendsSelected,
   }) =>
       throw _privateConstructorUsedError;
@@ -78,6 +86,7 @@ mixin _$NavigationState {
     TResult Function(Initial value)? initial,
     TResult Function(HomeSelected value)? homeSelected,
     TResult Function(AccountSettingsSelected value)? accountSettingsSelected,
+    TResult Function(HouseholdsSelected value)? householdsSelected,
     TResult Function(FriendsSelected value)? friendsSelected,
   }) =>
       throw _privateConstructorUsedError;
@@ -86,6 +95,7 @@ mixin _$NavigationState {
     TResult Function(Initial value)? initial,
     TResult Function(HomeSelected value)? homeSelected,
     TResult Function(AccountSettingsSelected value)? accountSettingsSelected,
+    TResult Function(HouseholdsSelected value)? householdsSelected,
     TResult Function(FriendsSelected value)? friendsSelected,
     required TResult orElse(),
   }) =>
@@ -150,6 +160,7 @@ class _$Initial implements Initial {
     required TResult Function() initial,
     required TResult Function() homeSelected,
     required TResult Function() accountSettingsSelected,
+    required TResult Function() householdsSelected,
     required TResult Function() friendsSelected,
   }) {
     return initial();
@@ -161,6 +172,7 @@ class _$Initial implements Initial {
     TResult Function()? initial,
     TResult Function()? homeSelected,
     TResult Function()? accountSettingsSelected,
+    TResult Function()? householdsSelected,
     TResult Function()? friendsSelected,
   }) {
     return initial?.call();
@@ -172,6 +184,7 @@ class _$Initial implements Initial {
     TResult Function()? initial,
     TResult Function()? homeSelected,
     TResult Function()? accountSettingsSelected,
+    TResult Function()? householdsSelected,
     TResult Function()? friendsSelected,
     required TResult orElse(),
   }) {
@@ -188,6 +201,7 @@ class _$Initial implements Initial {
     required TResult Function(HomeSelected value) homeSelected,
     required TResult Function(AccountSettingsSelected value)
         accountSettingsSelected,
+    required TResult Function(HouseholdsSelected value) householdsSelected,
     required TResult Function(FriendsSelected value) friendsSelected,
   }) {
     return initial(this);
@@ -199,6 +213,7 @@ class _$Initial implements Initial {
     TResult Function(Initial value)? initial,
     TResult Function(HomeSelected value)? homeSelected,
     TResult Function(AccountSettingsSelected value)? accountSettingsSelected,
+    TResult Function(HouseholdsSelected value)? householdsSelected,
     TResult Function(FriendsSelected value)? friendsSelected,
   }) {
     return initial?.call(this);
@@ -210,6 +225,7 @@ class _$Initial implements Initial {
     TResult Function(Initial value)? initial,
     TResult Function(HomeSelected value)? homeSelected,
     TResult Function(AccountSettingsSelected value)? accountSettingsSelected,
+    TResult Function(HouseholdsSelected value)? householdsSelected,
     TResult Function(FriendsSelected value)? friendsSelected,
     required TResult orElse(),
   }) {
@@ -268,6 +284,7 @@ class _$HomeSelected implements HomeSelected {
     required TResult Function() initial,
     required TResult Function() homeSelected,
     required TResult Function() accountSettingsSelected,
+    required TResult Function() householdsSelected,
     required TResult Function() friendsSelected,
   }) {
     return homeSelected();
@@ -279,6 +296,7 @@ class _$HomeSelected implements HomeSelected {
     TResult Function()? initial,
     TResult Function()? homeSelected,
     TResult Function()? accountSettingsSelected,
+    TResult Function()? householdsSelected,
     TResult Function()? friendsSelected,
   }) {
     return homeSelected?.call();
@@ -290,6 +308,7 @@ class _$HomeSelected implements HomeSelected {
     TResult Function()? initial,
     TResult Function()? homeSelected,
     TResult Function()? accountSettingsSelected,
+    TResult Function()? householdsSelected,
     TResult Function()? friendsSelected,
     required TResult orElse(),
   }) {
@@ -306,6 +325,7 @@ class _$HomeSelected implements HomeSelected {
     required TResult Function(HomeSelected value) homeSelected,
     required TResult Function(AccountSettingsSelected value)
         accountSettingsSelected,
+    required TResult Function(HouseholdsSelected value) householdsSelected,
     required TResult Function(FriendsSelected value) friendsSelected,
   }) {
     return homeSelected(this);
@@ -317,6 +337,7 @@ class _$HomeSelected implements HomeSelected {
     TResult Function(Initial value)? initial,
     TResult Function(HomeSelected value)? homeSelected,
     TResult Function(AccountSettingsSelected value)? accountSettingsSelected,
+    TResult Function(HouseholdsSelected value)? householdsSelected,
     TResult Function(FriendsSelected value)? friendsSelected,
   }) {
     return homeSelected?.call(this);
@@ -328,6 +349,7 @@ class _$HomeSelected implements HomeSelected {
     TResult Function(Initial value)? initial,
     TResult Function(HomeSelected value)? homeSelected,
     TResult Function(AccountSettingsSelected value)? accountSettingsSelected,
+    TResult Function(HouseholdsSelected value)? householdsSelected,
     TResult Function(FriendsSelected value)? friendsSelected,
     required TResult orElse(),
   }) {
@@ -386,6 +408,7 @@ class _$AccountSettingsSelected implements AccountSettingsSelected {
     required TResult Function() initial,
     required TResult Function() homeSelected,
     required TResult Function() accountSettingsSelected,
+    required TResult Function() householdsSelected,
     required TResult Function() friendsSelected,
   }) {
     return accountSettingsSelected();
@@ -397,6 +420,7 @@ class _$AccountSettingsSelected implements AccountSettingsSelected {
     TResult Function()? initial,
     TResult Function()? homeSelected,
     TResult Function()? accountSettingsSelected,
+    TResult Function()? householdsSelected,
     TResult Function()? friendsSelected,
   }) {
     return accountSettingsSelected?.call();
@@ -408,6 +432,7 @@ class _$AccountSettingsSelected implements AccountSettingsSelected {
     TResult Function()? initial,
     TResult Function()? homeSelected,
     TResult Function()? accountSettingsSelected,
+    TResult Function()? householdsSelected,
     TResult Function()? friendsSelected,
     required TResult orElse(),
   }) {
@@ -424,6 +449,7 @@ class _$AccountSettingsSelected implements AccountSettingsSelected {
     required TResult Function(HomeSelected value) homeSelected,
     required TResult Function(AccountSettingsSelected value)
         accountSettingsSelected,
+    required TResult Function(HouseholdsSelected value) householdsSelected,
     required TResult Function(FriendsSelected value) friendsSelected,
   }) {
     return accountSettingsSelected(this);
@@ -435,6 +461,7 @@ class _$AccountSettingsSelected implements AccountSettingsSelected {
     TResult Function(Initial value)? initial,
     TResult Function(HomeSelected value)? homeSelected,
     TResult Function(AccountSettingsSelected value)? accountSettingsSelected,
+    TResult Function(HouseholdsSelected value)? householdsSelected,
     TResult Function(FriendsSelected value)? friendsSelected,
   }) {
     return accountSettingsSelected?.call(this);
@@ -446,6 +473,7 @@ class _$AccountSettingsSelected implements AccountSettingsSelected {
     TResult Function(Initial value)? initial,
     TResult Function(HomeSelected value)? homeSelected,
     TResult Function(AccountSettingsSelected value)? accountSettingsSelected,
+    TResult Function(HouseholdsSelected value)? householdsSelected,
     TResult Function(FriendsSelected value)? friendsSelected,
     required TResult orElse(),
   }) {
@@ -458,6 +486,130 @@ class _$AccountSettingsSelected implements AccountSettingsSelected {
 
 abstract class AccountSettingsSelected implements NavigationState {
   const factory AccountSettingsSelected() = _$AccountSettingsSelected;
+}
+
+/// @nodoc
+abstract class $HouseholdsSelectedCopyWith<$Res> {
+  factory $HouseholdsSelectedCopyWith(
+          HouseholdsSelected value, $Res Function(HouseholdsSelected) then) =
+      _$HouseholdsSelectedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$HouseholdsSelectedCopyWithImpl<$Res>
+    extends _$NavigationStateCopyWithImpl<$Res>
+    implements $HouseholdsSelectedCopyWith<$Res> {
+  _$HouseholdsSelectedCopyWithImpl(
+      HouseholdsSelected _value, $Res Function(HouseholdsSelected) _then)
+      : super(_value, (v) => _then(v as HouseholdsSelected));
+
+  @override
+  HouseholdsSelected get _value => super._value as HouseholdsSelected;
+}
+
+/// @nodoc
+
+class _$HouseholdsSelected implements HouseholdsSelected {
+  const _$HouseholdsSelected();
+
+  @override
+  String toString() {
+    return 'NavigationState.householdsSelected()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is HouseholdsSelected);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() homeSelected,
+    required TResult Function() accountSettingsSelected,
+    required TResult Function() householdsSelected,
+    required TResult Function() friendsSelected,
+  }) {
+    return householdsSelected();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? homeSelected,
+    TResult Function()? accountSettingsSelected,
+    TResult Function()? householdsSelected,
+    TResult Function()? friendsSelected,
+  }) {
+    return householdsSelected?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? homeSelected,
+    TResult Function()? accountSettingsSelected,
+    TResult Function()? householdsSelected,
+    TResult Function()? friendsSelected,
+    required TResult orElse(),
+  }) {
+    if (householdsSelected != null) {
+      return householdsSelected();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(HomeSelected value) homeSelected,
+    required TResult Function(AccountSettingsSelected value)
+        accountSettingsSelected,
+    required TResult Function(HouseholdsSelected value) householdsSelected,
+    required TResult Function(FriendsSelected value) friendsSelected,
+  }) {
+    return householdsSelected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(HomeSelected value)? homeSelected,
+    TResult Function(AccountSettingsSelected value)? accountSettingsSelected,
+    TResult Function(HouseholdsSelected value)? householdsSelected,
+    TResult Function(FriendsSelected value)? friendsSelected,
+  }) {
+    return householdsSelected?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(HomeSelected value)? homeSelected,
+    TResult Function(AccountSettingsSelected value)? accountSettingsSelected,
+    TResult Function(HouseholdsSelected value)? householdsSelected,
+    TResult Function(FriendsSelected value)? friendsSelected,
+    required TResult orElse(),
+  }) {
+    if (householdsSelected != null) {
+      return householdsSelected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class HouseholdsSelected implements NavigationState {
+  const factory HouseholdsSelected() = _$HouseholdsSelected;
 }
 
 /// @nodoc
@@ -504,6 +656,7 @@ class _$FriendsSelected implements FriendsSelected {
     required TResult Function() initial,
     required TResult Function() homeSelected,
     required TResult Function() accountSettingsSelected,
+    required TResult Function() householdsSelected,
     required TResult Function() friendsSelected,
   }) {
     return friendsSelected();
@@ -515,6 +668,7 @@ class _$FriendsSelected implements FriendsSelected {
     TResult Function()? initial,
     TResult Function()? homeSelected,
     TResult Function()? accountSettingsSelected,
+    TResult Function()? householdsSelected,
     TResult Function()? friendsSelected,
   }) {
     return friendsSelected?.call();
@@ -526,6 +680,7 @@ class _$FriendsSelected implements FriendsSelected {
     TResult Function()? initial,
     TResult Function()? homeSelected,
     TResult Function()? accountSettingsSelected,
+    TResult Function()? householdsSelected,
     TResult Function()? friendsSelected,
     required TResult orElse(),
   }) {
@@ -542,6 +697,7 @@ class _$FriendsSelected implements FriendsSelected {
     required TResult Function(HomeSelected value) homeSelected,
     required TResult Function(AccountSettingsSelected value)
         accountSettingsSelected,
+    required TResult Function(HouseholdsSelected value) householdsSelected,
     required TResult Function(FriendsSelected value) friendsSelected,
   }) {
     return friendsSelected(this);
@@ -553,6 +709,7 @@ class _$FriendsSelected implements FriendsSelected {
     TResult Function(Initial value)? initial,
     TResult Function(HomeSelected value)? homeSelected,
     TResult Function(AccountSettingsSelected value)? accountSettingsSelected,
+    TResult Function(HouseholdsSelected value)? householdsSelected,
     TResult Function(FriendsSelected value)? friendsSelected,
   }) {
     return friendsSelected?.call(this);
@@ -564,6 +721,7 @@ class _$FriendsSelected implements FriendsSelected {
     TResult Function(Initial value)? initial,
     TResult Function(HomeSelected value)? homeSelected,
     TResult Function(AccountSettingsSelected value)? accountSettingsSelected,
+    TResult Function(HouseholdsSelected value)? householdsSelected,
     TResult Function(FriendsSelected value)? friendsSelected,
     required TResult orElse(),
   }) {

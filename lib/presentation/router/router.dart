@@ -6,6 +6,9 @@ import 'package:smart_dish/presentation/core/splash_page.dart';
 import 'package:smart_dish/presentation/dish/create_update_dish_page.dart';
 import 'package:smart_dish/presentation/friends/friends_page.dart';
 import 'package:smart_dish/presentation/friends/search_users_page.dart';
+import 'package:smart_dish/presentation/households/create_update_household_page.dart';
+import 'package:smart_dish/presentation/households/household_list_page.dart';
+import 'package:smart_dish/presentation/households/household_page.dart';
 import 'package:smart_dish/presentation/user/pages/account_settings_page.dart';
 
 import '../home_page.dart';
@@ -19,8 +22,11 @@ import '../home_page.dart';
     CustomRoute(page: HomePage),
     CustomRoute(page: AccountSettingsPage),
     CustomRoute(page: FriendsPage),
+    CustomRoute(page: HouseholdListPage),
+    CustomRoute(page: HouseholdPage),
     CustomRoute(page: SearchUsersPage),
     AutoRoute(page: CreateUpdateDishPage),
+    AutoRoute(page: CreateUpdateHouseholdPage),
   ],
 )
 class $AppRouter {}

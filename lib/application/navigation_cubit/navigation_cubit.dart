@@ -11,6 +11,7 @@ class NavigationCubit extends Cubit<NavigationState> {
 
   void homeSelected() => emit(const NavigationState.homeSelected());
   void friendsSelected() => emit(const NavigationState.friendsSelected());
+  void householdsSelected() => emit(const NavigationState.householdsSelected());
   void accountSettingsSelected() =>
       emit(const NavigationState.accountSettingsSelected());
 }

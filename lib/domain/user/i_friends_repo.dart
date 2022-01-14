@@ -7,6 +7,7 @@ import 'package:smart_dish/auth/i_auth_repo.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'package:smart_dish/domain/core/crud_failure.dart';
+import 'package:smart_dish/domain/user/i_user_repo.dart';
 import 'package:smart_dish/domain/user/user.dart';
 import 'package:smart_dish/domain/watcher/i_watcher_repo.dart';
 
@@ -23,10 +24,12 @@ abstract class IUserFriendsRepo implements IWatcherRepo<List<User>> {
 class FirebaseFriendsRepo implements IUserFriendsRepo {
   final IAuthRepo _authRepo;
   final FirebaseFirestore _firestore;
+  final IUserRepo _userRepo;
 
   FirebaseFriendsRepo(
     this._authRepo,
     this._firestore,
+    this._userRepo,
   );
 
   @override
@@ -39,39 +42,9 @@ class FirebaseFriendsRepo implements IUserFriendsRepo {
     yield* watchFriendsUserIds().switchMap(
       (failureOrIds) => failureOrIds.fold(
         (failure) => Stream.value(left(failure)),
-        (ids) => watchUsers(ids),
+        (ids) => _userRepo.watchUsers(ids),
       ),
     );
-  }
-
-  Stream<Either<CrudFailure, List<User>>> watchUsers(List<String> ids) async* {
-    if (ids.isNotEmpty) {
-      yield* _firestore
-          .collection(USERS)
-          .where("__name__", whereIn: ids)
-          .withConverter<User>(
-            fromFirestore: (snapshot, options) =>
-                User.fromFirestore(snapshot, options),
-            toFirestore: (user, options) => user.toFirestore(options),
-          )
-          .snapshots()
-          .map(
-            (snapshot) => right<CrudFailure, List<User>>(
-              snapshot.docs.map((doc) => doc.data()).toList(),
-            ),
-          )
-          .onErrorReturnWith(
-        (e, stackTrace) {
-          if (e is FirebaseException) {
-            return left(e.toCrudFailure());
-          } else {
-            throw (e);
-          }
-        },
-      );
-    } else {
-      yield right<CrudFailure, List<User>>([]);
-    }
   }
 
   Stream<Either<CrudFailure, List<String>>> watchFriendsUserIds() async* {

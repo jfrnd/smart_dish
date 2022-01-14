@@ -37,6 +37,9 @@ class MainNavigation extends StatelessWidget {
             friendsSelected: (_) {
               AutoRouter.of(context).replace(const FriendsRoute());
             },
+            householdsSelected: (_) {
+              AutoRouter.of(context).replace(const HouseholdListRoute());
+            },
           );
         },
         builder: (context, state) {
@@ -70,6 +73,16 @@ class MainNavigation extends StatelessWidget {
               label: 'Friends',
               showOnTop: showOnTop,
               isSelected: state is FriendsSelected,
+            ),
+            NavigationTile(
+              onPressed: () {
+                AutoRouter.of(context).pop();
+                context.read<NavigationCubit>().householdsSelected();
+              },
+              iconData: Icons.other_houses,
+              label: 'Households',
+              showOnTop: showOnTop,
+              isSelected: state is HouseholdsSelected,
             ),
             NavigationTile(
               onPressed: () {

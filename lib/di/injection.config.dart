@@ -17,23 +17,27 @@ import 'package:shared_preferences/shared_preferences.dart' as _i15;
 import '../application/account_editor/account_editor_cubit.dart' as _i26;
 import '../application/dish_editor/dish_editor_cubit.dart' as _i18;
 import '../application/friend_actor/friend_actor_cubit.dart' as _i19;
-import '../application/image_cropper/image_cropper_cubit.dart' as _i23;
+import '../application/household_editor/household_editor_cubit.dart' as _i28;
+import '../application/image_cropper/image_cropper_cubit.dart' as _i24;
 import '../application/navigation_cubit/navigation_cubit.dart' as _i13;
-import '../application/search_user/search_user_cubit.dart' as _i24;
-import '../application/watcher/dish_watcher_cubit.dart' as _i27;
+import '../application/search_user/search_user_cubit.dart' as _i30;
+import '../application/watcher/dish_watcher_cubit.dart' as _i31;
 import '../application/watcher/friend_request_cubit.dart' as _i20;
-import '../application/watcher/friend_watcher_cubit.dart' as _i21;
+import '../application/watcher/friend_watcher_cubit.dart' as _i27;
+import '../application/watcher/household_watcher_cubit.dart' as _i29;
 import '../application/watcher/signed_in_user_watcher_cubit.dart' as _i25;
 import '../auth/auth_editor_cubit.dart' as _i16;
 import '../auth/auth_watcher_cubit.dart' as _i17;
 import '../auth/i_auth_repo.dart' as _i8;
 import '../domain/dish/i_dish_repo.dart' as _i9;
 import '../domain/friend_request/i_friend_request_repo.dart' as _i10;
-import '../domain/user/i_account_repo.dart' as _i22;
-import '../domain/user/i_friends_repo.dart' as _i11;
+import '../domain/household/i_household_repo.dart' as _i22;
+import '../domain/user/i_account_repo.dart' as _i21;
+import '../domain/user/i_friends_repo.dart' as _i23;
+import '../domain/user/i_user_repo.dart' as _i11;
 import '../presentation/core/notification_manager.dart' as _i14;
-import 'firebase_injectable_module.dart' as _i28;
-import 'injectable_module.dart' as _i29;
+import 'firebase_injectable_module.dart' as _i32;
+import 'injectable_module.dart' as _i33;
 
 const String _prod = 'prod';
 const String _dev = 'dev';
@@ -83,8 +87,8 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
   gh.lazySingleton<_i10.IFriendRequestRepo>(() =>
       _i10.FirebaseFriendRequestRepo(get<_i5.FirebaseFunctions>(),
           get<_i8.IAuthRepo>(), get<_i4.FirebaseFirestore>()));
-  gh.lazySingleton<_i11.IUserFriendsRepo>(() => _i11.FirebaseFriendsRepo(
-      get<_i8.IAuthRepo>(), get<_i4.FirebaseFirestore>()));
+  gh.lazySingleton<_i11.IUserRepo>(
+      () => _i11.FirebaseUserRepo(get<_i4.FirebaseFirestore>()));
   gh.lazySingleton<_i12.ImagePicker>(() => injectableModule.imagePicker);
   gh.lazySingleton<_i13.NavigationCubit>(() => _i13.NavigationCubit());
   gh.lazySingleton<_i14.NotificationManager>(() => _i14.NotificationManager());
@@ -100,34 +104,50 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       () => _i19.FriendActorCubit(get<_i10.IFriendRequestRepo>()));
   gh.lazySingleton<_i20.FriendRequestCubit>(
       () => _i20.FriendRequestCubit(get<_i10.IFriendRequestRepo>()));
-  gh.lazySingleton<_i21.FriendWatcherCubit>(
-      () => _i21.FriendWatcherCubit(get<_i11.IUserFriendsRepo>()));
-  gh.lazySingleton<_i22.IAccountRepo>(() => _i22.FirebaseAccountRepo(
+  gh.lazySingleton<_i21.IAccountRepo>(() => _i21.FirebaseAccountRepo(
       get<_i8.IAuthRepo>(),
       get<_i4.FirebaseFirestore>(),
       get<_i5.FirebaseFunctions>(),
       get<_i7.FirebaseStorage>()));
-  gh.factory<_i23.ImageCropperCubit>(
-      () => _i23.ImageCropperCubit(get<_i12.ImagePicker>()));
-  gh.factory<_i24.SearchUserCubit>(() => _i24.SearchUserCubit(
+  gh.lazySingleton<_i22.IHouseholdRepo>(() => _i22.FirebaseHouseholdRepo(
+      get<_i4.FirebaseFirestore>(),
+      get<_i8.IAuthRepo>(),
+      get<_i7.FirebaseStorage>(),
+      get<_i11.IUserRepo>()));
+  gh.lazySingleton<_i23.IUserFriendsRepo>(() => _i23.FirebaseFriendsRepo(
+      get<_i8.IAuthRepo>(),
+      get<_i4.FirebaseFirestore>(),
+      get<_i11.IUserRepo>()));
+  gh.factory<_i24.ImageCropperCubit>(
+      () => _i24.ImageCropperCubit(get<_i12.ImagePicker>()));
+  gh.lazySingleton<_i25.SignedInUserWatcherCubit>(
+      () => _i25.SignedInUserWatcherCubit(get<_i21.IAccountRepo>()));
+  gh.factory<_i26.AccountEditorCubit>(
+      () => _i26.AccountEditorCubit(get<_i21.IAccountRepo>()));
+  gh.lazySingleton<_i27.FriendWatcherCubit>(
+      () => _i27.FriendWatcherCubit(get<_i23.IUserFriendsRepo>()));
+  gh.factory<_i28.HouseholdEditorCubit>(() => _i28.HouseholdEditorCubit(
+      get<_i22.IHouseholdRepo>(),
+      get<_i12.ImagePicker>(),
+      get<_i27.FriendWatcherCubit>(),
+      get<_i25.SignedInUserWatcherCubit>()));
+  gh.factory<_i29.HouseholdWatcherCubit>(
+      () => _i29.HouseholdWatcherCubit(get<_i22.IHouseholdRepo>()));
+  gh.factory<_i30.SearchUserCubit>(() => _i30.SearchUserCubit(
       get<_i10.IFriendRequestRepo>(),
       get<_i20.FriendRequestCubit>(),
-      get<_i21.FriendWatcherCubit>(),
+      get<_i27.FriendWatcherCubit>(),
       get<_i8.IAuthRepo>()));
-  gh.lazySingleton<_i25.SignedInUserWatcherCubit>(
-      () => _i25.SignedInUserWatcherCubit(get<_i22.IAccountRepo>()));
-  gh.factory<_i26.AccountEditorCubit>(
-      () => _i26.AccountEditorCubit(get<_i22.IAccountRepo>()));
-  gh.factory<_i27.DishWatcherCubit>(() => _i27.DishWatcherCubit(
-      get<_i21.FriendWatcherCubit>(),
+  gh.factory<_i31.DishWatcherCubit>(() => _i31.DishWatcherCubit(
+      get<_i27.FriendWatcherCubit>(),
       get<_i9.IDishRepo>(),
       get<_i25.SignedInUserWatcherCubit>()));
   return get;
 }
 
-class _$FirebaseInjectableModuleProd extends _i28.FirebaseInjectableModuleProd {
+class _$FirebaseInjectableModuleProd extends _i32.FirebaseInjectableModuleProd {
 }
 
-class _$FirebaseInjectableModuleDev extends _i28.FirebaseInjectableModuleDev {}
+class _$FirebaseInjectableModuleDev extends _i32.FirebaseInjectableModuleDev {}
 
-class _$InjectableModule extends _i29.InjectableModule {}
+class _$InjectableModule extends _i33.InjectableModule {}

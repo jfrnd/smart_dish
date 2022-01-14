@@ -1,0 +1,19 @@
+{
+  "name": "households/ff90f3b0-7517-11ec-adc1-c3077eb5506e",
+  "bucket": "smartdish-82118.appspot.com",
+  "contentType": "image/jpeg",
+  "metageneration": 1,
+  "generation": 1642163493131,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [
+    "0965dab0-22f3-42e9-bea8-bd68d726e8f3"
+  ],
+  "timeCreated": "2022-01-14T12:31:33.130Z",
+  "updated": "2022-01-14T12:31:33.139Z",
+  "size": 25006,
+  "md5Hash": "vh5sIMEPAFKG+H5UsWsY9Q==",
+  "crc32c": "2978076328"
+}

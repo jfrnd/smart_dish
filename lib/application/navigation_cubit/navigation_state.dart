@@ -6,5 +6,6 @@ class NavigationState with _$NavigationState {
   const factory NavigationState.homeSelected() = HomeSelected;
   const factory NavigationState.accountSettingsSelected() =
       AccountSettingsSelected;
+  const factory NavigationState.householdsSelected() = HouseholdsSelected;
   const factory NavigationState.friendsSelected() = FriendsSelected;
 }

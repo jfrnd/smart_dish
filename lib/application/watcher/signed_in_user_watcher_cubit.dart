@@ -6,4 +6,9 @@ import 'package:smart_dish/domain/watcher/watcher_cubit.dart';
 @lazySingleton
 class SignedInUserWatcherCubit extends WatcherCubit<User> {
   SignedInUserWatcherCubit(IAccountRepo repo) : super(repo);
+
+  User readSignedInUser() => state.maybeMap(
+        loadingSuccessful: (state) => state.data,
+        orElse: () => User.empty(),
+      );
 }

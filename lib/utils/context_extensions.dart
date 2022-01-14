@@ -5,6 +5,7 @@ import 'package:smart_dish/application/navigation_cubit/navigation_cubit.dart';
 import 'package:smart_dish/application/watcher/dish_watcher_cubit.dart';
 import 'package:smart_dish/application/watcher/friend_request_cubit.dart';
 import 'package:smart_dish/application/watcher/friend_watcher_cubit.dart';
+import 'package:smart_dish/application/watcher/household_watcher_cubit.dart';
 import 'package:smart_dish/application/watcher/signed_in_user_watcher_cubit.dart';
 import 'package:smart_dish/auth/auth_watcher_cubit.dart';
 
@@ -20,6 +21,7 @@ extension ContextX on BuildContext {
     read<FriendRequestCubit>().watchAllStarted();
     read<SignedInUserWatcherCubit>().watchAllStarted();
     read<DishWatcherCubit>().watchAllStarted();
+    read<HouseholdWatcherCubit>().watchAllStarted();
     read<NavigationCubit>().homeSelected();
   }
 
@@ -28,5 +30,6 @@ extension ContextX on BuildContext {
     read<FriendRequestCubit>().watchStopped();
     read<SignedInUserWatcherCubit>().watchStopped();
     read<DishWatcherCubit>().watchStopped();
+    read<HouseholdWatcherCubit>().watchStopped();
   }
 }
