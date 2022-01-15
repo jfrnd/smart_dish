@@ -31,13 +31,13 @@ class _$HouseholdTearOff {
       required String imageUrl,
       required String name,
       required String createdBy,
-      required List<String> members,
-      required List<String> admins,
+      @JsonKey(name: "members")
+          required List<String> memberIds,
+      @JsonKey(name: "admins")
+          required List<String> adminIds,
       required String updatedBy,
-      @JsonKey(defaultValue: <User>[])
-          required List<User> membersUserData,
-      @JsonKey(defaultValue: <User>[])
-          required List<User>? adminsUserData,
+      @JsonKey(defaultValue: <User>[], name: "memberUserData")
+          required List<User> members,
       @JsonKey(ignore: true)
           User? creator}) {
     return _Household(
@@ -47,11 +47,10 @@ class _$HouseholdTearOff {
       imageUrl: imageUrl,
       name: name,
       createdBy: createdBy,
-      members: members,
-      admins: admins,
+      memberIds: memberIds,
+      adminIds: adminIds,
       updatedBy: updatedBy,
-      membersUserData: membersUserData,
-      adminsUserData: adminsUserData,
+      members: members,
       creator: creator,
     );
   }
@@ -81,13 +80,13 @@ mixin _$Household {
   String get imageUrl => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get createdBy => throw _privateConstructorUsedError;
-  List<String> get members => throw _privateConstructorUsedError;
-  List<String> get admins => throw _privateConstructorUsedError;
+  @JsonKey(name: "members")
+  List<String> get memberIds => throw _privateConstructorUsedError;
+  @JsonKey(name: "admins")
+  List<String> get adminIds => throw _privateConstructorUsedError;
   String get updatedBy => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: <User>[])
-  List<User> get membersUserData => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: <User>[])
-  List<User>? get adminsUserData => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: <User>[], name: "memberUserData")
+  List<User> get members => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   User? get creator => throw _privateConstructorUsedError;
 
@@ -111,13 +110,13 @@ abstract class $HouseholdCopyWith<$Res> {
       String imageUrl,
       String name,
       String createdBy,
-      List<String> members,
-      List<String> admins,
+      @JsonKey(name: "members")
+          List<String> memberIds,
+      @JsonKey(name: "admins")
+          List<String> adminIds,
       String updatedBy,
-      @JsonKey(defaultValue: <User>[])
-          List<User> membersUserData,
-      @JsonKey(defaultValue: <User>[])
-          List<User>? adminsUserData,
+      @JsonKey(defaultValue: <User>[], name: "memberUserData")
+          List<User> members,
       @JsonKey(ignore: true)
           User? creator});
 
@@ -140,11 +139,10 @@ class _$HouseholdCopyWithImpl<$Res> implements $HouseholdCopyWith<$Res> {
     Object? imageUrl = freezed,
     Object? name = freezed,
     Object? createdBy = freezed,
-    Object? members = freezed,
-    Object? admins = freezed,
+    Object? memberIds = freezed,
+    Object? adminIds = freezed,
     Object? updatedBy = freezed,
-    Object? membersUserData = freezed,
-    Object? adminsUserData = freezed,
+    Object? members = freezed,
     Object? creator = freezed,
   }) {
     return _then(_value.copyWith(
@@ -172,26 +170,22 @@ class _$HouseholdCopyWithImpl<$Res> implements $HouseholdCopyWith<$Res> {
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
               as String,
-      members: members == freezed
-          ? _value.members
-          : members // ignore: cast_nullable_to_non_nullable
+      memberIds: memberIds == freezed
+          ? _value.memberIds
+          : memberIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      admins: admins == freezed
-          ? _value.admins
-          : admins // ignore: cast_nullable_to_non_nullable
+      adminIds: adminIds == freezed
+          ? _value.adminIds
+          : adminIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
       updatedBy: updatedBy == freezed
           ? _value.updatedBy
           : updatedBy // ignore: cast_nullable_to_non_nullable
               as String,
-      membersUserData: membersUserData == freezed
-          ? _value.membersUserData
-          : membersUserData // ignore: cast_nullable_to_non_nullable
+      members: members == freezed
+          ? _value.members
+          : members // ignore: cast_nullable_to_non_nullable
               as List<User>,
-      adminsUserData: adminsUserData == freezed
-          ? _value.adminsUserData
-          : adminsUserData // ignore: cast_nullable_to_non_nullable
-              as List<User>?,
       creator: creator == freezed
           ? _value.creator
           : creator // ignore: cast_nullable_to_non_nullable
@@ -227,13 +221,13 @@ abstract class _$HouseholdCopyWith<$Res> implements $HouseholdCopyWith<$Res> {
       String imageUrl,
       String name,
       String createdBy,
-      List<String> members,
-      List<String> admins,
+      @JsonKey(name: "members")
+          List<String> memberIds,
+      @JsonKey(name: "admins")
+          List<String> adminIds,
       String updatedBy,
-      @JsonKey(defaultValue: <User>[])
-          List<User> membersUserData,
-      @JsonKey(defaultValue: <User>[])
-          List<User>? adminsUserData,
+      @JsonKey(defaultValue: <User>[], name: "memberUserData")
+          List<User> members,
       @JsonKey(ignore: true)
           User? creator});
 
@@ -258,11 +252,10 @@ class __$HouseholdCopyWithImpl<$Res> extends _$HouseholdCopyWithImpl<$Res>
     Object? imageUrl = freezed,
     Object? name = freezed,
     Object? createdBy = freezed,
-    Object? members = freezed,
-    Object? admins = freezed,
+    Object? memberIds = freezed,
+    Object? adminIds = freezed,
     Object? updatedBy = freezed,
-    Object? membersUserData = freezed,
-    Object? adminsUserData = freezed,
+    Object? members = freezed,
     Object? creator = freezed,
   }) {
     return _then(_Household(
@@ -290,26 +283,22 @@ class __$HouseholdCopyWithImpl<$Res> extends _$HouseholdCopyWithImpl<$Res>
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
               as String,
-      members: members == freezed
-          ? _value.members
-          : members // ignore: cast_nullable_to_non_nullable
+      memberIds: memberIds == freezed
+          ? _value.memberIds
+          : memberIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      admins: admins == freezed
-          ? _value.admins
-          : admins // ignore: cast_nullable_to_non_nullable
+      adminIds: adminIds == freezed
+          ? _value.adminIds
+          : adminIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
       updatedBy: updatedBy == freezed
           ? _value.updatedBy
           : updatedBy // ignore: cast_nullable_to_non_nullable
               as String,
-      membersUserData: membersUserData == freezed
-          ? _value.membersUserData
-          : membersUserData // ignore: cast_nullable_to_non_nullable
+      members: members == freezed
+          ? _value.members
+          : members // ignore: cast_nullable_to_non_nullable
               as List<User>,
-      adminsUserData: adminsUserData == freezed
-          ? _value.adminsUserData
-          : adminsUserData // ignore: cast_nullable_to_non_nullable
-              as List<User>?,
       creator: creator == freezed
           ? _value.creator
           : creator // ignore: cast_nullable_to_non_nullable
@@ -331,13 +320,13 @@ class _$_Household extends _Household {
       required this.imageUrl,
       required this.name,
       required this.createdBy,
-      required this.members,
-      required this.admins,
+      @JsonKey(name: "members")
+          required this.memberIds,
+      @JsonKey(name: "admins")
+          required this.adminIds,
       required this.updatedBy,
-      @JsonKey(defaultValue: <User>[])
-          required this.membersUserData,
-      @JsonKey(defaultValue: <User>[])
-          required this.adminsUserData,
+      @JsonKey(defaultValue: <User>[], name: "memberUserData")
+          required this.members,
       @JsonKey(ignore: true)
           this.creator})
       : super._();
@@ -367,24 +356,23 @@ class _$_Household extends _Household {
   @override
   final String createdBy;
   @override
-  final List<String> members;
+  @JsonKey(name: "members")
+  final List<String> memberIds;
   @override
-  final List<String> admins;
+  @JsonKey(name: "admins")
+  final List<String> adminIds;
   @override
   final String updatedBy;
   @override
-  @JsonKey(defaultValue: <User>[])
-  final List<User> membersUserData;
-  @override
-  @JsonKey(defaultValue: <User>[])
-  final List<User>? adminsUserData;
+  @JsonKey(defaultValue: <User>[], name: "memberUserData")
+  final List<User> members;
   @override
   @JsonKey(ignore: true)
   final User? creator;
 
   @override
   String toString() {
-    return 'Household(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, imageUrl: $imageUrl, name: $name, createdBy: $createdBy, members: $members, admins: $admins, updatedBy: $updatedBy, membersUserData: $membersUserData, adminsUserData: $adminsUserData, creator: $creator)';
+    return 'Household(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, imageUrl: $imageUrl, name: $name, createdBy: $createdBy, memberIds: $memberIds, adminIds: $adminIds, updatedBy: $updatedBy, members: $members, creator: $creator)';
   }
 
   @override
@@ -398,13 +386,10 @@ class _$_Household extends _Household {
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.createdBy, createdBy) &&
-            const DeepCollectionEquality().equals(other.members, members) &&
-            const DeepCollectionEquality().equals(other.admins, admins) &&
+            const DeepCollectionEquality().equals(other.memberIds, memberIds) &&
+            const DeepCollectionEquality().equals(other.adminIds, adminIds) &&
             const DeepCollectionEquality().equals(other.updatedBy, updatedBy) &&
-            const DeepCollectionEquality()
-                .equals(other.membersUserData, membersUserData) &&
-            const DeepCollectionEquality()
-                .equals(other.adminsUserData, adminsUserData) &&
+            const DeepCollectionEquality().equals(other.members, members) &&
             const DeepCollectionEquality().equals(other.creator, creator));
   }
 
@@ -417,11 +402,10 @@ class _$_Household extends _Household {
       const DeepCollectionEquality().hash(imageUrl),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(createdBy),
-      const DeepCollectionEquality().hash(members),
-      const DeepCollectionEquality().hash(admins),
+      const DeepCollectionEquality().hash(memberIds),
+      const DeepCollectionEquality().hash(adminIds),
       const DeepCollectionEquality().hash(updatedBy),
-      const DeepCollectionEquality().hash(membersUserData),
-      const DeepCollectionEquality().hash(adminsUserData),
+      const DeepCollectionEquality().hash(members),
       const DeepCollectionEquality().hash(creator));
 
   @JsonKey(ignore: true)
@@ -446,13 +430,13 @@ abstract class _Household extends Household {
       required String imageUrl,
       required String name,
       required String createdBy,
-      required List<String> members,
-      required List<String> admins,
+      @JsonKey(name: "members")
+          required List<String> memberIds,
+      @JsonKey(name: "admins")
+          required List<String> adminIds,
       required String updatedBy,
-      @JsonKey(defaultValue: <User>[])
-          required List<User> membersUserData,
-      @JsonKey(defaultValue: <User>[])
-          required List<User>? adminsUserData,
+      @JsonKey(defaultValue: <User>[], name: "memberUserData")
+          required List<User> members,
       @JsonKey(ignore: true)
           User? creator}) = _$_Household;
   const _Household._() : super._();
@@ -482,17 +466,16 @@ abstract class _Household extends Household {
   @override
   String get createdBy;
   @override
-  List<String> get members;
+  @JsonKey(name: "members")
+  List<String> get memberIds;
   @override
-  List<String> get admins;
+  @JsonKey(name: "admins")
+  List<String> get adminIds;
   @override
   String get updatedBy;
   @override
-  @JsonKey(defaultValue: <User>[])
-  List<User> get membersUserData;
-  @override
-  @JsonKey(defaultValue: <User>[])
-  List<User>? get adminsUserData;
+  @JsonKey(defaultValue: <User>[], name: "memberUserData")
+  List<User> get members;
   @override
   @JsonKey(ignore: true)
   User? get creator;

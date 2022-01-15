@@ -35,13 +35,13 @@ class Household with _$Household {
     required String imageUrl,
     required String name,
     required String createdBy,
-    required List<String> members,
-    required List<String> admins,
+    @JsonKey(name: "members")
+        required List<String> memberIds,
+    @JsonKey(name: "admins")
+        required List<String> adminIds,
     required String updatedBy,
-    @JsonKey(defaultValue: <User>[])
-        required List<User> membersUserData,
-    @JsonKey(defaultValue: <User>[])
-        required List<User>? adminsUserData,
+    @JsonKey(defaultValue: <User>[], name: "memberUserData")
+        required List<User> members,
     @JsonKey(ignore: true)
         User? creator,
   }) = _Household;
@@ -53,16 +53,15 @@ class Household with _$Household {
   }
 
   Map<String, dynamic> toFirestore({SetOptions? setOptions}) =>
-      toJson().withoutKeys(["membersUserData", "adminsUserData"]);
+      toJson().withoutKeys(["memberUserData"]);
 
   factory Household.empty() => Household(
-        adminsUserData: [],
-        membersUserData: [],
+        members: [],
         createdBy: "",
         updatedBy: "",
         imageUrl: "",
-        admins: [],
-        members: [],
+        adminIds: [],
+        memberIds: [],
         name: "",
         createdAt: DateTime(2000),
         id: "",

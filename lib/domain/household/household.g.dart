@@ -14,16 +14,12 @@ _$_Household _$$_HouseholdFromJson(Map<String, dynamic> json) => _$_Household(
       imageUrl: json['imageUrl'] as String,
       name: json['name'] as String,
       createdBy: json['createdBy'] as String,
-      members:
+      memberIds:
           (json['members'] as List<dynamic>).map((e) => e as String).toList(),
-      admins:
+      adminIds:
           (json['admins'] as List<dynamic>).map((e) => e as String).toList(),
       updatedBy: json['updatedBy'] as String,
-      membersUserData: (json['membersUserData'] as List<dynamic>?)
-              ?.map((e) => User.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          [],
-      adminsUserData: (json['adminsUserData'] as List<dynamic>?)
+      members: (json['memberUserData'] as List<dynamic>?)
               ?.map((e) => User.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
@@ -36,9 +32,8 @@ Map<String, dynamic> _$$_HouseholdToJson(_$_Household instance) =>
       'imageUrl': instance.imageUrl,
       'name': instance.name,
       'createdBy': instance.createdBy,
-      'members': instance.members,
-      'admins': instance.admins,
+      'members': instance.memberIds,
+      'admins': instance.adminIds,
       'updatedBy': instance.updatedBy,
-      'membersUserData': instance.membersUserData,
-      'adminsUserData': instance.adminsUserData,
+      'memberUserData': instance.members,
     };

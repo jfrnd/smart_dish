@@ -1,0 +1,19 @@
+{
+  "name": "households/BEIGUO",
+  "bucket": "smartdish-82118.appspot.com",
+  "contentType": "image/jpeg",
+  "metageneration": 1,
+  "generation": 1642175060415,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [
+    "026e9b6a-767d-4982-8f37-5c6ab03f9320"
+  ],
+  "timeCreated": "2022-01-14T15:44:20.414Z",
+  "updated": "2022-01-14T15:44:20.423Z",
+  "size": 26620,
+  "md5Hash": "oGG7FYE6FWZxmiu0dTaB/w==",
+  "crc32c": "1973261840"
+}

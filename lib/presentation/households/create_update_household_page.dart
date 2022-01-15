@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:smart_dish/application/household_editor/household_editor_cubit.dart';
-import 'package:smart_dish/application/watcher/friend_watcher_cubit.dart';
 import 'package:smart_dish/di/injection.dart';
 import 'package:smart_dish/domain/core/failure.dart';
 import 'package:smart_dish/domain/household/household.dart';
 import 'package:smart_dish/presentation/core/loading_in_progress_overlay.dart';
+import 'package:smart_dish/presentation/router/router.gr.dart';
 import 'package:smart_dish/presentation/widgets/cropable_image.dart';
 import 'package:smart_dish/presentation/widgets/oval_image.dart';
 import 'package:smart_dish/utils/my_list_tile.dart';
@@ -252,7 +252,7 @@ class MemberList extends StatelessWidget {
                       child: Visibility(
                         visible: state.isInEditMode,
                         child: Checkbox(
-                          value: state.household.members.contains(user.id),
+                          value: state.household.memberIds.contains(user.id),
                           onChanged: (selected) {
                             if (selected == true) {
                               context
@@ -273,7 +273,7 @@ class MemberList extends StatelessWidget {
                       child: Visibility(
                         visible: state.isInEditMode,
                         child: Checkbox(
-                          value: state.household.admins.contains(user.id),
+                          value: state.household.adminIds.contains(user.id),
                           onChanged: state.isCreator
                               ? (selected) {
                                   if (selected == true) {
@@ -461,7 +461,8 @@ class DeleteDialog extends StatelessWidget {
           child: const Text('Delete'),
           color: Colors.red,
           onPressed: () {
-            Navigator.of(context).pop();
+            AutoRouter.of(context).popUntilRouteWithName(
+                HouseholdListRoute.name); // ! skip household page
             mainContext
                 .read<HouseholdEditorCubit>()
                 .onDeletedHouseholdClicked();

@@ -42,35 +42,35 @@ class HouseholdEditorCubit extends Cubit<HouseholdEditorState> {
           isCreator: true,
           membersPool: friends,
           household: state.household.copyWith(
-            members: [signedInUser.id!],
-            admins: [signedInUser.id!],
+            memberIds: [signedInUser.id!],
+            adminIds: [signedInUser.id!],
             creator: signedInUser,
           ),
         ),
       );
     }
-    if (household != null && household.admins.contains(signedInUser.id!)) {
+    if (household != null && household.adminIds.contains(signedInUser.id!)) {
       emit(
         state.copyWith(
           household: household,
           isCreatingNewHousehold: false,
           isCreator: household.createdBy == signedInUser.id,
           hasPermissionToUpdate: true,
-          membersPool: (friends + household.membersUserData)
+          membersPool: (friends + household.members)
               .whereNot((user) => user.id == signedInUser.id!)
               .toSet()
               .toList(),
         ),
       );
     }
-    if (household != null && !household.admins.contains(signedInUser.id!)) {
+    if (household != null && !household.adminIds.contains(signedInUser.id!)) {
       emit(
         state.copyWith(
           household: household,
           isCreator: household.createdBy == signedInUser.id,
           isCreatingNewHousehold: false,
           hasPermissionToUpdate: false,
-          membersPool: (friends + household.membersUserData)
+          membersPool: (friends + household.members)
               .whereNot((user) => user.id == signedInUser.id!)
               .toSet()
               .toList(),
@@ -83,7 +83,7 @@ class HouseholdEditorCubit extends Cubit<HouseholdEditorState> {
     emit(
       state.copyWith(
           household: state.household.copyWith(
-        members: state.household.members + [userId],
+        memberIds: state.household.memberIds + [userId],
       )),
     );
   }
@@ -92,10 +92,10 @@ class HouseholdEditorCubit extends Cubit<HouseholdEditorState> {
     emit(
       state.copyWith(
         household: state.household.copyWith(
-          members:
-              state.household.members.whereNot((uid) => uid == userId).toList(),
-          admins:
-              state.household.admins.whereNot((uid) => uid == userId).toList(),
+          memberIds:
+              state.household.memberIds.whereNot((uid) => uid == userId).toList(),
+          adminIds:
+              state.household.adminIds.whereNot((uid) => uid == userId).toList(),
         ),
       ),
     );
@@ -105,10 +105,10 @@ class HouseholdEditorCubit extends Cubit<HouseholdEditorState> {
     emit(
       state.copyWith(
           household: state.household.copyWith(
-        admins: state.household.admins + [userId],
-        members: !state.household.members.contains(userId)
-            ? state.household.members + [userId]
-            : state.household.members,
+        adminIds: state.household.adminIds + [userId],
+        memberIds: !state.household.memberIds.contains(userId)
+            ? state.household.memberIds + [userId]
+            : state.household.memberIds,
       )),
     );
   }
@@ -117,8 +117,8 @@ class HouseholdEditorCubit extends Cubit<HouseholdEditorState> {
     emit(
       state.copyWith(
         household: state.household.copyWith(
-          admins:
-              state.household.admins.whereNot((uid) => uid == userId).toList(),
+          adminIds:
+              state.household.adminIds.whereNot((uid) => uid == userId).toList(),
         ),
       ),
     );

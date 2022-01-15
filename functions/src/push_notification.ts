@@ -18,7 +18,7 @@ export async function sendPushNotificationToUser(
     notification: {
       title: title,
       body: body,
-      imageUrl: imageUrl,
+      imageUrl: imageUrl != "" ? imageUrl : undefined,
     },
     data: data,
   };
@@ -27,7 +27,10 @@ export async function sendPushNotificationToUser(
     .send(message)
     .then((response) => {
       // Response is a message ID string.
-      console.log("Successfully sent message:", response);
+      console.log(
+        `Successfully sent message to ${user.userName} with token ${user.token}`,
+        response
+      );
       return { success: true };
     })
     .catch((error) => {

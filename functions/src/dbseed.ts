@@ -1,8 +1,17 @@
 import admin = require("firebase-admin");
 
-import { FRIENDSHIPS, FRIEND_REQUESTS, HOUSEHOLDS, MEALS } from "./consts";
+import {
+  DISHES,
+  FRIENDSHIPS,
+  FRIEND_REQUESTS,
+  HOUSEHOLDS,
+  MEALS,
+  METADATA,
+} from "./consts";
+import { Dish } from "./dish";
 import { FriendShip } from "./friendship";
 import { FriendRequest } from "./friend_request";
+import { Household } from "./household";
 import { Meal } from "./meal";
 
 // initialization;
@@ -23,21 +32,22 @@ async function seedFriendship(id1: string, id2: string) {
   await database.collection(FRIENDSHIPS).doc(docId).set(friendship);
 }
 
-// async function seedDish(name: string, imageUrl: string, createdBy: string) {
-//   const dish: Dish = {
-//     createdBy: createdBy,
-//     name: name,
-//     imageUrl: imageUrl,
-//     createdAt: admin.firestore.Timestamp.now(),
-//     updatedAt: admin.firestore.Timestamp.now(),
-//   };
+async function seedDish(name: string, imageUrl: string, createdBy: string) {
+  const dish: Dish = {
+    createdBy: createdBy,
+    name: name,
+    imageUrl: imageUrl,
+    createdAt: admin.firestore.Timestamp.now(),
+    updatedAt: admin.firestore.Timestamp.now(),
+    ingredients: [],
+  };
 
-//   return await admin
-//     .firestore()
-//     .collection(DISHES)
-//     .doc(name.toUpperCase())
-//     .create(dish);
-// }
+  return await admin
+    .firestore()
+    .collection(DISHES)
+    .doc(name.toUpperCase())
+    .create(dish);
+}
 
 async function seedMeal(
   householdId: string,
@@ -62,20 +72,20 @@ async function seedMeal(
     .set(meal);
 }
 
-// async function seedHousehold(name: string, userId: string) {
-//   const docId = name.toUpperCase();
-//   const household: Household = {
-//     name: name,
-//     createdBy: userId,
-//     createdAt: admin.firestore.Timestamp.now(),
-//     imageUrl: "",
-//     members: [userId],
-//     admins: [userId],
-//     updatedAt: admin.firestore.Timestamp.now(),
-//     updatedBy: userId,
-//   };
-//   await database.collection(HOUSEHOLDS).doc(docId).set(household);
-// }
+async function seedHousehold(name: string, userId: string, members: string[]) {
+  const docId = name.toUpperCase();
+  const household: Household = {
+    name: name,
+    createdBy: userId,
+    createdAt: admin.firestore.Timestamp.now(),
+    imageUrl: "",
+    members: members,
+    admins: [userId],
+    updatedAt: admin.firestore.Timestamp.now(),
+    updatedBy: userId,
+  };
+  await database.collection(HOUSEHOLDS).doc(docId).set(household);
+}
 
 async function seedFriendrequest(senderName: string, receiverName: string) {
   const senderImageUrl = await database
@@ -135,6 +145,32 @@ async function seedFriends() {
     console.log(error, "friends seed failed");
   }
 }
+
+async function seedDishes() {
+  try {
+    const batch = database.batch();
+
+    const expenses = await database.collection(DISHES).get();
+    expenses.forEach(async (doc) => {
+      batch.delete(doc.ref);
+      batch.delete(doc.ref.collection(METADATA).doc(METADATA));
+    });
+
+    await batch.commit();
+
+    await seedDish("Spaghetti aglio e olio", "", "TED");
+    await seedDish("Penne all'Arrabbiata", "", "TED");
+    await seedDish("Greek salad", "", "BARNEY");
+    await seedDish("Bolognese", "", "LILLY");
+    await seedDish("Chili con carne", "", "MARSHALL");
+    await seedDish("Duck", "", "ROBIN");
+
+    console.log("dishes seed was successful");
+  } catch (error) {
+    console.log(error, "dishes seed failed");
+  }
+}
+
 async function seedMeals() {
   try {
     const batch = database.batch();
@@ -165,30 +201,25 @@ async function seedMeals() {
   }
 }
 
-// async function seedDishes() {
-//   try {
-//     const batch = database.batch();
+async function seedHouseholds() {
+  try {
+    const batch = database.batch();
 
-//     const expenses = await database.collection(DISHES).get();
-//     expenses.forEach(async (doc) => {
-//       batch.delete(doc.ref);
-//       batch.delete(doc.ref.collection(METADATA).doc(METADATA));
-//     });
+    const expenses = await database.collection(HOUSEHOLDS).get();
+    expenses.forEach(async (doc) => {
+      batch.delete(doc.ref);
+      batch.delete(doc.ref.collection(METADATA).doc(METADATA));
+    });
 
-//     await batch.commit();
+    await batch.commit();
 
-//     await seedDish("Spaghetti aglio e olio", "", "TED");
-//     await seedDish("Penne all'Arrabbiata", "", "TED");
-//     await seedDish("Greek salad", "", "BARNEY");
-//     await seedDish("Bolognese", "", "LILLY");
-//     await seedDish("Chili con carne", "", "MARSHALL");
-//     await seedDish("Duck", "", "ROBIN");
+    await seedHousehold("EINS", "DAN", ["DAN", "JAN"]);
 
-//     console.log("dishes seed was successful");
-//   } catch (error) {
-//     console.log(error, "dishes seed failed");
-//   }
-// }
+    console.log("households seed was successful");
+  } catch (error) {
+    console.log(error, "households seed failed");
+  }
+}
 
 async function seedData() {
   await seedFriends();

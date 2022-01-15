@@ -78,8 +78,8 @@ class HouseHoldTile extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children:
-                    List.generate(household.membersUserData.length, (index) {
-                  final user = household.membersUserData[index];
+                    List.generate(household.members.length, (index) {
+                  final user = household.members[index];
                   return Row(
                     children: [
                       OvalImage(user.imageUrl, size: 15),

@@ -59,7 +59,7 @@ class FirebaseHouseholdRepo implements IHouseholdRepo {
         .switchMap(
       (households) {
         final occuringUserIds =
-            (households.map((e) => e.members).expand((e) => e).toList() +
+            (households.map((e) => e.memberIds).expand((e) => e).toList() +
                     households.map((e) => e.createdBy).toList())
                 .toSet()
                 .toList();
@@ -71,12 +71,7 @@ class FirebaseHouseholdRepo implements IHouseholdRepo {
                   final householdsWithUserData = households
                       .map(
                         (h) => h.copyWith(
-                            membersUserData: h.members
-                                .map((id) => users.firstWhere(
-                                    (user) => user.id == id,
-                                    orElse: () => User.empty()))
-                                .toList(),
-                            adminsUserData: h.members
+                            members: h.memberIds
                                 .map((id) => users.firstWhere(
                                     (user) => user.id == id,
                                     orElse: () => User.empty()))
